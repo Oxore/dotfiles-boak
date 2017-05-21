@@ -1,0 +1,7 @@
+#!/bin/bash
+date '+%Y-%m-%d %H:%M:%S'
+date '+%Y-%m-%d %H:%M:%S'
+
+echo "#85F9C9"
+
+~/.i3/scripts/mlights

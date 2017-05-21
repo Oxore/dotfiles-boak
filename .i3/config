@@ -1,0 +1,272 @@
+exec --no-startup-id nm-applet
+exec_always --no-startup-id compton -b --config ~/.config/compton.conf
+exec --no-startup-id xautolock -time 5 -locker '/home/oxore/.i3/i3lock.sh' &
+exec --no-startup-id feh --bg-fill ~/Pictures/.wallpaper.jpg
+exec --no-startup-id nautilus
+exec --no-startup-id sh ~/.i3/HDMI1@top.sh
+exec --no-startup-id xset r rate 300 60
+exec --no-startup-id export EDITOR=vim
+exec --no-startup-id xinput set-prop "12" 275 1 #touchpad tap-to-click
+exec --no-startup-id xinput set-prop "14" 275 1 #touchpad tap-to-click
+exec --no-startup-id "setxkbmap -model pc105 -layout us,ru -option grp:win_space_toggle"
+exec --no-startup-id pidgin
+
+# i3 config file (v4)
+#
+# Please see http://i3wm.org/docs/userguide.html for a complete reference!
+#
+# This config file uses keycodes (bindsym) and was written for the QWERTY
+# layout.
+#
+# To get a config file with the same key positions, but for your current
+# layout, use the i3-config-wizard
+#
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+#font pango:Droid Sans Bold 11
+#font pango:SFNS Display Regular 10
+font pango:System San Francisco Display 10 
+
+# This font is widely installed, provides lots of unicode glyphs, right-to-left
+# text rendering and scalability on retina/hidpi displays (thanks to pango).
+#font pango:DejaVu Sans Mono 8
+
+# Before i3 v4.8, we used to recommend this one as the default:
+# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+# The font above is very space-efficient, that is, it looks good, sharp and
+# clear in small sizes. However, its unicode glyph coverage is limited, the old
+# X core fonts rendering does not support right-to-left and this being a bitmap
+# font, it doesn’t scale on retina/hidpi displays.
+
+# use these keys for focus, movement, and resize directions when reaching for
+# the arrows is not convenient
+set $up l
+set $down k
+set $left j
+set $right semicolon
+
+# use Mouse+Mod1 to drag floating windows to their wanted position
+floating_modifier Mod1
+
+# start a terminal
+bindsym Mod1+Return exec --no-startup-id gnome-terminal
+
+# kill focused window
+bindsym Mod1+Shift+q kill
+
+# start dmenu (a program launcher)
+#bindsym Mod1+d exec dmenu_run
+#bindsym Mod1+d exec --no-startup-id rofi -show run -lines 3 -eh 2 -width 100 -padding 334 -opacity "85" -bw 0 -bc "#000000" -bg "#000000" -fg "#ffffff" -hlbg "#000000" -hlfg "#55ffaa" -font "System San Francisco Display 15"
+
+bindsym Mod1+d exec --no-startup-id rofi -show run -lines 3 -eh 2 -width 100 -padding 334 -opacity "85" -bw 0 -font "System San Francisco Display 15"
+
+# There also is the (new) i3-dmenu-desktop which only displays applications
+# shipping a .desktop file. It is a wrapper around dmenu, so you need that
+# installed.
+# bindsym Mod1+d exec --no-startup-id i3-dmenu-desktop
+
+# change focus
+bindsym Mod1+$left focus left
+bindsym Mod1+$down focus down
+bindsym Mod1+$up focus up
+bindsym Mod1+$right focus right
+
+# alternatively, you can use the cursor keys:
+bindsym Mod1+Left focus left
+bindsym Mod1+Down focus down
+bindsym Mod1+Up focus up
+bindsym Mod1+Right focus right
+
+# move focused window
+bindsym Mod1+Shift+$left move left
+bindsym Mod1+Shift+$down move down
+bindsym Mod1+Shift+$up move up
+bindsym Mod1+Shift+$right move right
+
+# alternatively, you can use the cursor keys:
+bindsym Mod1+Shift+Left move left
+bindsym Mod1+Shift+Down move down
+bindsym Mod1+Shift+Up move up
+bindsym Mod1+Shift+Right move right
+
+# split in horizontal orientation
+bindsym Mod1+h split h
+
+# split in vertical orientation
+bindsym Mod1+v split v
+
+# enter fullscreen mode for the focused container
+bindsym Mod1+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym Mod1+s layout stacking
+bindsym Mod1+w layout tabbed
+bindsym Mod1+e layout toggle split
+
+# toggle tiling / floating
+bindsym Mod1+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym Mod1+space focus mode_toggle
+
+# focus the parent container
+bindsym Mod1+a focus parent
+
+# focus the child container
+#bindsym Mod1+d focus child
+
+# move the currently focused window to the scratchpad
+bindsym Mod1+Shift+Menu move scratchpad
+
+# Show the next scratchpad window or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, this command cycles through them.
+bindsym Menu [instance="gnome-terminal"] scratchpad show
+bindsym Shift+Menu scratchpad show
+
+set $work1 " Browser "
+set $work2 " Nautilus"
+set $work3 " Windows"
+set $work4 " Quartus"
+
+# switch to workspace
+bindsym Mod1+1 workspace $work1
+bindsym Mod1+2 workspace $work2
+bindsym Mod1+3 workspace $work3
+bindsym Mod1+4 workspace $work4
+bindsym Mod1+5 workspace 5
+bindsym Mod1+6 workspace 6
+bindsym Mod1+7 workspace 7
+bindsym Mod1+8 workspace 8
+bindsym Mod1+9 workspace 9
+bindsym Mod1+0 workspace 10
+
+# move focused container to workspace
+bindsym Mod1+Shift+1 move container to workspace $work1
+bindsym Mod1+Shift+2 move container to workspace $work2
+bindsym Mod1+Shift+3 move container to workspace $work3
+bindsym Mod1+Shift+4 move container to workspace $work4
+bindsym Mod1+Shift+5 move container to workspace 5
+bindsym Mod1+Shift+6 move container to workspace 6
+bindsym Mod1+Shift+7 move container to workspace 7
+bindsym Mod1+Shift+8 move container to workspace 8
+bindsym Mod1+Shift+9 move container to workspace 9
+bindsym Mod1+Shift+0 move container to workspace 10
+
+# reload the configuration file
+bindsym Mod1+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym Mod1+Shift+r restart
+# exit i3 (logs you out of your X session)
+#bindsym Mod1+Shift+e exec --no-startup-id "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym Mod1+Shift+e exec --no-startup-id gnome-session-quit --logout
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym $left       resize shrink width 10 px or 10 ppt
+        bindsym $down       resize grow height 10 px or 10 ppt
+        bindsym $up         resize shrink height 10 px or 10 ppt
+        bindsym $right      resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left        resize shrink width 10 px or 10 ppt
+
+        bindsym Down        resize grow height 10 px or 10 ppt
+        bindsym Up          resize shrink height 10 px or 10 ppt
+        bindsym Right       resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym Mod1+r mode "resize"
+
+#defiining colorscheme
+#  set $foregr #85F9C9
+  set $foregr #85F9C9
+  set $txtact #000000
+  set $backgr #262626
+  set $txtina #779988
+  set $forein #335544
+
+# Widow Colours
+#                         border  background text    indicator
+  client.focused          $backgr $txtina    $foregr $foregr
+  client.focused_inactive $backgr $backgr    $txtina $foregr
+  client.unfocused        $backgr $backgr    $txtina $foregr
+  client.urgent           $foregr $backgr    $txtina $foregr
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+    position top 
+	workspace_buttons yes
+	status_command i3blocks -c ~/.i3/i3blocks.conf
+#    tray_output HDMI1
+    tray_output LVDS1
+
+	colors {
+		background 		$backgr
+		statusline		$foregr
+		separator		$foregr
+
+#							border		foreground	text
+		focused_workspace	$backgr 	$backgr 	$foregr 
+		active_workspace	$backgr 	$backgr 	$txtina 
+		inactive_workspace	$backgr 	$backgr 	$txtina 
+		binding_mode		$backgr 	$backgr 	$txtina 
+		urgent_workspace	$txtina 	$backgr 	$foregr 
+	}
+}
+
+# lock screen
+bindsym Mod4+l exec --no-startup-id sh ~/.i3/i3lock.sh
+bindsym Mod4+w exec --no-startup-id chromium --disable-gpu --disable-software-rasterizer
+bindsym --release Mod4+c exec --no-startup-id shot
+bindsym Mod4+q exec --no-startup-id /home/sslash/altera/13.1/quartus/bin/quartus --64bit
+bindsym Mod4+e exec --no-startup-id nautilus
+bindsym Mod4+s exec --no-startup-id /home/sslash/altera/13.1/modelsim_ase/bin/vsim
+
+# volume control
+#bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse -q set Master 1%+ unmute
+#bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse -q set Master 1%- unmute
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-mute 0 false ; exec pactl set-sink-volume 0 +1%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-mute 0 false ; exec pactl set-sink-volume 0 -1%
+bindsym XF86AudioMute exec --no-startup-id amixer -D pulse -q set Master toggle
+bindsym XF86AudioNext exec --no-startup-id deadbeef --next
+bindsym XF86AudioPrev exec --no-startup-id deadbeef --prev
+bindsym XF86AudioPlay exec --no-startup-id deadbeef --play-pause
+bindsym XF86AudioStop exec --no-startup-id deadbeef --stop
+
+# mouse follow focusing off
+focus_follows_mouse no
+
+#no_borders
+hide_edge_borders both
+new_window 1pixel
+#new_window none #or "normal"
+new_float 1pixel
+#new_float none
+
+#some floating windows
+for_window [class="gnome-terminal"] floating enable
+for_window [class="Qsys"] floating enable
+for_window [class="Pidgin"] floating enable
+assign [class="Nautilus"] $work2
+assign [class="Chromium"] $work1
+assign [class="Quartus"] $work4
+for_window [class="SFML"] floating enable 
+for_window [title="galculator"] floating enable 
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="task_dialog"] floating enable
+
+bindsym Mod4+Shift+d exec --no-startup-id xrandr --output HDMI-0 --off --output DVI-I-1 --mode 1280x1024 --pos 0x0 --rotate    normal --output DVI-I-0 --primary --mode 1920x1200 --pos 1280x0 --rotate normal --output DVI-I-3 --off --output DVI-I-2 --off
+bindsym Mod4+n exec --no-startup-id gnome-control-center network
+

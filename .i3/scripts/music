@@ -1,0 +1,11 @@
+#!/bin/bash
+
+/usr/bin/deadbeef --nowplaying "%a - %t %e/%l"
+
+echo "" #short text blob
+echo ""
+echo "#85F9C9" #color
+
+~/.i3/scripts/mlights #border color
+#!/bin/bash
+

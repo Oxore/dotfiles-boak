@@ -1,0 +1,12 @@
+#!/bin/zsh
+#
+# Script that do  a screenshot  and then opens
+# it  in  browser.  Then  you can copy'n'paste
+# a screensot to vk or libreoffice or anywhere 
+# you want. Should be in /usr/bin/
+#
+
+scrot \
+-s '%Y-%m-%d_$wx$h.png' \
+-e 'mv $f /home/oxore/Pictures/shots/; cp /home/oxore/Pictures/shots/$f ~/Pictures/shots/1-last.png'
+chromium /home/oxore/Pictures/shots/1-last.png

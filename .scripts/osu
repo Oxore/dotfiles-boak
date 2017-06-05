@@ -1,0 +1,6 @@
+#!/bin/zsh
+#
+# Script that runs "osu!".
+#
+
+WINEPREFIX=/home/oxore/.wine32 WINEARCH=win32 wine ~/.wine32/drive_c/users/oxore/Local\ Settings/Application\ Data/osu!/osu!.exe

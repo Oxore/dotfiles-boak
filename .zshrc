@@ -88,8 +88,12 @@ source $ZSH/oh-my-zsh.sh
 alias scrotclip= "scrot -s ~/foo.png && xclip ~/foo.png && rm ~/foo.png"
 alias ls="ls --color=auto"
 alias cd..="cd .."
-alias fuck="sudo $(fc -ln -1)"
+
+# Good alias but no longer works. Reporting error with message:
+# /home/oxore/.zshrc:fc:91: no such event: 0
+#alias fuck="sudo $(fc -ln -1)"
+
 alias sys="sudo systemctl"
 alias cls="clear"
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
-
+alias doduc="duc index / && duc gui /"

@@ -3,7 +3,7 @@ call pathogen#infect()
 filetype plugin on
 syntax on
 au BufNewFile,BufRead *.st set filetype=stplc
-set tabstop=4
+set tabstop=8
 set shiftwidth=4
 set smartindent
 set number
@@ -12,6 +12,7 @@ set mouse=a
 let g:airline_powerline_fonts = 1
 set laststatus=2
 let g:airline_theme='wombat'
+let &colorcolumn=join(range(81,999),",")
 colorscheme kolor
 
 if has("autocmd")

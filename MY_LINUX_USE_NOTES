@@ -105,3 +105,12 @@ WINEPREFIX="$HOME/prefix32" WINEARCH=win32 wine wineboot
 Чтобы слушать интерфейс не от рута нужно запустить команду
 	usermod -a -G wireshark <username>
 а потом перелогиниться.
+
+-- qemu --
+для проброса ssh порта из виртуалки можно добавить следующие опции при запуске:
+	-net user,hostfwd=tcp::10022-:22
+	-net nic
+а потом коннектится командой типа:
+	ssh vmuser@localhost -p10022
+
+решение отсюда: https://unix.stackexchange.com/questions/124681/ssh-from-host-to-guest-using-qemu

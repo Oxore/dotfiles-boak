@@ -4,7 +4,7 @@ filetype plugin on
 syntax on
 au BufNewFile,BufRead *.st set filetype=stplc
 set tabstop=8
-set shiftwidth=4
+set shiftwidth=8
 set smartindent
 set number
 set ttyfast

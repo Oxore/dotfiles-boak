@@ -13,6 +13,7 @@ let g:airline_powerline_fonts = 1
 set laststatus=2
 let g:airline_theme='wombat'
 let &colorcolumn=join(range(81,999),",")
+let g:move_key_modifier = 'C'
 colorscheme kolor
 
 if has("autocmd")

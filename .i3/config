@@ -230,9 +230,9 @@ bar {
 bindsym Mod4+l exec --no-startup-id sh ~/.i3/i3lock.sh
 bindsym Mod4+w exec --no-startup-id chromium --disable-gpu --disable-software-rasterizer
 bindsym --release Mod4+c exec --no-startup-id shot
-bindsym Mod4+q exec --no-startup-id /home/sslash/altera/13.1/quartus/bin/quartus --64bit
+bindsym Mod4+q exec --no-startup-id /home/oxore/altera/13.1/quartus/bin/quartus --64bit
 bindsym Mod4+e exec --no-startup-id nautilus
-bindsym Mod4+s exec --no-startup-id /home/sslash/altera/13.1/modelsim_ase/bin/vsim
+bindsym Mod4+s exec --no-startup-id /home/oxore/altera/13.1/modelsim_ase/bin/vsim
 
 # volume control
 #bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse -q set Master 1%+ unmute

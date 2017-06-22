@@ -15,4 +15,6 @@
 #convert "$tmpbg" -filter Gaussian -resize 25% -define filter:sigma=1.5 -resize 400% "$tmpbg"
 #convert "$tmpbg" "$icon" -gravity center -composite -matte "$tmpbg"
 
+setxkbmap us
 i3lock #$PARAM -i "$tmpbg"
+setxkbmap -model pc105 -layout us,ru -option grp:win_space_toggle 

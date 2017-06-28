@@ -1,6 +1,6 @@
 exec --no-startup-id nm-applet
 exec_always --no-startup-id compton -b --config ~/.config/compton.conf
-exec --no-startup-id xautolock -time 5 -locker '/home/oxore/.i3/i3lock.sh' &
+exec --no-startup-id xautolock -time 5 -locker '/home/oxore/.i3/i3lock.sh'
 exec --no-startup-id feh --bg-fill ~/Pictures/.wallpaper.jpg
 exec --no-startup-id nautilus
 exec --no-startup-id sh ~/.i3/HDMI1@top.sh
@@ -126,8 +126,8 @@ bindsym Shift+Menu scratchpad show
 
 set $work1 " Browser "
 set $work2 " Nautilus"
-set $work3 " Windows"
-set $work4 " Quartus"
+set $work3 " Terminals"
+set $work4 " Documents"
 
 # switch to workspace
 bindsym Mod1+1 workspace $work1

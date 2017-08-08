@@ -9,7 +9,6 @@ exec --no-startup-id export EDITOR=vim
 exec --no-startup-id xinput set-prop "12" 275 1 #touchpad tap-to-click
 exec --no-startup-id xinput set-prop "14" 275 1 #touchpad tap-to-click
 exec --no-startup-id "setxkbmap -model pc105 -layout us,ru -option grp:win_space_toggle"
-exec --no-startup-id pidgin
 
 # i3 config file (v4)
 #
@@ -158,8 +157,8 @@ bindsym Mod1+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym Mod1+Shift+r restart
 # exit i3 (logs you out of your X session)
-#bindsym Mod1+Shift+e exec --no-startup-id "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
-bindsym Mod1+Shift+e exec --no-startup-id gnome-session-quit --logout
+bindsym Mod1+Shift+e exec --no-startup-id "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+#bindsym Mod1+Shift+e exec --no-startup-id gnome-session-quit --logout
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -230,9 +229,9 @@ bar {
 bindsym Mod4+l exec --no-startup-id sh ~/.i3/i3lock.sh
 bindsym Mod4+w exec --no-startup-id chromium --disable-gpu --disable-software-rasterizer
 bindsym --release Mod4+c exec --no-startup-id shot
-bindsym Mod4+q exec --no-startup-id /home/oxore/altera/13.1/quartus/bin/quartus --64bit
 bindsym Mod4+e exec --no-startup-id nautilus
-bindsym Mod4+s exec --no-startup-id /home/oxore/altera/13.1/modelsim_ase/bin/vsim
+bindsym --release Mod4+q exec --no-startup-id /home/oxore/intelFPGA_lite/16.1/quartus/bin/quartus
+bindsym --release Mod4+s exec --no-startup-id gnome-terminal -x /home/oxore/intelFPGA_lite/16.1/modelsim_ase/bin/vsim
 
 # volume control
 #bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse -q set Master 1%+ unmute
@@ -263,7 +262,6 @@ for_window [class="Qsys"] floating enable
 for_window [class="Pidgin"] floating enable
 assign [class="Nautilus"] $work2
 assign [class="Chromium"] $work1
-assign [class="Quartus"] $work4
 for_window [class="SFML"] floating enable 
 for_window [title="galculator"] floating enable 
 for_window [window_role="pop-up"] floating enable

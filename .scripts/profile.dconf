@@ -1,0 +1,12 @@
+[/]
+foreground-color='rgb(211,215,207)'
+visible-name='oxore'
+palette=['rgb(68,68,68)', 'rgb(205,0,0)', 'rgb(106,192,85)', 'rgb(205,205,0)', 'rgb(133,249,201)', 'rgb(205,0,205)', 'rgb(34,204,204)', 'rgb(250,235,215)', 'rgb(64,64,64)', 'rgb(255,0,0)', 'rgb(141,255,113)', 'rgb(255,255,0)', 'rgb(133,249,201)', 'rgb(255,0,255)', 'rgb(68,255,255)', 'rgb(255,255,255)']
+use-system-font=false
+use-theme-colors=false
+font='Droid Sans Mono Dotted for Powerline Bold 8'
+allow-bold=true
+bold-color-same-as-fg=true
+background-color='rgb(38,38,38)'
+scrollbar-policy='never'
+audible-bell=true

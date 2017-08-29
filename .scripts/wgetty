@@ -1,0 +1,11 @@
+#!/bin/sh
+#
+# wget wrapper for downloading with unstable network connection
+
+for FILE1 in "$@"
+do
+	while [[ !($(wget -c --tries=0 --retry-connrefused --timeout=10 --wait=1 $FILE1)) ]]
+	do 
+		wget -c --tries=0 --retry-connrefused --timeout=10 --wait=1 $FILE1
+	done
+done

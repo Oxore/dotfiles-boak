@@ -95,5 +95,4 @@ alias cd..="cd .."
 
 alias sys="sudo systemctl"
 alias cls="clear"
-alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 alias doduc="duc index / && duc gui /"

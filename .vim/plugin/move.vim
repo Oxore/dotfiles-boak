@@ -159,3 +159,10 @@ if g:move_map_keys
     execute 'nmap' s:MoveKey('Down') '<Plug>MoveLineDown'
     execute 'nmap' s:MoveKey('Up') '<Plug>MoveLineUp'
 endif
+
+if g:move_map_keys
+    execute 'vmap' s:MoveKey('k') '<Plug>MoveBlockDown'
+    execute 'vmap' s:MoveKey('l') '<Plug>MoveBlockUp'
+    execute 'nmap' s:MoveKey('k') '<Plug>MoveLineDown'
+    execute 'nmap' s:MoveKey('l') '<Plug>MoveLineUp'
+endif

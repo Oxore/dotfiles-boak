@@ -16,6 +16,11 @@ let &colorcolumn=join(range(81,999),",")
 let g:move_key_modifier = 'C'
 colorscheme kolor
 
+noremap ; l
+noremap l k
+noremap k j
+noremap j h
+
 if has("autocmd")
   au VimEnter,InsertLeave * silent execute '!echo -ne "\e[1 q"' | redraw!
   au InsertEnter,InsertChange *

@@ -35,19 +35,37 @@ if ($acpi !~ /: (\w+), (\d+)%/) {
 
 $status = $1;
 $percent = $2;
-$full_text = "$percent%";
 
-if ($status eq 'Discharging') {
-	$full_text .= ' DIS';
-} elsif ($status eq 'Charging') {
-	$full_text .= ' CHR';
+# 0-14   
+# 15-39  
+# 40-59  
+# 60-79  
+# 80-100 
+
+if ($percent <= 14) {
+	$full_text = " $percent";
+} elsif ($percent <= 40) {
+	$full_text = "";
+} elsif ($percent <= 60) {
+	$full_text = "";
+} elsif ($percent <= 80) {
+	$full_text = "";
+} elsif ($percent <= 100) {
+	$full_text = "";
 }
 
-$short_text = $full_text;
+if ($status eq 'Discharging') {
+	$full_text .= '';
+} elsif ($status eq 'Charging') {
+	$full_text .= '⚡';
+}
+
 
 if ($acpi =~ /(\d\d:\d\d):/) {
 	$full_text .= " ($1)";
 }
+
+$short_text = $full_text;
 
 # print text
 print "$full_text\n";
@@ -68,6 +86,5 @@ if ($status eq 'Discharging') {
 }
 
 print "\n";
-system("/bin/bash /home/sslash/.i3/scripts/mlights");
 
 exit(0);

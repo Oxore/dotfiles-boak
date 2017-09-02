@@ -1,7 +1,10 @@
 #!/bin/bash
-date '+%Y-%m-%d %H:%M:%S'
-date '+%Y-%m-%d %H:%M:%S'
+
+case $BLOCK_BUTTON in
+  1) ~/.i3/dzen/dzen.pl ;;  # left click show calendar
+esac
+
+date '+%d.%m  %H:%M:%S'
+date '+%d.%m  %H:%M:%S'
 
 echo "#85F9C9"
-
-~/.i3/scripts/mlights

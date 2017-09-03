@@ -1,0 +1,6 @@
+#!/usr/bin/perl
+use strict;
+my $layout = `xkblayout-state print \"%s\"`;
+my $caps = `cat /sys/class/leds/input0::capslock/brightness`;
+$layout = $caps == 1 ? (uc $layout) : $layout;
+print " ".$layout;

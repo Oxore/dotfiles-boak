@@ -3,18 +3,20 @@
 "
 
 call plug#begin('~/.local/share/nvim/site/plugged')
-Plug 'zeis/vim-kolor'
+Plug 'Oxore/vim-kolor'
 Plug 'matze/vim-move'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'Rip-Rip/clang_complete'
 call plug#end()
 
 syntax on
 set number
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+set termguicolors
 let g:move_key_modifier = 'C'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline_theme='wombat'
+let g:kolor_inverted_matchparen=1
 colorscheme kolor
 let &colorcolumn=join(range(81,999),",")

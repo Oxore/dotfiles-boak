@@ -44,7 +44,7 @@ CURRENT_BG='NONE'
   # what font the user is viewing this source code in. Do not replace the
   # escape sequence with a single literal character.
   # Do not change this! Do not make it '\u2b80'; that is the old, wrong code point.
-  SEGMENT_SEPARATOR=$'\ue0b0'
+  SEGMENT_SEPARATOR=$'\ue0bc'
 }
 
 # Begin a segment
@@ -70,7 +70,10 @@ prompt_end() {
   else
     echo -n "%{%k%}"
   fi
-  echo -n "%{%f%}"
+  printf '\n'
+	echo -n "%{%K{black}%}%{%F{default}%}  $USER  %{%K{default}%}%{%F{black}%}"
+	echo -n "%{%F{blue}%}\ue0be\ue0b8%{%k%}%{%F{$CURRENT_BG}%}"
+  echo -n "%{%f%} "
   CURRENT_BG=''
 }
 
@@ -78,22 +81,11 @@ prompt_end() {
 # Each component will draw itself, and hide itself if no information needs to be shown
 
 # Context: user@hostname (who am I and where am I)
-# ======= BACKED UP =====================================================================================
-#prompt_context() {
-#  if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
-#    prompt_segment black default "%(!.%{%F{yellow}%}.)$USER@%m"
-#  fi
-#}
-# ======= BACKED UP =====================================================================================
-
-# Context: user@hostname (who am I and where am I)
-# ======= EDITED BY ME =====================================================================================
 prompt_context() {
   if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
-    prompt_segment black default "%(!.%{%F{yellow}%}.)$USER"
+    prompt_segment black default "%(!.%{%F{yellow}%}.)"    #$USER@%m
   fi
 }
-# ======= EDITED BY ME =====================================================================================
 
 # Git: branch/detached head, dirty status
 prompt_git() {
@@ -198,7 +190,7 @@ prompt_hg() {
 
 # Dir: current working directory
 prompt_dir() {
-  prompt_segment blue black '%3~'
+  prompt_segment blue black '%~'
 }
 
 # Virtualenv: current working virtualenv
@@ -236,4 +228,5 @@ build_prompt() {
   prompt_end
 }
 
+PROMPT='%{%f%b%k%}$(build_prompt) '
 PROMPT='%{%f%b%k%}$(build_prompt) '

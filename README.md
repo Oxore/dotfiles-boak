@@ -35,7 +35,7 @@ My visual modification of "agnoster" theme from [oh-my-zsh](https://github.com/r
 [`oh-my-zsh`](https://github.com/robbyrussell/oh-my-zsh), 
 any font patched by [`nerd-fonts` patcher](https://github.com/ryanoasis/nerd-fonts#font-patcher).
 
-Theme file location is `.oh-my-zsh/themes/agnoster.zsh-theme`. Font on the screenshot is "Droid Sans Mono Dotted for Powerline" patched by `nerd-fonts` patcher.
+Theme file location is `.oh-my-zsh/themes/agnoster.zsh-theme`. Font on the screenshot is "Droid Sans Mono Dotted for Powerline Bold" size of 8 patched by `nerd-fonts` patcher.
 
 ___
 

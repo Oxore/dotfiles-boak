@@ -2,4 +2,4 @@
 	email = oxore@protonmail.com
 	name = Oxore
 [core]
-	editor = vim
+	editor = nvim

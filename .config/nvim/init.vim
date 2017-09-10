@@ -13,7 +13,12 @@ call plug#end()
 syntax on
 set number
 set termguicolors
+" filebrowser options
+let g:netrw_banner=0 " remove top banner
+let g:netrw_liststyle=3 " tree liststyle
+" vim-move options
 let g:move_key_modifier = 'C'
+" vim-airline options
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline_theme='wombat'

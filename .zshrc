@@ -1,6 +1,6 @@
 # Path to your oh-my-zsh installation.
   export ZSH=~/.oh-my-zsh
-  export VISUAL=vim
+  export VISUAL=nvim
   export EDITOR="$VISUAL"
 
 # Set name of the theme to load.
@@ -98,3 +98,5 @@ alias cd..="cd .."
 alias sys="sudo systemctl"
 alias cls="clear"
 alias doduc="duc index / && duc gui /"
+alias vim="nvim"
+alias vi="nvim"

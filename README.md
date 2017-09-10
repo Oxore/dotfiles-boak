@@ -27,7 +27,7 @@ esac
 
 ## Agnoster-blade
 
-My visual modification of agnoster theme from [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh).
+My visual modification of "agnoster" theme from [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh).
 
 ![agnoster](http://i.imgur.com/3WUD5kE.png "agnoster-blade")
 
@@ -35,7 +35,7 @@ My visual modification of agnoster theme from [oh-my-zsh](https://github.com/rob
 [`oh-my-zsh`](https://github.com/robbyrussell/oh-my-zsh), 
 any font patched by [`nerd-fonts` patcher](https://github.com/ryanoasis/nerd-fonts#font-patcher).
 
-Theme file location is `.oh-my-zsh/themes/agnoster.zsh-theme`. Font on the screenshot is "Droid Sans Mono Dotted for Powerline" pathced by `nerd-fonts` patcher.
+Theme file location is `.oh-my-zsh/themes/agnoster.zsh-theme`. Font on the screenshot is "Droid Sans Mono Dotted for Powerline" patched by `nerd-fonts` patcher.
 
 ___
 

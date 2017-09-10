@@ -33,7 +33,7 @@ My visual modification of agnoster theme from [oh-my-zsh](https://github.com/rob
 
 **Dependencies:**
 [`oh-my-zsh`](https://github.com/robbyrussell/oh-my-zsh), 
-any font patched by [`nerd-font` patcher](https://github.com/ryanoasis/nerd-fonts#font-patcher).
+any font patched by [`nerd-fonts` patcher](https://github.com/ryanoasis/nerd-fonts#font-patcher).
 
 Theme file location is `.oh-my-zsh/themes/agnoster.zsh-theme`. Font on the screenshot is "Droid Sans Mono Dotted for Powerline" pathced by `nerd-fonts` patcher.
 

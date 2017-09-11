@@ -46,7 +46,7 @@ sub compose_line {
 my @wmdy = (`date '+%w %m %d %y'` =~ /([\w]+)\s/g); # week month day year array
 $wmdy[0] = $wmdy[0] != 0 ? $wmdy[0] : 7;
 my $day1index = $wmdy[0]-(($wmdy[2]-1)%7);
-$day1index = $day1index != 0 ? $day1index : 7;
+$day1index += $day1index <= 0 ? 7 : 0;
 
 #
 # Calculating month length subroutine

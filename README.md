@@ -8,18 +8,18 @@ This readme is meant to be helpful if you interest in some things this repo cont
 
 ## Pop-up calendar
 
-This is perl script to generate calendar layout for `dzen2` popup window.
+This is perl script to generate a calendar layout for `dzen2` popup window.
 
 ![dzen2 calendar](http://i.imgur.com/LzdHbT3.png "dzen2 calendar")
 
-Font on the screensot is `System San Francisco Display` size of 10. You can check it in `.i3/config` and in `.i3/dzen/dzen.pl` itself. The feature of this font is that it is not a monotype font but it has monotype digits and space width in half of digit. This allows to use it in bar -- so you have nice non-monotype font with non-jumping text on clock section.
+Font on the screensot is `System San Francisco Display` size of 10. You can check it in `.i3/config` and in `.i3/dzen/dzen.pl` itself. The feature of this font is monotype digits, but other characters are not and space width in half of digit. This allows you to use it in status bar -- so you get nice non-monotype font with non-jumping text on the clock section when time value is changing every second.
 
 **Dependencies:**
 `xdotool`, 
 `dzen2`, 
 `perl`.
 
-Script file location is`.i3/dzen/dzen.pl`. As script runs as window appears at left from mouse position by `x` and at `28 px` from top by `y`. It runs after click on time-and-date block displaying at `i3bar`. The way how it's done is next lines in `.i3/scripts/timedate` file:
+Script file location is`.i3/dzen/dzen.pl`. As script runs it's window appears to the left from the mouse position by `x` and at `28 px` from top by `y`. This script runs after click on the time-and-date block displaying at `i3bar`. The way how it's done is next lines in `.i3/scripts/timedate` file:
 
 ```
 case $BLOCK_BUTTON in                                                           
@@ -29,7 +29,7 @@ esac
 
 ## Agnoster-blade
 
-My visual modification of "agnoster" theme from [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh).
+My visual modification of the "agnoster" theme from [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh).
 
 ![agnoster](http://i.imgur.com/3WUD5kE.png "agnoster-blade")
 

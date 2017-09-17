@@ -12,7 +12,7 @@ This is perl script to generate a calendar layout for `dzen2` popup window.
 
 ![dzen2 calendar](http://i.imgur.com/LzdHbT3.png "dzen2 calendar")
 
-Font on the screensot is `System San Francisco Display` size of 10. You can check it in `.i3/config` and in `.i3/dzen/dzen.pl` itself. The feature of this font is monotype digits, but other characters are not and space width in half of digit. This allows you to use it in status bar -- so you get nice non-monotype font with non-jumping text on the clock section when time value is changing every second.
+Font on the screensot is `System San Francisco Display` size of 10. You can check it in `.i3/config` and in `.i3/dzen/dzen.pl` itself. The feature of this font is monotype digits, but other characters are not. This allows you to use it in status bar -- so you get nice non-monotype font with non-jumping text on the clock section when time value is changing every second.
 
 **Dependencies:**
 `xdotool`, 

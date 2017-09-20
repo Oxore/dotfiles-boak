@@ -12,14 +12,14 @@ This is perl script to generate a calendar layout for `dzen2` popup window.
 
 ![dzen2 calendar](http://i.imgur.com/LzdHbT3.png "dzen2 calendar")
 
-Font on the screensot is `System San Francisco Display` size of 10. You can check it in `.i3/config` and in `.i3/dzen/dzen.pl` itself. The feature of this font is monotype digits, but other characters are not. This allows you to use it in status bar -- so you get nice non-monotype font with non-jumping text on the clock section when time value is changing every second.
+Font on the screenshot above is `System San Francisco Display` size of 10. You can check it in `.i3/config` and in `.i3/dzen/dzen.pl` itself. The feature of this font is the monotype digits, but other characters are not monotype. This feature allows you to use this font in status bar -- so you get the nice non-monotype font with non-jumping text on the clock section when time value is changing every second.
 
 **Dependencies:**
 `xdotool`, 
 `dzen2`, 
 `perl`.
 
-Script file location is`.i3/dzen/dzen.pl`. As script runs it's window appears to the left from the mouse position by `x` and at `28 px` from top by `y`. This script runs after click on the time-and-date block displaying at `i3bar`. The way how it's done is next lines in `.i3/scripts/timedate` file:
+Script file location is`.i3/dzen/dzen.pl`. As script runs it's window appears to the left from the mouse position by `x` and at `28 px` from top by `y`. This script runs after clicking on the time-and-date block displaying at `i3bar`. The way how it's done is the next lines in `.i3/scripts/timedate` file:
 
 ```
 case $BLOCK_BUTTON in                                                           

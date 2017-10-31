@@ -71,7 +71,7 @@ sub mon_len {
 	elsif ($month == 7) { $len = 31 }
 	elsif ($month == 8) { $len = 31 }
 	elsif ($month == 9) { $len = 30 }
-	elsif ($month == 10) { $len = 30 }
+	elsif ($month == 10) { $len = 31 }
 	elsif ($month == 11) { $len = 30 }
 	elsif ($month == 12) { $len = 31 }
 	return $len;
@@ -98,7 +98,7 @@ for my $i (0..$day1index-2) {
 	$cline[$i] = "^fg(".CL_MID.") ";
 }
 for my $i (1..100) {
-	$cline[$i-1+$month_len+$day1index-1] = "^fg(".CL_MID.") ";
+	$cline[$i-1+$month_len+$day1index-1] = "^bg(".CL_DARK.")^fg(".CL_MID.") ";
 }
 my $lines = ($day1index-1+$month_len)/7; # Calendar lines count
 $lines += ($day1index-1+$month_len)%7 == 0 ? 0 : 1;

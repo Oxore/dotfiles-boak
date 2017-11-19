@@ -31,6 +31,7 @@ let g:move_key_modifier = 'C'
 
 " vim-airline options
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 0
 let g:airline_powerline_fonts = 1
 let g:airline_theme='wombat'
 let g:kolor_inverted_matchparen=1

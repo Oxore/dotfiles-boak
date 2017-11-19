@@ -10,6 +10,7 @@ nnoremap <c-s> :w<CR>
 
 " edit init.vim
 map ,v :vsp ~/.config/nvim/init.vim<CR>
+map ,t :tabe ~/.config/nvim/init.vim<CR>
 autocmd! bufwritepost ~/.config/nvim/init.vim execute "normal! :source ~/.config/nvim/init.vim"
 " search selected text
 vnoremap // y/<C-R>"<CR>

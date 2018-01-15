@@ -39,16 +39,16 @@ font pango:System San Francisco Display 10
 
 # use these keys for focus, movement, and resize directions when reaching for
 # the arrows is not convenient
-set $up l
-set $down k
-set $left j
-set $right semicolon
+set $up k
+set $down j
+set $left h
+set $right l
 
 # use Mouse+Mod1 to drag floating windows to their wanted position
 floating_modifier Mod1
 
 # start a terminal
-bindsym Mod1+Return exec --no-startup-id gnome-terminal
+bindsym Mod4+Return exec --no-startup-id gnome-terminal
 
 # kill focused window
 bindsym Mod1+Shift+q kill
@@ -89,7 +89,7 @@ bindsym Mod1+Shift+Up move up
 bindsym Mod1+Shift+Right move right
 
 # split in horizontal orientation
-bindsym Mod1+h split h
+bindsym Mod1+g split h
 
 # split in vertical orientation
 bindsym Mod1+v split v
@@ -221,10 +221,11 @@ bar {
 
 # lock screen
 bindsym Mod4+l exec --no-startup-id sh ~/.i3/i3lock.sh
-bindsym Mod4+w exec --no-startup-id chromium --disable-gpu --disable-software-rasterizer
+bindsym Mod4+w exec --no-startup-id chromium 
+#--disable-gpu --disable-software-rasterizer
 bindsym --release Mod4+c exec --no-startup-id shot
 bindsym Mod4+e exec --no-startup-id nautilus
-bindsym --release Mod4+q exec --no-startup-id /home/oxore/intelFPGA_lite/17.0/quartus/bin/quartus
+bindsym --release Mod4+q exec --no-startup-id /home/oxore/altera_lite/16.0/quartus/bin/quartus
 bindsym --release Mod4+s exec --no-startup-id gnome-terminal -x "/home/oxore/intelFPGA_lite/17.0/modelsim_ase/bin/vsim"
 
 # volume control

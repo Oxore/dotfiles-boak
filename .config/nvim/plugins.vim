@@ -23,7 +23,6 @@ if exists('g:plugs["tern_for_vim"]')
   let g:tern_show_signature_in_pum = 1
   autocmd FileType javascript setlocal omnifunc=tern#Complete
 endif
-autocmd FileType javascript nnoremap <silent> <buffer> gb :TernDef<CR>
 " ------- /Deoplete --------------
 
 " vim-move options
@@ -36,3 +35,17 @@ let g:airline_powerline_fonts = 1
 let g:airline_theme='wombat'
 let g:kolor_inverted_matchparen=1
 let g:kolor_alternative_matchparen=1
+
+" Statusline customization
+let g:airline_section_z='%3p%% :%3v'
+
+" Run Neomake directory maker automatically
+au BufWritePost * :Neomake!
+" Neomake tex warnings
+let g:neomake_tex_chktex_maker = {
+                \ 'args': ['--warn=no'],
+                \ }
+
+function HookNeomake()
+  call neomake#configure#automake('w')
+endfunction

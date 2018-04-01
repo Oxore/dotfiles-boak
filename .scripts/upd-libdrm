@@ -1,0 +1,14 @@
+#!/bin/sh
+
+BUILDPKGS=~/build-pkgs/
+ARCHTREE=archtree
+
+[ ! -d $BUILDPKGS ] && mkdir -p $BUILDPKGS
+cd $BUILDPKGS
+[ ! -d packages ] && git clone --depth=1 git://git.archlinux.org/svntogit/packages.git $ARCHTREE
+cd ./$ARCHTREE/libdrm/trunk
+sed -i 's/-Dvalgrind=false/-Dvalgrind=true/' PKGBUILD
+makepkg
+sudo pacman -U --noconfirm libdrm-*.pkg.tar.xz
+cd $BUILDPKGS
+rm -rf $ARCHTREE

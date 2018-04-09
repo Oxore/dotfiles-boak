@@ -3,6 +3,11 @@
   export VISUAL=nvim
   export EDITOR="$VISUAL"
 
+# Get color support for 'less'
+  export LESS="--RAW-CONTROL-CHARS"
+# Use colors for less, man, etc.
+  [[ -f ~/.LESS_TERMCAP ]] && . ~/.LESS_TERMCAP
+
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
@@ -58,6 +63,7 @@ plugins=(git)
 
   export CUDA_BIN_PATH=/opt/cuda/bin
   export PATH="/bin:/sbin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/opt/android-sdk/platform-tools/"
+# export PATH=/usr/lib/ccache/bin:$PATH #ccache
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -66,11 +72,11 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='nvim'
+fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -95,8 +101,14 @@ alias cd..="cd .."
 # /home/oxore/.zshrc:fc:91: no such event: 0
 #alias fuck="sudo $(fc -ln -1)"
 
+alias glg2="git log --stat --graph --decorate --pretty=oneline --abbrev-commit"
 alias sys="sudo systemctl"
-alias cls="clear"
+alias cdf='cd $(dirname $(fzf))'
 alias doduc="duc index / && duc gui /"
 alias vim="nvim"
 alias vi="nvim"
+alias dush="du -sh"
+alias gdb="gdb -q"
+alias ап="fg"
+alias ьфлу="make"
+alias bt='coredumpctl gdb $(coredumpctl -r -1 | sed -E -e "s/ +/\n/g" | sed -n "12p")'

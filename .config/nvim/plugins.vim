@@ -29,23 +29,23 @@ endif
 let g:move_key_modifier = 'C'
 
 " vim-airline options
-let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled = 0
 let g:airline#extensions#tabline#show_buffers = 0
 let g:airline_powerline_fonts = 1
-let g:airline_theme='wombat'
+"let g:airline_theme='wombat'
+let g:airline_detect_spell=0
+let g:airline_detect_spelllang=0
+
+" vim-kolor options
 let g:kolor_inverted_matchparen=1
 let g:kolor_alternative_matchparen=1
 
 " Statusline customization
 let g:airline_section_z='%3p%% :%3v'
 
-" Run Neomake directory maker automatically
-au BufWritePost * :Neomake!
 " Neomake tex warnings
 let g:neomake_tex_chktex_maker = {
                 \ 'args': ['--warn=no'],
                 \ }
-
-function HookNeomake()
-  call neomake#configure#automake('w')
-endfunction
+"let g:neomake_c_enabled_makers = ['gcc']
+"let g:neomake_c_gcc_maker = {'args': ['-fsyntax-only', '-Wall', '-Wextra', '-Wpedantic']}

@@ -60,7 +60,6 @@ if ($status eq 'Discharging') {
 	$full_text .= '⚡';
 }
 
-
 if ($acpi =~ /(\d\d:\d\d):/) {
 	$full_text .= " ($1)";
 }
@@ -73,7 +72,6 @@ print "$short_text\n";
 
 # consider color and urgent flag only on discharge
 if ($status eq 'Discharging') {
-
 	if ($percent < 40) {
 		print "#FF00AA\n";
 	} elsif ($percent < 60) {

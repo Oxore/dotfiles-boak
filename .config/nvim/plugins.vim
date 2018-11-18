@@ -1,3 +1,10 @@
+" Install Plug if not installed (*nix specific)
+if empty (glob('~/.local/share/nvim/site/autoload/plug.vim'))
+    silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter *PlugInstall --sync|source $MYVIMRC
+endif
+
 " ------- Deoplete --------------
 let g:deoplete#enable_at_startup = 1
 " tab-complete
@@ -6,8 +13,8 @@ inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 set completeopt-=preview
 " ru autocomplete
 let g:deoplete#keyword_patterns =  {
-		\ '_': '[a-zA-Zа-яА-Я_]\k*',
-		\ 'tex': '\\?[a-zA-Zа-яА-Я_]\w*',
+        \ '_': '[a-zA-Zа-яА-Я_]\k*',
+        \ 'tex': '\\?[a-zA-Zа-яА-Я_]\w*',
         \ }
 " rust autocomplete
 let g:deoplete#sources#rust#racer_binary=systemlist('which racer')[0]
@@ -30,8 +37,8 @@ let g:airline_section_z='%3p%% :%3v'
 
 " Neomake tex warnings
 let g:neomake_tex_chktex_maker = {
-                \ 'args': ['--warn=no'],
-                \ }
+        \ 'args': ['--warn=no'],
+        \ }
 
 " Prevent paredit from pushing closing parenthesis to next line
 let g:paredit_electric_return=0

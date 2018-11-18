@@ -1,0 +1,18 @@
+I need a dotfiles management system. Desired features of the system:
+
+- A unified config file (probably in YAML format):
+    - Accounting custom scripts in ~/.local/bin
+    - Accounting configs in ~/.config and other places
+    - PATH directories:
+        - Generate a zsh file that will be sourced
+    - Patches with custom ebuilds and PKGBUILDS with tests (like for "st")
+    - Accounting dependencies
+- Managing prefixes of various toolchains:
+    - Possible solution is to wrap the "modules" tool: https://github.com/cea-hpc/modules
+- An installation script:
+    - Choose one from multiple parallel configurations for multiple systems/machines
+    - Checking for installed dependencies
+- Automatic synchronization:
+    - Pull newest changes (if they come from other machine, for example)
+    - Push changes to the remote repository
+    - Check for changes on the remote repository before commit

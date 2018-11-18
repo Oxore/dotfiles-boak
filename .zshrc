@@ -18,12 +18,15 @@ plugins=(git)
 
 export CUDA_BIN_PATH=/opt/cuda/bin
 export PATH="/bin:/sbin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/opt/android-sdk/platform-tools/"
-export PATH="$PATH:/home/oxore/MATLAB/R2017b/bin"
 export PATH="$PATH:/home/oxore/.bin"
+export PATH="$PATH:/home/oxore/.local/bin"
 export PATH="$PATH:/home/oxore/altera_lite/16.0/quartus/bin"
 export PATH="$PATH:/home/oxore/Documents/stm32-prog/openocd/prefix/bin"
 export PATH="$PATH:/home/oxore/.gem/ruby/2.5.0/bin"
 export PATH="$PATH:/home/oxore/.cargo/bin"
+export PATH="$PATH:/home/oxore/.scripts"
+export PATH="$PATH:/home/oxore/altera_lite/16.0/quartus/bin/"
+export PATH="$PATH:/home/oxore/altera_lite/16.0/University_Program/Monitor_Program/bin/"
 
 source $ZSH/oh-my-zsh.sh
 
@@ -37,7 +40,7 @@ prompt_context() {
 
 # Show up to level 2 dir name
 prompt_dir() {
-  prompt_segment black default '%2~'
+  prompt_segment 8 default '%2~'
 }
 
 # No "prompt_context"
@@ -52,6 +55,24 @@ build_prompt() {
   prompt_end
 }
 
+# Prevent nested ranger sessions
+ranger() {
+    if [ -z "$RANGER_LEVEL" ]; then
+        /usr/bin/ranger "$@"
+    else
+        exit
+    fi
+}
+
+function ranger-cd {
+    tempfile="$(mktemp -t tmp.XXXXXX)"
+    ranger --choosedir="$tempfile" "${@:-$(pwd)}"
+    test -f "$tempfile" &&
+    if [ "$(cat -- "$tempfile")" != "$(echo -n `pwd`)" ]; then
+        cd -- "$(cat "$tempfile")"
+    fi
+    rm -f -- "$tempfile"
+}
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
@@ -60,14 +81,13 @@ else
   export EDITOR='nvim'
 fi
 
-alias scrotclip= "scrot -s ~/foo.png && xclip ~/foo.png && rm ~/foo.png"
-alias ls="ls --color=auto"
-alias cd..="cd .."
-
 # Good alias but no longer works. Reporting error with message:
 # /home/oxore/.zshrc:fc:91: no such event: 0
 # alias fuck="sudo $(fc -ln -1)"
 
+alias scrotclip= "scrot -s ~/foo.png && xclip ~/foo.png && rm ~/foo.png"
+alias ls="ls --color=auto"
+alias cd..="cd .."
 alias glg2="git log --stat --graph --decorate --pretty=oneline --abbrev-commit"
 alias sys="sudo systemctl"
 alias cdf='cd $(dirname $(fzf))'
@@ -81,7 +101,9 @@ alias ьфлу="make"
 alias bt='coredumpctl gdb -q $(coredumpctl -r -1 | sed -E -e "s/ +/\n/g" | sed -n "12p")'
 bindkey "^P" up-line-or-beginning-search
 bindkey "^N" down-line-or-beginning-search
+bindkey -s '^o' 'ranger-cd\n'
 
 # FZF autocomplete
-source /usr/share/fzf/key-bindings.zsh
-source /usr/share/fzf/completion.zsh
+source /usr/share/zsh/site-contrib/fzf.zsh
+
+unset _JAVA_OPTIONS

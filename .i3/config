@@ -38,8 +38,8 @@ bindsym Mod4+Return exec --no-startup-id st
 bindsym Mod4+Shift+q kill
 
 # start rofi (a program launcher)
-bindsym Mod4+d exec --no-startup-id zsh -c 'source /home/oxore/.zshrc && rofi -show run -lines 3 -eh 2 -width 100 -padding 334 -opacity "85" -bw 0 -font "System San Francisco Display 15"'
-bindsym Mod4+q exec --no-startup-id zsh -c 'source /home/oxore/.zshrc && rofi -show drun -lines 3 -eh 2 -width 100 -padding 334 -opacity "85" -bw 0 -font "System San Francisco Display 15"'
+bindsym Mod4+d exec --no-startup-id zsh -c 'source /home/oxore/.paths.zsh && rofi -show run -lines 3 -eh 2 -width 100 -padding 334 -opacity "85" -bw 0 -font "System San Francisco Display 15"'
+bindsym Mod4+q exec --no-startup-id zsh -c 'source /home/oxore/.paths.zsh && rofi -show drun -lines 3 -eh 2 -width 100 -padding 334 -opacity "85" -bw 0 -font "System San Francisco Display 15"'
 
 # change focus
 bindsym Mod4+$left focus left
@@ -192,7 +192,7 @@ bar {
     }
 }
 
-bindsym --release Mod4+c exec --no-startup-id shot
+bindsym --release Mod4+c exec --no-startup-id zsh -c 'source /home/oxore/.paths.zsh && shot'
 
 # volume control
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-mute 0 false; exec --no-startup-id pactl set-sink-volume 0 +5% && notify-send -u low "Volume " "$(~/.i3/scripts/volume | head -n1)"

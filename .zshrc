@@ -1,33 +1,21 @@
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
-export VISUAL=nvim
-export EDITOR="$VISUAL"
 
 # Get color support for 'less'
 export LESS="--RAW-CONTROL-CHARS"
 # Use colors for less, man, etc.
 [[ -f ~/.LESS_TERMCAP ]] && . ~/.LESS_TERMCAP
 
-LANG=en_US.UTF-8
-ZSH_THEME="agnoster"
-AWT_TOOLKIT="MToolkit"
-
 plugins=(git)
 
 # User configuration
+LANG=en_US.UTF-8
+ZSH_THEME="agnoster"
 
-export CUDA_BIN_PATH=/opt/cuda/bin
-export PATH="/bin:/sbin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/opt/android-sdk/platform-tools/"
-export PATH="$PATH:/home/oxore/.bin"
-export PATH="$PATH:/home/oxore/.local/bin"
-export PATH="$PATH:/home/oxore/altera_lite/16.0/quartus/bin"
-export PATH="$PATH:/home/oxore/Documents/stm32-prog/openocd/prefix/bin"
-export PATH="$PATH:/home/oxore/.gem/ruby/2.5.0/bin"
-export PATH="$PATH:/home/oxore/.cargo/bin"
-export PATH="$PATH:/home/oxore/.scripts"
-export PATH="$PATH:/home/oxore/altera_lite/16.0/quartus/bin/"
-export PATH="$PATH:/home/oxore/altera_lite/16.0/University_Program/Monitor_Program/bin/"
+export VISUAL=nvim
+export EDITOR="$VISUAL"
 
+source $HOME/.paths.zsh
 source $ZSH/oh-my-zsh.sh
 
 # Agnoster theme tweak
@@ -73,13 +61,6 @@ function ranger-cd {
     fi
     rm -f -- "$tempfile"
 }
-
-# Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
-  export EDITOR='nvim'
-fi
 
 # Good alias but no longer works. Reporting error with message:
 # /home/oxore/.zshrc:fc:91: no such event: 0

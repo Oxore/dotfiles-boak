@@ -100,6 +100,8 @@ bindsym Menu [instance="gnome-terminal" instance="st"] scratchpad show
 bindsym Shift+Menu scratchpad show
 
 # switch to workspace
+bindsym Mod4+Tab workspace next
+bindsym Mod4+Shift+Tab workspace prev
 bindsym Mod4+1 workspace 1
 bindsym Mod4+2 workspace 2
 bindsym Mod4+3 workspace 3
@@ -219,6 +221,8 @@ for_window [class="Qsys"] floating enable
 for_window [class="Pidgin"] floating enable
 assign [class="Nautilus"] 2
 assign [class="Chromium"] 1
+assign [class="chrome"] 1
+assign [class="Telegram"] 5
 for_window [class="SFML"] floating enable
 for_window [title="galculator"] floating enable
 for_window [window_role="pop-up"] floating enable

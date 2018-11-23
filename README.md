@@ -42,7 +42,8 @@ The modification is implemented within the `.zshrc` file.
 [`oh-my-zsh`](https://github.com/robbyrussell/oh-my-zsh),
 any font patched by [`nerd-fonts` patcher](https://github.com/ryanoasis/nerd-fonts#font-patcher).
 
-The font used on the screenshot is "Monaco For Powerline" size of 11 patched by `nerd-fonts` patcher. You can find it in the [fonts](fonts) directory.
+The font used on the screenshot is "Monaco For Powerline" size of 11 patched by `nerd-fonts` patcher.
+You can find it in the [fonts](.local/share/fonts) directory.
 
 ## Fonts
 

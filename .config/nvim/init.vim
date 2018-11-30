@@ -26,8 +26,8 @@ colorscheme gruvbox
 let g:gruvbox_contrast_dark='hard'
 set bg=dark
 let &colorcolumn=join(range(81,81),",")
-set shiftwidth=4
-set tabstop=4
+set shiftwidth=2
+set tabstop=2
 set expandtab
 set number relativenumber
 set termguicolors

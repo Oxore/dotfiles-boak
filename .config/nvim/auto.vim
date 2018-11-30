@@ -31,7 +31,7 @@ endfunction
 
 " Invoke external make to get compilation errors in C code
 function! ToggleCProject()
-    if !exists('#CProject#BufRead')
+    if !exists('#CProject#BufWritePost')
         augroup CProject
             autocmd!
             autocmd BufRead,BufNewFile *.c set filetype=c
@@ -57,4 +57,9 @@ augroup LibRocket
     autocmd!
     autocmd BufReadPre,FileReadPre *.rml set ft=html
     autocmd BufReadPre,FileReadPre *.rcss set ft=css
+augroup END
+
+augroup FuseSoC
+    autocmd!
+    autocmd BufReadPre,FileReadPre *.core set ft=yaml
 augroup END

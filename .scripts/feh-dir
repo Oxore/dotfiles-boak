@@ -1,2 +1,0 @@
-#!/bin/sh                                                                         
-feh -g 640x480 -d $1 $(dirname $1)   

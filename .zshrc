@@ -66,6 +66,13 @@ function ranger-cd {
 # /home/oxore/.zshrc:fc:91: no such event: 0
 # alias fuck="sudo $(fc -ln -1)"
 
+alias ya="yadm add"
+alias yc="yadm commit --verbose"
+alias yd="yadm diff"
+alias ydc="yadm diff --cached"
+alias yst="yadm status"
+alias yp="yadm push"
+
 alias flat="flatpak --user"
 alias scrotclip= "scrot -s ~/foo.png && xclip ~/foo.png && rm ~/foo.png"
 alias ls="ls --color=auto"

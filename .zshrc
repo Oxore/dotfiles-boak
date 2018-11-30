@@ -66,6 +66,7 @@ function ranger-cd {
 # /home/oxore/.zshrc:fc:91: no such event: 0
 # alias fuck="sudo $(fc -ln -1)"
 
+alias flat="flatpak --user"
 alias scrotclip= "scrot -s ~/foo.png && xclip ~/foo.png && rm ~/foo.png"
 alias ls="ls --color=auto"
 alias cd..="cd .."

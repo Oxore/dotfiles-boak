@@ -1,5 +1,4 @@
 export CUDA_BIN_PATH=/opt/cuda/bin
-export PATH="/bin:/sbin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/opt/android-sdk/platform-tools/"
 export PATH="$PATH:/home/oxore/.bin"
 export PATH="$PATH:/home/oxore/.local/bin"
 export PATH="$PATH:/home/oxore/opt/altera_lite/16.0/quartus/bin"

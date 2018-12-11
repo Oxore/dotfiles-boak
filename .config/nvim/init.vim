@@ -1,6 +1,7 @@
 " Plugin manager:
 " - plug.vim: ~/.local/share/nvim/site/autoload/plug.vim
-"
+
+source $HOME/.config/nvim/neomake-c-flags.vim
 
 source $HOME/.config/nvim/plugins.vim
 source $HOME/.config/nvim/auto.vim

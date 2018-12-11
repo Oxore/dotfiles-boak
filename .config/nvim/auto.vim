@@ -33,9 +33,10 @@ function! ToggleCProject()
         augroup CProject
             autocmd!
             autocmd BufRead,BufNewFile *.c set filetype=c
-            autocmd BufWritePost *.h,*.c,*.cpp :Neomake!
+            autocmd BufWritePost *.h,*.c,*.cpp call CNeomakeFn()
         augroup END
         let g:gutentags_enabled=1
+        let g:neomake_c_enabled_makers=['gcc']
         echom "CProject automake on"
     else
         augroup CProject
@@ -43,6 +44,7 @@ function! ToggleCProject()
             autocmd BufRead,BufNewFile *.c set filetype=c
         augroup END
         let g:gutentags_enabled=0
+        let g:neomake_c_enabled_makers=[]
         echom "CProject automake off"
     endif
 endfunction

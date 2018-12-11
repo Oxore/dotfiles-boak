@@ -28,7 +28,6 @@ let g:move_key_modifier = 'C'
 let g:airline#extensions#tabline#enabled = 0
 let g:airline#extensions#tabline#show_buffers = 0
 let g:airline_powerline_fonts = 1
-"let g:airline_theme='wombat'
 let g:airline_detect_spell=0
 let g:airline_detect_spelllang=0
 
@@ -42,3 +41,7 @@ let g:neomake_tex_chktex_maker = {
 
 " Prevent paredit from pushing closing parenthesis to next line
 let g:paredit_electric_return=0
+
+" Gutentag statusline indicator
+set statusline+=%{gutentags#statusline()}
+let g:gutentags_enabled=0

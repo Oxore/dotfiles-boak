@@ -19,6 +19,7 @@ Plug 'tikhomirov/vim-glsl'
 Plug 'fidian/hexmode'
 Plug 'copy/deoplete-rust'
 Plug 'vim-scripts/paredit.vim'
+Plug 'ludovicchabant/vim-gutentags'
 call plug#end()
 
 syntax on

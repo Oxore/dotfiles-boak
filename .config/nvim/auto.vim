@@ -1,10 +1,10 @@
-augroup myvimrchooks
+augroup VimrcHooks
     au!
     autocmd bufwritepost init.vim,plugins.vim,auto.vim,map.vim source ~/.config/nvim/init.vim
 augroup END
 
 " Unfocused window has usual line numbers
-augroup numbertoggle
+augroup LineNumberHook
   autocmd!
   autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
   autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
@@ -17,11 +17,9 @@ function! Arrange()
     while winnr('$') > 3
         execute "normal \<c-w>q"
     endwhil
-
     while winnr('$') < 3
         execute "split"
     endwhil
-
     if winnr() == 1
         execute "normal \<c-w>J\<c-w>k\<c-w>J\<c-w>k\<c-w>L"
     else
@@ -37,12 +35,14 @@ function! ToggleCProject()
             autocmd BufRead,BufNewFile *.c set filetype=c
             autocmd BufWritePost *.h,*.c,*.cpp :Neomake!
         augroup END
+        let g:gutentags_enabled=1
         echom "CProject automake on"
     else
         augroup CProject
             autocmd!
             autocmd BufRead,BufNewFile *.c set filetype=c
         augroup END
+        let g:gutentags_enabled=0
         echom "CProject automake off"
     endif
 endfunction

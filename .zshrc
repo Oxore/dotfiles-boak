@@ -69,7 +69,8 @@ function ranger-cd {
 alias ya="yadm add"
 alias yc="yadm commit --verbose"
 alias yd="yadm diff"
-alias ydc="yadm diff --cached"
+alias ydca="yadm diff --cached"
+alias ylg="yadm log --stat"
 alias yst="yadm status"
 alias yp="yadm push"
 

@@ -37,9 +37,13 @@ bindsym Mod4+Return exec --no-startup-id st
 # kill focused window
 bindsym Mod4+Shift+q kill
 
-# start rofi (a program launcher)
-bindsym Mod4+d exec --no-startup-id zsh -c 'source /home/oxore/.paths.zsh && rofi -show run -lines 3 -eh 2 -width 100 -padding 334 -opacity "85" -bw 0 -font "System San Francisco Display 15"'
-bindsym Mod4+q exec --no-startup-id zsh -c 'source /home/oxore/.paths.zsh && rofi -show drun -lines 3 -eh 2 -width 100 -padding 334 -opacity "85" -bw 0 -font "System San Francisco Display 15"'
+# various rofi based tools
+bindsym Mod4+d exec --no-startup-id sh -c \
+  'source /home/oxore/.paths.zsh && rofi -show run'
+bindsym Mod4+q exec --no-startup-id sh -c \
+  'source /home/oxore/.paths.zsh && rofi -show drun'
+bindsym Mod4+m exec --no-startup-id sh -c '~/.i3/scripts/mount'
+bindsym Mod4+u exec --no-startup-id sh -c '~/.i3/scripts/umount'
 
 # change focus
 bindsym Mod4+$left focus left

@@ -1,0 +1,50 @@
+#!/bin/sh
+#
+# Originally authored by Luke Smith https://github.com/LukeSmithxyz
+#
+# A rofi (dmenu) prompt to unmount drives.
+# Provides you with mounted partitions, select one to unmount.
+# Drives mounted at /, /boot and /home will not be options to unmount.
+#
+# MTP devices support still unimplemented
+
+unmountusb() {
+  [ -z "$drives" ] && exit
+  chosen=$(echo "$drives" | rofi -dmenu -p "Unmount which drive?" | awk '{print $1}')
+  [ -z "$chosen" ] && exit
+  result=$(udevil umount "$chosen" 2>&1)
+  exitcode=$?
+  if pgrep -x dunst; then
+    [ $exitcode -eq 0 ] && notify-send "$chosen unmounted." || notify-send -u critical "$result"
+  fi
+}
+
+unmountandroid() {
+  chosen=$(awk '/simple-mtpfs/ {print $2}' /etc/mtab | rofi -dmenu -p "Unmount which device?")
+  [ -z "$chosen" ] && exit
+  fusermount -u "$chosen" && pgrep -x dunst && notify-send "$chosen unmounted."
+}
+
+asktype() {
+  case $(printf "USB\\nAndroid" | rofi -dmenu -p "Unmount a USB drive or Android device?") in
+    USB) unmountusb ;;
+    Android) unmountandroid ;;
+  esac
+}
+
+drives=$(lsblk -nrpo "name,type,size,mountpoint" | awk '$2=="part"&&$4!~/\/boot|\/home$|SWAP/&&length($4)>1{printf "%s (%s)\n",$4,$3}')
+
+if ! grep simple-mtpfs /etc/mtab; then
+  [ -z "$drives" ] && echo "No drives to unmount." && exit
+  echo "Unmountable USB drive detected."
+  unmountusb
+else
+  if [ -z "$drives" ]
+  then
+    echo "Unmountable Android device detected."
+    unmountandroid
+  else
+    echo "Unmountable USB drive(s) and Android device(s) detected."
+    asktype
+  fi
+fi

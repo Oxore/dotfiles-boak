@@ -2,4 +2,4 @@
 scrot \
 -s '%Y-%m-%d_%H:%M:%S_$wx$h.png' \
 -e 'mv $f /home/oxore/Pictures/shots/; cp /home/oxore/Pictures/shots/$f ~/Pictures/shots/1-last.png'
-google-chrome-stable /home/oxore/Pictures/shots/1-last.png
+palemoon /home/oxore/Pictures/shots/1-last.png

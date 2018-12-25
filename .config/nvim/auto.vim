@@ -5,9 +5,11 @@ augroup END
 
 " Unfocused window has usual line numbers
 augroup LineNumberHook
-  autocmd!
-  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+    autocmd!
+    autocmd BufEnter,FocusGained,InsertLeave *
+          \ if &modifiable | set relativenumber | endif
+    autocmd BufLeave,FocusLost,InsertEnter   *
+          \ if &modifiable | set norelativenumber | endif
 augroup END
 
 " Arrange windows split:

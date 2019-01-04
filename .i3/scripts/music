@@ -1,6 +1,18 @@
 #!/bin/bash
 
-/usr/bin/deadbeef --nowplaying "%a - %t %e/%l"
+# Deadbeef
+#/usr/bin/deadbeef --nowplaying "%a - %t %e/%l"
+#echo ""
+#echo ""
 
-echo "" #short text blob
-echo ""
+# CMus
+artist=$(cmus-remote -Q | grep ' artist ' | cut -d ' ' -f3-)
+song=$(cmus-remote -Q | grep title | cut -d ' ' -f3-)
+if [[ ! -z "$artist" && ! -z "$song" ]]; then
+  echo "$artist - $song"
+  echo "$artist - $song"
+else
+  file=$(basename "$(cmus-remote -Q | grep file | cut -d ' ' -f2-)")
+  echo $file
+  echo $file
+fi

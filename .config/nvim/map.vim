@@ -36,6 +36,9 @@ nnoremap ci<CR> viwy:%s/\V\<<C-R>"\>/<C-R>"/g<Left><Left>
 " Arrange windows
 nnoremap Jw :call Arrange()<CR>
 
+" :ls :b<Space>
+nnoremap Jl :ls<CR>:b<Space>
+
 " Exit from terminal input mode
 tnoremap <Esc> <C-\><C-n>
 

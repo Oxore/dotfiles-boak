@@ -1,4 +1,7 @@
-export CUDA_BIN_PATH=/opt/cuda/bin
+{% if YADM_HOSTNAME == 'DEV-004' -%}
+export PATH="$PATH:/home/oxore/opt/kconfig-frontends/bin"
+{% else -%}
+{% endif -%}
 export PATH="$PATH:/home/oxore/.bin"
 export PATH="$PATH:/home/oxore/.local/bin"
 export PATH="$PATH:/home/oxore/opt/altera_lite/16.0/quartus/bin"

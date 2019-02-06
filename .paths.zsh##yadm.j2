@@ -1,18 +1,18 @@
 {% if YADM_HOSTNAME == 'DEV-004' -%}
 export PATH="$PATH:/home/oxore/opt/kconfig-frontends/bin"
 {% else -%}
-{% endif -%}
-export PATH="$PATH:/home/oxore/.bin"
-export PATH="$PATH:/home/oxore/.local/bin"
-export PATH="$PATH:/home/oxore/opt/altera_lite/16.0/quartus/bin"
+export PATH="$PATH:/home/oxore/build-pkgs/verilator/prefix/bin"
 export PATH="$PATH:/home/oxore/Documents/stm32-prog/openocd/prefix/bin"
-export PATH="$PATH:/home/oxore/.gem/ruby/2.5.0/bin"
-export PATH="$PATH:/home/oxore/.cargo/bin"
-export PATH="$PATH:/home/oxore/.scripts"
 export PATH="$PATH:/home/oxore/altera_lite/16.0/quartus/bin/"
 export PATH="$PATH:/home/oxore/altera_lite/16.0/University_Program/Monitor_Program/bin/"
+export PATH="$PATH:/home/oxore/opt/altera_lite/16.0/quartus/bin"
+{% endif -%}
+export PATH="$PATH:/home/oxore/.local/bin"
+export PATH="$PATH:/home/oxore/.gem/ruby/2.5.0/bin"
+export PATH="$PATH:/home/oxore/.cargo/bin"
 export PATH="/home/oxore/.perl5/bin${PATH:+:${PATH}}"
 export PERL5LIB="/home/oxore/.perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"
 export PERL_LOCAL_LIB_ROOT="/home/oxore/.perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"
 export PERL_MB_OPT="--install_base \"/home/oxore/.perl5\""
 export PERL_MM_OPT="INSTALL_BASE=/home/oxore/.perl5"
+export GOPATH="$HOME/.go"

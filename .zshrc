@@ -74,6 +74,7 @@ alias ylg="yadm log --stat"
 alias yst="yadm status"
 alias yp="yadm push"
 
+alias ix="curl -F 'f:1=<-' ix.io"
 alias flat="flatpak --user"
 alias scrotclip= "scrot -s ~/foo.png && xclip ~/foo.png && rm ~/foo.png"
 alias ls="ls --color=auto"

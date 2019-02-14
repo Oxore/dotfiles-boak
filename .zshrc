@@ -14,6 +14,7 @@ ZSH_THEME="agnoster"
 
 export VISUAL=nvim
 export EDITOR="$VISUAL"
+export MENUCONFIG_COLOR="blackbg"
 
 source $HOME/.paths.zsh
 source $ZSH/oh-my-zsh.sh
@@ -62,6 +63,10 @@ function ranger-cd {
     rm -f -- "$tempfile"
 }
 
+function ag-fzf {
+    ag --nobreak --nonumbers --noheading . | fzf
+}
+
 # Good alias but no longer works. Reporting error with message:
 # /home/oxore/.zshrc:fc:91: no such event: 0
 # alias fuck="sudo $(fc -ln -1)"
@@ -93,6 +98,7 @@ alias bt='coredumpctl gdb -q $(coredumpctl -r -1 | sed -E -e "s/ +/\n/g" | sed -
 bindkey "^P" up-line-or-beginning-search
 bindkey "^N" down-line-or-beginning-search
 bindkey -s '^o' 'ranger-cd\n'
+bindkey -s '^f' 'ag-fzf\n'
 
 # FZF autocomplete
 source /usr/share/zsh/site-contrib/fzf.zsh

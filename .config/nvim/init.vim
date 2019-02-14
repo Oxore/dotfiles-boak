@@ -21,6 +21,9 @@ Plug 'fidian/hexmode'
 Plug 'copy/deoplete-rust'
 Plug 'vim-scripts/paredit.vim'
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'ggreer/the_silver_searcher'
+Plug '/usr/bin/fzf'
+Plug 'junegunn/fzf.vim'
 call plug#end()
 
 syntax on

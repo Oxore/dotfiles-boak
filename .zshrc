@@ -63,6 +63,14 @@ function ranger-cd {
     rm -f -- "$tempfile"
 }
 
+function kl {
+    ps -eo "%p %u %c" --no-headers | fzf -m | awk '{print $1}' | xargs kill -9
+}
+
+function skl {
+    ps -eo "%p %u %c" --no-headers | fzf -m | awk '{print $1}' | xargs sudo kill -9
+}
+
 function ag-fzf {
     ag --nobreak --nonumbers --noheading . | fzf
 }

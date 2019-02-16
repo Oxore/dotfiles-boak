@@ -15,6 +15,7 @@ ZSH_THEME="agnoster"
 export VISUAL=nvim
 export EDITOR="$VISUAL"
 export MENUCONFIG_COLOR="blackbg"
+export MAKEFLAGS="--no-print-directory"
 
 source $HOME/.paths.zsh
 source $ZSH/oh-my-zsh.sh

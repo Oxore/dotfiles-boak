@@ -15,7 +15,7 @@ ZSH_THEME="agnoster"
 export VISUAL=nvim
 export EDITOR="$VISUAL"
 export MENUCONFIG_COLOR="blackbg"
-export MAKEFLAGS="--no-print-directory"
+export MAKEFLAGS="--no-print-directory --silent"
 
 source $HOME/.paths.zsh
 source $ZSH/oh-my-zsh.sh
@@ -64,11 +64,11 @@ function ranger-cd {
     rm -f -- "$tempfile"
 }
 
-function kl {
+function fuzzy-kill {
     ps -eo "%p %u %c" --no-headers | fzf -m | awk '{print $1}' | xargs kill -9
 }
 
-function skl {
+function sudo-fuzzy-kill {
     ps -eo "%p %u %c" --no-headers | fzf -m | awk '{print $1}' | xargs sudo kill -9
 }
 
@@ -88,6 +88,8 @@ alias ylg="yadm log --stat"
 alias yst="yadm status"
 alias yp="yadm push"
 
+alias kl="fuzzy-kill"
+alias skl="sudo-fuzzy-kill"
 alias ix="curl -F 'f:1=<-' ix.io"
 alias flat="flatpak --user"
 alias scrotclip= "scrot -s ~/foo.png && xclip ~/foo.png && rm ~/foo.png"

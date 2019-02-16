@@ -1,3 +1,19 @@
+" GNU C code style autoformating
+function! GnuCFormatting()
+  setlocal shiftwidth=2 tabstop=8 textwidth=78
+  setlocal cinoptions=>2s,e-s,n-s,f0,{s,^-s,:s,=s,g0,+.5s,p2s,t0,(0 cindent
+  " Set 'formatoptions' to break comment lines but not other lines,
+  " and insert the comment leader when hitting <CR> or using "o".
+  setlocal fo-=t fo+=croql
+  " Set 'comments' to format dashed lists in comments.
+  setlocal comments=sO:*\ -,mO:\ \ \ ,exO:*/,s1:/*,mb:\ ,ex:*/
+  set cpoptions-=C
+
+  " " Second option of setting GNU C indent
+  " setlocal cinoptions=>4,n-2,{2,^-2,:2,=2,g0,h2,p5,t0,+2,(0,u0,w1,m1
+endfunction
+
+" Update configuration files on changes
 augroup VimrcHooks
     au!
     autocmd bufwritepost init.vim,plugins.vim,auto.vim,map.vim source ~/.config/nvim/init.vim

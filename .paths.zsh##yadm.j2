@@ -1,5 +1,4 @@
 {% if YADM_HOSTNAME == 'DEV-004' -%}
-export PATH="$PATH:/home/oxore/opt/kconfig-frontends/bin"
 {% else -%}
 export PATH="$PATH:/home/oxore/build-pkgs/verilator/prefix/bin"
 export PATH="$PATH:/home/oxore/Documents/stm32-prog/openocd/prefix/bin"
@@ -7,6 +6,7 @@ export PATH="$PATH:/home/oxore/altera_lite/16.0/quartus/bin/"
 export PATH="$PATH:/home/oxore/altera_lite/16.0/University_Program/Monitor_Program/bin/"
 export PATH="$PATH:/home/oxore/opt/altera_lite/16.0/quartus/bin"
 {% endif -%}
+export PATH="$PATH:/home/oxore/opt/kconfig-frontends/bin"
 export PATH="$PATH:/home/oxore/.local/bin"
 export PATH="$PATH:/home/oxore/.gem/ruby/2.5.0/bin"
 export PATH="$PATH:/home/oxore/.cargo/bin"

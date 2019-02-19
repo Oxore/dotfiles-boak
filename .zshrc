@@ -73,7 +73,15 @@ function sudo-fuzzy-kill {
 }
 
 function ag-fzf {
-    ag --nobreak --nonumbers --noheading . | fzf
+    OUTPUT=$(ag --nobreak --nonumbers --noheading . | fzf -m | sed -ne '1s/:.*//p')
+    if [ ! -z $OUTPUT ]
+    then
+      nvim $OUTPUT
+    fi
+}
+
+function ffzf {
+    find . -type f | fzf -m
 }
 
 # Good alias but no longer works. Reporting error with message:

@@ -76,7 +76,7 @@ function ag-fzf {
     OUTPUT=$(ag --nobreak --numbers --noheading . | fzf -m | grep -Po "^[^:]+:[^:]+")
     if [ ! -z $OUTPUT ]
     then
-      echo $OUTPUT #vim $OUTPUT
+      vim $OUTPUT
     fi
 }
 

@@ -24,6 +24,7 @@ Plug 'ludovicchabant/vim-gutentags'
 Plug 'ggreer/the_silver_searcher'
 Plug '/usr/bin/fzf'
 Plug 'junegunn/fzf.vim'
+Plug 'bogado/file-line'
 call plug#end()
 
 syntax on

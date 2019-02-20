@@ -73,7 +73,7 @@ function sudo-fuzzy-kill {
 }
 
 function ag-fzf {
-    OUTPUT=$(ag --nobreak --nonumbers --noheading . | fzf -m | sed -ne '1s/:.*//p')
+    OUTPUT=$(ag --nobreak --numbers --noheading . | fzf -m | grep -Po "^[^:]+:[^:]+")
     if [ ! -z $OUTPUT ]
     then
       nvim $OUTPUT

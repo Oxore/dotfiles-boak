@@ -72,8 +72,8 @@ function sudo-fuzzy-kill {
     ps -eo "%p %u %c" --no-headers | fzf -m | awk '{print $1}' | xargs sudo kill -9
 }
 
-function ag-fzf {
-    OUTPUT=$(ag --nobreak --numbers --noheading . | fzf -m | grep -Po "^[^:]+:[^:]+")
+function grep-fzf {
+    OUTPUT=$(grep -rnw . -e "" | fzf -m | grep -Po "^[^:]+:[^:]+")
     if [ ! -z $OUTPUT ]
     then
       nvim $OUTPUT
@@ -117,7 +117,7 @@ alias bt='coredumpctl gdb -q $(coredumpctl -r -1 | sed -E -e "s/ +/\n/g" | sed -
 bindkey "^P" up-line-or-beginning-search
 bindkey "^N" down-line-or-beginning-search
 bindkey -s '^o' 'ranger-cd\n'
-bindkey -s '^f' 'ag-fzf\n'
+bindkey -s '^f' 'grep-fzf\n'
 
 # FZF autocomplete
 source /usr/share/zsh/site-contrib/fzf.zsh

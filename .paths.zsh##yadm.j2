@@ -6,6 +6,7 @@ export PATH="$PATH:/home/oxore/opt/altera_lite/16.0/quartus/bin"
 for dir in ~/opt/*; do
   if [ -d $dir/bin ]; then
     export PATH="$dir/bin:$PATH"
+    export MANPATH="$dir/share/man:$MANPATH"
   fi
 done
 export PATH="$PATH:/home/oxore/.local/bin"

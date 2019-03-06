@@ -14,6 +14,9 @@ map l <Nop>
 " save by Ctrl-S
 nnoremap <c-s> :w<CR>
 
+" copy by Ctrl-C
+vnoremap <c-c> "+y
+
 " edit init.vim
 nnoremap Je :e ~/.config/nvim/init.vim<CR>
 autocmd! bufwritepost ~/.config/nvim/init.vim execute "normal! :source ~/.config/nvim/init.vim"

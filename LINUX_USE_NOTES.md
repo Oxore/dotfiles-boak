@@ -166,6 +166,9 @@
 
     sudo su -l <user>
 
+Прокси сервер с помощью ssh:
+
+    ssh -fTCND "*:8841" proxie@172.104.226.227
 
 # WineHQ
 

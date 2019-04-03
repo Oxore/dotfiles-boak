@@ -73,7 +73,7 @@ function sudo-fuzzy-kill {
 }
 
 function grep-fzf {
-    OUTPUT=$(grep -rnw . -e "" | fzf -m | grep -Po "^[^:]+:[^:]+")
+    OUTPUT=$(grep -rn . | fzf -m | grep -Po "^[^:]+:[^:]+")
     if [ ! -z $OUTPUT ]
     then
       nvim $OUTPUT
@@ -82,6 +82,10 @@ function grep-fzf {
 
 function ffzf {
     find . -type f | fzf -m
+}
+
+function gdd {
+    git diff ${1}^ ${1}
 }
 
 # Good alias but no longer works. Reporting error with message:

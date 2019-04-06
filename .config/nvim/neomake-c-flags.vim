@@ -8,9 +8,11 @@ function! CNeomakeFn()
 
   for f in compile_commands
     let fname = get(f, 'file')
+    let dname = get(f, 'directory')
 
     if fname =~ expand('%:t')
       let args = []
+      let executable = get(f, "arguments")[0]
       let args_to_filter = get(f, "arguments")[1:]
       for arg in args_to_filter
         if (arg !~ ".o$") && (arg !~ "^\-[c|o]$") && (arg !~ fname)
@@ -19,7 +21,12 @@ function! CNeomakeFn()
       endfor
 
       call add(args, "-fsyntax-only")
-      let g:neomake_gcc_args = args
+      call add(args, "-I".dname)
+
+      let g:neomake_c_anygcc_maker = {
+            \ 'exe': executable, 
+            \ 'args': args,
+            \ 'errorformat': '%f:%l:%c: %m', }
       break
     endif
   endfor

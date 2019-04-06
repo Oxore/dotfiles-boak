@@ -54,7 +54,7 @@ function! ToggleCProject()
             autocmd BufWritePost *.c,*.cpp call CNeomakeFn()
         augroup END
         let g:gutentags_enabled=1
-        let g:neomake_c_enabled_makers=['gcc']
+        let g:neomake_c_enabled_makers=['anygcc']
         echom "CProject automake on"
     else
         augroup CProject

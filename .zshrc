@@ -88,6 +88,10 @@ function gdd {
     git diff ${1}^ ${1}
 }
 
+function catbox {
+  curl -X POST -F 'reqtype=fileupload' -F "fileToUpload=@$1" https://catbox.moe/user/api.php
+  echo
+}
 # Good alias but no longer works. Reporting error with message:
 # /home/oxore/.zshrc:fc:91: no such event: 0
 # alias fuck="sudo $(fc -ln -1)"

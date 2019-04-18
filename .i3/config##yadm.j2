@@ -1,11 +1,10 @@
-exec_always --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1 #touchpad tap-to-click
-exec_always --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "Synaptics Tap Action" 0, 0, 0, 0, 1, 3, 2
 exec_always --no-startup-id "setxkbmap -model pc105 -layout us,ru -option grp:caps_toggle"
-exec --no-startup-id nm-applet
-exec --no-startup-id nautilus
+exec --no-startup-id st -e tmux
 {% if YADM_HOSTNAME == 'DEV-004' -%}
 exec --no-startup-id sh ~/.i3/DoubleMonitors.sh
 {% else -%}
+exec_always --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1 #touchpad tap-to-click
+exec_always --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "Synaptics Tap Action" 0, 0, 0, 0, 1, 3, 2
 exec --no-startup-id sh ~/.i3/HDMI1@top.sh
 {% endif -%}
 exec_always --no-startup-id feh --bg-fill ~/Pictures/.w.png
@@ -43,9 +42,9 @@ bindsym Mod4+Shift+q kill
 
 # various rofi based tools
 bindsym Mod4+d exec --no-startup-id sh -c \
-  'source /home/oxore/.paths.zsh && rofi -show run'
+  'source ${HOME}/.paths.zsh && rofi -show run'
 bindsym Mod4+q exec --no-startup-id sh -c \
-  'source /home/oxore/.paths.zsh && rofi -show drun'
+  'source ${HOME}/.paths.zsh && rofi -show drun'
 bindsym Mod4+m exec --no-startup-id sh -c '~/.i3/scripts/mount'
 bindsym Mod4+u exec --no-startup-id sh -c '~/.i3/scripts/umount'
 
@@ -205,7 +204,7 @@ bar {
     }
 }
 
-bindsym --release Mod4+c exec --no-startup-id zsh -c 'source /home/oxore/.paths.zsh && shot'
+bindsym --release Mod4+c exec --no-startup-id zsh -c 'source ${HOME}/.paths.zsh && shot'
 
 # volume control
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-mute 0 false; exec --no-startup-id pactl set-sink-volume 0 +5% && notify-send -u low "Volume " "$(~/.i3/scripts/volume | head -n1)"

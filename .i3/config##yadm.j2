@@ -207,8 +207,8 @@ bar {
 bindsym --release Mod4+c exec --no-startup-id zsh -c 'source ${HOME}/.paths.zsh && shot'
 
 # volume control
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-mute 0 false; exec --no-startup-id pactl set-sink-volume 0 +5% && notify-send -u low "Volume " "$(~/.i3/scripts/volume | head -n1)"
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-mute 0 false; exec --no-startup-id pactl set-sink-volume 0 -5% && notify-send -u low "Volume " "$(~/.i3/scripts/volume | head -n1)"
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-mute 0 false; exec --no-startup-id pactl set-sink-volume 0 +5% && notify-send -u low "Volume " "$(~/.i3/scripts/volume 5 pulse | head -n1)"
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-mute 0 false; exec --no-startup-id pactl set-sink-volume 0 -5% && notify-send -u low "Volume " "$(~/.i3/scripts/volume 5 pulse | head -n1)"
 bindsym XF86AudioMute exec --no-startup-id amixer -D pulse -q set Master toggle
 bindsym XF86AudioNext exec --no-startup-id cmus-remote --next
 bindsym XF86AudioPrev exec --no-startup-id cmus-remote --prev

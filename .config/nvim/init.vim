@@ -25,6 +25,7 @@ Plug 'ggreer/the_silver_searcher'
 Plug '/usr/bin/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'bogado/file-line'
+Plug 'francoiscabrol/ranger.vim'
 call plug#end()
 
 syntax on
@@ -52,3 +53,4 @@ tnoremap <Esc> <C-\><C-n>
 " filebrowser options
 let g:netrw_banner=0 " remove top banner
 let g:netrw_liststyle=3 " tree liststyle
+let g:ranger_replace_netrw = 1

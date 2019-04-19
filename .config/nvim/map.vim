@@ -1,5 +1,5 @@
 " Remove search highlighting
-nnoremap <ESC> :noh<CR><CR>
+nnoremap <ESC> :noh<CR>
 nnoremap <CR> :noh<CR><CR>
 
 " I often press shift+j accidentally
@@ -34,9 +34,16 @@ vnoremap ,v s\verb\|\|<C-[>Pll
 vnoremap // y/<C-R>"<CR>
 vnoremap /. y/\V\<<C-R>"\><CR>
 
+" find and replace selected text in current buffer
+vnoremap <c-r> y:%s/\V<C-R>"/<C-R>"/g<Left><Left>
+
 " remove trailing whitespaces
 nnoremap Jt :%s/\s\+$//g<CR>
+
+" change all tabs with 4 spaces
 nnoremap Js :%s/\t/    /g<CR>
+
+" find and replace word under cursor in current buffer
 nnoremap ci<CR> viwy:%s/\V\<<C-R>"\>/<C-R>"/g<Left><Left>
 
 " Arrange windows

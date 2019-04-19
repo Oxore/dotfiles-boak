@@ -7,6 +7,7 @@ endif
 
 " ------- Deoplete --------------
 let g:deoplete#enable_at_startup = 1
+let deoplete#tag#cache_limit_size = 5000000
 " tab-complete
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 " no preview window on autocomplete

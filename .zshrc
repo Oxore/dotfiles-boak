@@ -45,6 +45,12 @@ build_prompt() {
   prompt_end
 }
 
+# remove /etc/hosts content from autocompetion
+zstyle -e ':completion:*:hosts' hosts 'reply=(
+  ${=${${(f)"$(cat {/etc/ssh_,~/.ssh/known_}hosts(|2)(N) 2>/dev/null)"}%%[#| ]*}//,/ }
+  ${=${${${${(@M)${(f)"$(cat ~/.ssh/config 2>/dev/null)"}:#Host *}#Host }:#*\**}:#*\?*}}
+)'
+
 # Prevent nested ranger sessions
 ranger() {
     if [ -z "$RANGER_LEVEL" ]; then

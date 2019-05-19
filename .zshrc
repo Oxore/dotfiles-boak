@@ -51,6 +51,11 @@ zstyle -e ':completion:*:hosts' hosts 'reply=(
   ${=${${${${(@M)${(f)"$(cat ~/.ssh/config 2>/dev/null)"}:#Host *}#Host }:#*\**}:#*\?*}}
 )'
 
+# cheat.sh alias
+function cht() {
+  curl cheat.sh/$1 | less
+}
+
 # Prevent nested ranger sessions
 ranger() {
     if [ -z "$RANGER_LEVEL" ]; then
@@ -128,6 +133,7 @@ alias gdb="gdb -q"
 alias ап="fg"
 alias ьфлу="make"
 alias bt='coredumpctl gdb -q $(coredumpctl -r -1 | sed -E -e "s/ +/\n/g" | sed -n "12p")'
+alias sudo="sudo " # Enables all user alises under sudo
 bindkey "^P" up-line-or-beginning-search
 bindkey "^N" down-line-or-beginning-search
 bindkey -s '^o' 'ranger-cd\n'

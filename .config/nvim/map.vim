@@ -11,6 +11,10 @@ map О J
 map h <Nop>
 map l <Nop>
 
+" wrap in quotes
+vnoremap J" s""<ESC>Pb
+nnoremap J" ciw""<ESC>Pb
+
 " save by Ctrl-S
 nnoremap <c-s> :w<CR>
 

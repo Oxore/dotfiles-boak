@@ -48,6 +48,7 @@ set undoreload=10000
 set hidden
 set scrolloff=4
 set tags=./tags;$HOME/
+set cinoptions=:0
 tnoremap <Esc> <C-\><C-n>
 
 " filebrowser options

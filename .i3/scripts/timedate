@@ -1,8 +1,4 @@
 #!/bin/bash
 
-case $BLOCK_BUTTON in
-  1) ~/.i3/dzen/dzen.pl ;;  # left click show calendar
-esac
-
 date '+%d.%m  %H:%M:%S'
 date '+%d.%m  %H:%M:%S'

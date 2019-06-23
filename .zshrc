@@ -20,6 +20,7 @@ export MAKEFLAGS="--no-print-directory --silent"
 source $HOME/.paths.zsh
 source $ZSH/oh-my-zsh.sh
 
+
 # Agnoster theme tweak
 # Remove user@host prompt
 prompt_context() {

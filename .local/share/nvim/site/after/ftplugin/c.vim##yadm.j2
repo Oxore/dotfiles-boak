@@ -1,0 +1,8 @@
+{% if YADM_HOSTNAME == 'DEV-004' -%}
+setlocal shiftwidth=2
+setlocal tabstop=2
+{% else -%}
+setlocal shiftwidth=4
+setlocal tabstop=4
+{% endif -%}
+setlocal expandtab

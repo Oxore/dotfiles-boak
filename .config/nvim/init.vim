@@ -49,6 +49,7 @@ set hidden
 set scrolloff=4
 set tags=./tags;$HOME/
 set cinoptions=:0
+set textwidth=80
 tnoremap <Esc> <C-\><C-n>
 
 " filebrowser options

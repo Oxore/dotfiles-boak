@@ -56,6 +56,9 @@ nnoremap Jw :call Arrange()<CR>
 " :ls :b<Space>
 nnoremap Jl :ls<CR>:b<Space>
 
+" Compile C file and view disasm of the result object
+nnoremap Jd :call CViewMixedSrcDisasm()<CR>
+
 " Exit from terminal input mode
 tnoremap <Esc> <C-\><C-n>
 

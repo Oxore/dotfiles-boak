@@ -58,7 +58,7 @@ function! CViewMixedSrcDisasm()
 
         " Disasm
 
-        execute ':%!'.prefix.'objdump -dCS '.l:tmpdir.oname
+        execute ':%!'.prefix.'objdump -Mintel -dCS '.l:tmpdir.oname.' 2>/dev/null'
       endif
 
       break

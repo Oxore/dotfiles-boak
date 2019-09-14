@@ -275,3 +275,126 @@
 ```
 
 При переключении между ветками, на которых один и тот же субмодуль имеет разные remote url так же нужно выполнять эти команды.
+
+# CGit на nginx
+
+Для установки cgit портребуются следующие пакеты:
+
+    sudo emerge -a cgit nginx fcgiwrap spawn-fcgi
+
+Пояснения по списку:
+  - `nginx` - Собственно веб сервер. Как оказалось он куда проще чем `lighttpd`.
+  - `fcgiwrap` - создаёт сокет, к которому подключается `nginx`, в нашем случае
+  это будет `/run/fcgiwrap.sock-1`. Зачем нужен не понятно.
+  - `spawn-fcgi` - это спаунер для процесса `fcgiwrap`. Нужен чтобы
+  демонизировать процесс через openrc.
+  - `cgit` - Собственно `cgi` скрипт самого приложения.
+
+Чтобы всё работало нужно
+1. Сконфигурировать `spawn-fcgi` и закинуть в автозапуск.
+2. Сконфигурировать `nginx` и закинуть в автозапуск.
+3. Сконфигурировать `cgit`.
+
+Так же не уверен, что нужно но возможно необходимо. В файле
+`/etc/vhosts/webapp-config` нужно установить следующую переменную:
+
+    vhost_server="nginx"
+
+
+## 1. FCGIwrap
+
+Чтобы сконфигурировать `spawn-fcgi` нужно сделать следующее:
+
+    sudo ln -s spawn-fcgi /etc/init.d/spawn-fcgi.trac
+    sudo cp /etc/conf.d/spawn-fcgi /etc/conf.d/spawn-fcgi.trac
+    sudo nvim /etc/conf.d/spawn-fcgi.trac
+
+В открывшемся файле `/etc/conf.d/spawn-fcgi.trac` нужно выставить следующие
+переменные как показано ниже:
+
+    FCGI_SOCKET=/run/fcgiwrap.sock
+    FCGI_ADDRESS=
+    FCGI_PORT=
+    FCGI_PORT=
+    FCGI_USER=nginx
+    FCGI_GROUP=nginx
+
+Теперь можно добавить в автозапуск.
+
+    sudo rc-update add spawn-fcgi.trac
+
+Создастся файл `/run/fcgiwrap.sock-1`. От суффикса `-1` я не заню как избавится,
+да и не нужно это.
+
+## 2. Nginx
+
+Настройку следует производить через файл `/etc/nginx/nginx.conf` (см.
+[Archwiki](https://wiki.archlinux.org/index.php/Cgit#Nginx)):
+
+```
+user nginx;
+worker_processes          1;
+
+events {
+  worker_connections      1024;
+}
+
+http {
+  include                 mime.types;
+  default_type            application/octet-stream;
+  sendfile                on;
+  keepalive_timeout       65;
+  gzip                    on;
+
+  # Cgit
+  server {
+    listen                80;
+    server_name           localhost;
+    root                  /var/www/localhost/htdocs/cgit;
+    try_files             $uri @cgit;
+
+    location @cgit {
+      include             fastcgi_params;
+      fastcgi_param       SCRIPT_FILENAME $document_root/../../cgi-bin/cgit.cgi;
+      fastcgi_param       PATH_INFO       $uri;
+      fastcgi_param       QUERY_STRING    $args;
+      fastcgi_param       HTTP_HOST       $server_name;
+      fastcgi_pass        unix:/run/fcgiwrap.sock-1;
+    }
+  }
+}
+```
+
+ОБратите внимаение, что в Gentoo "документы" `cgit` находятся в
+`/var/www/localhost/htdocs/cgit`, CGI бинарь находится относительно этого пути в
+`../../cgi-bin`.
+
+Теперь можно добавить в автозапуск.
+
+    sudo rc-update add nginx
+
+## 3. CGit
+
+Открыть файл `/etc/cgitrc` и раскомментровать и изменить переменные следующим
+образом:
+
+    css=/cgit.css
+    favicon=/favicon.ico
+    logo=/cgit.png
+    virtual-root=/
+
+Переменная `virtual-root=/` особенно интересна тем, что без неё `cgit` будет за
+базовый адрес брать не хост, а уже имеющийся URL и тогда например вместо
+`http://oxore.tk/tetris-csfml.git/commit/` будет
+`http://oxore.tk/tetris-csfml.git/tetris-csfml.git/commit/`. Потратил на это
+часа три наверно, но об этом написано на арчвики.
+
+
+## 4. Запуск
+
+    sudo rc-service nginx start
+    sudo rc-service spawn-fcgi.trac start
+
+CGit должен быть доступен по адресу [http://localhost/](http://localhost/)
+
+Всё.

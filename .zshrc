@@ -20,6 +20,8 @@ export MAKEFLAGS="--no-print-directory --silent"
 source $HOME/.paths.zsh
 source $ZSH/oh-my-zsh.sh
 
+cat $HOME/todo.txt 2>/dev/null | sed -r '/^\s*$/d'
+
 
 # Agnoster theme tweak
 # Remove user@host prompt

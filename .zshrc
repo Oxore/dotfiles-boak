@@ -141,7 +141,7 @@ alias sudo="sudo " # Enables all user alises under sudo
 bindkey "^P" up-line-or-beginning-search
 bindkey "^N" down-line-or-beginning-search
 bindkey -s '^o' 'ranger-cd\n'
-bindkey -s '^f' 'grep-fzf\n'
+bindkey -s '^x^f' 'grep-fzf\n'
 
 # FZF autocomplete
 source /usr/share/zsh/site-contrib/fzf.zsh

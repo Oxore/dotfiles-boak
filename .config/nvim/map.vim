@@ -22,7 +22,7 @@ nnoremap <c-s> :w<CR>
 vnoremap <c-c> "+y
 
 " start ranger by Ctrl-o
-nnoremap <c-o> :Ranger<CR>
+nnoremap <c-x><c-o> :Ranger<CR>
 
 " edit init.vim
 nnoremap Je :e ~/.config/nvim/init.vim<CR>

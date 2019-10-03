@@ -47,7 +47,6 @@ set scrolloff=4
 set tags=./tags;$HOME/
 set cinoptions=:0
 set textwidth=80
-tnoremap <Esc> <C-\><C-n>
 
 " filebrowser options
 let g:netrw_banner=0 " remove top banner

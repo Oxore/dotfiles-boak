@@ -65,3 +65,6 @@ tnoremap <Esc> <C-\><C-n>
 " Reverse search completion on Ctrl+p and Ctrl+n
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
+
+" ESC returns from terminal mode to normal mode
+tnoremap <Esc> <C-\><C-n>

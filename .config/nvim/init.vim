@@ -26,6 +26,7 @@ Plug '/usr/bin/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'bogado/file-line'
 Plug 'francoiscabrol/ranger.vim'
+Plug 'easymotion/vim-easymotion'
 call plug#end()
 
 syntax on

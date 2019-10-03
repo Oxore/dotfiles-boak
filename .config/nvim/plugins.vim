@@ -46,3 +46,11 @@ let g:paredit_electric_return=0
 " Gutentag statusline indicator
 set statusline+=%{gutentags#statusline()}
 let g:gutentags_enabled=0
+
+" Easymotion
+" Jump to anywhere with `<CTRL+Space>{char}{target}`
+nmap <c-space> <Plug>(easymotion-overwin-f)
+ " type `l` and match `l`&`L`
+let g:EasyMotion_smartcase = 1
+" Smartsign (type `3` and match `3`&`#`)
+let g:EasyMotion_use_smartsign_us = 1

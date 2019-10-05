@@ -21,8 +21,8 @@ nnoremap <c-s> :w<CR>
 " copy by Ctrl-C
 vnoremap <c-c> "+y
 
-" start ranger by Ctrl-o
-nnoremap <c-x><c-o> :Ranger<CR>
+" start ranger by Alt-o
+nnoremap <a-o> :Ranger<CR>
 
 " edit init.vim
 nnoremap Je :e ~/.config/nvim/init.vim<CR>

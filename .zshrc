@@ -140,6 +140,7 @@ alias bt='coredumpctl gdb -q $(coredumpctl -r -1 | sed -E -e "s/ +/\n/g" | sed -
 alias sudo="sudo " # Enables all user alises under sudo
 bindkey "^P" up-line-or-beginning-search
 bindkey "^N" down-line-or-beginning-search
+bindkey -s '^[o' 'ranger-cd\n'
 bindkey -s '^x^o' 'ranger-cd\n'
 bindkey -s '^x^f' 'grep-fzf\n'
 

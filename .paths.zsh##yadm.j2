@@ -1,22 +1,27 @@
 {% if YADM_HOSTNAME == 'DEV-004' -%}
-export PATH="$PATH:/home/oxore/opt/JLink_Linux"
+export PATH="$PATH:$HOME/opt/JLink_Linux"
 {% else -%}
-export PATH="$PATH:/home/oxore/altera_lite/16.0/quartus/bin/"
-export PATH="$PATH:/home/oxore/opt/altera_lite/16.0/quartus/bin"
-export PATH="$PATH:/home/oxore/opt/altera_lite/16.0/modelsim_ase/bin"
+export ANDROID_HOME="$HOME/opt/android-sdk-r21"
+export PATH="$PATH:$HOME/opt/android-sdk-r21/tools"
+export PATH="$PATH:$HOME/opt/android-sdk-r21/platform-tools"
+export PATH="$PATH:$HOME/opt/android-sdk-r21/build-tools/android-4.4.2"
+export PATH="$PATH:$HOME/opt/android-sdk-r21/android-ndk-r8e"
+export PATH="$PATH:$HOME/altera_lite/16.0/quartus/bin/"
+export PATH="$PATH:$HOME/opt/altera_lite/16.0/quartus/bin"
+export PATH="$PATH:$HOME/opt/altera_lite/16.0/modelsim_ase/bin"
 {% endif -%}
-for dir in ~/opt/*; do
+for dir in $HOME/opt/*; do
   if [ -d $dir/bin ]; then
     export PATH="$dir/bin:$PATH"
     export MANPATH="$dir/share/man:$MANPATH"
   fi
 done
-export PATH="$PATH:/home/oxore/.local/bin"
-export PATH="$PATH:/home/oxore/.gem/ruby/2.5.0/bin"
-export PATH="$PATH:/home/oxore/.cargo/bin"
-export PATH="/home/oxore/.perl5/bin${PATH:+:${PATH}}"
-export PERL5LIB="/home/oxore/.perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"
-export PERL_LOCAL_LIB_ROOT="/home/oxore/.perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"
-export PERL_MB_OPT="--install_base \"/home/oxore/.perl5\""
-export PERL_MM_OPT="INSTALL_BASE=/home/oxore/.perl5"
+export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:$HOME/.gem/ruby/2.5.0/bin"
+export PATH="$PATH:$HOME/.cargo/bin"
+export PATH="$HOME/.perl5/bin${PATH:+:${PATH}}"
+export PERL5LIB="$HOME/.perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"
+export PERL_LOCAL_LIB_ROOT="$HOME/.perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"
+export PERL_MB_OPT="--install_base \"$HOME/.perl5\""
+export PERL_MM_OPT="INSTALL_BASE=$HOME/.perl5"
 export GOPATH="$HOME/.go"

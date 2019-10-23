@@ -49,7 +49,7 @@ let g:gutentags_enabled=0
 
 " Easymotion
 " Jump to anywhere with `<CTRL+Space>{char}{target}`
-nmap <c-space> <Plug>(easymotion-overwin-f)
+nmap f <Plug>(easymotion-overwin-f)
  " type `l` and match `l`&`L`
 let g:EasyMotion_smartcase = 1
 " Smartsign (type `3` and match `3`&`#`)

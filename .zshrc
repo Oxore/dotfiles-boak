@@ -126,7 +126,7 @@ alias flat="flatpak --user"
 alias scrotclip= "scrot -s ~/foo.png && xclip ~/foo.png && rm ~/foo.png"
 alias ls="ls --color=auto"
 alias cd..="cd .."
-alias glg2="git log --stat --graph --decorate --pretty=oneline --abbrev-commit"
+alias glg2="git log --graph --decorate --oneline"
 alias sys="sudo systemctl"
 alias cdf='cd $(dirname $(fzf))'
 alias doduc="duc index / && duc gui /"

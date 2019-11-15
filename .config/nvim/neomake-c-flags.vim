@@ -100,5 +100,7 @@ function! CNeomakeFn()
     endif
   endfor
 
-  Neomake
+  if exists("g:neomake_c_anygcc_maker")
+    Neomake
+  endif
 endfunction

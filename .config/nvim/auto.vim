@@ -47,9 +47,13 @@ endfunction
 
 " Invoke external make to get compilation errors in C code
 function! ToggleCProject()
-    if !exists('#CProject#BufWritePost')
+    if !exists('g:c_project_enabled')
+        let g:c_project_enabled=0
+    endif
+
+    if g:c_project_enabled==0
+        let g:c_project_enabled=1
         augroup CProject
-            autocmd!
             autocmd BufRead,BufNewFile *.c set filetype=c
             autocmd BufWritePost *.c,*.cpp call CNeomakeFn()
         augroup END
@@ -57,8 +61,8 @@ function! ToggleCProject()
         let g:neomake_c_enabled_makers=['anygcc']
         echom "CProject automake on"
     else
+        let g:c_project_enabled=0
         augroup CProject
-            autocmd!
             autocmd BufRead,BufNewFile *.c set filetype=c
         augroup END
         let g:gutentags_enabled=0

@@ -94,10 +94,6 @@ function grep-fzf {
     fi
 }
 
-function ffzf {
-    find . -type f | fzf -m
-}
-
 function gdd {
     git diff ${1}^ ${1}
 }

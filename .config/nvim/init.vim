@@ -29,7 +29,7 @@ syntax on
 colorscheme gruvbox
 let g:gruvbox_contrast_dark='hard'
 set bg=dark
-let &colorcolumn=join(range(81,81),",")
+let &colorcolumn='81,101'
 set shiftwidth=2
 set tabstop=2
 set expandtab

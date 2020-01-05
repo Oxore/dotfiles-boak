@@ -1,5 +1,5 @@
 diff --git a/config.def.h b/config.def.h
-index 823e79f..b3bdc61 100644
+index 0e01717..7921e35 100644
 --- a/config.def.h
 +++ b/config.def.h
 @@ -5,7 +5,7 @@
@@ -20,9 +20,13 @@ index 823e79f..b3bdc61 100644
  static float chscale = 1.0;
  
  /*
-@@ -85,24 +85,24 @@ unsigned int tabspaces = 8;
+@@ -84,25 +84,30 @@ unsigned int tabspaces = 8;
+ 
  /* Terminal colors (16 first used in escape sequence) */
  static const char *colorname[] = {
++
++	/* Gruvbox Dark colorscheme: bright line of the palette */
++
  	/* 8 normal colors */
 -	"black",
 -	"red3",
@@ -32,16 +36,8 @@ index 823e79f..b3bdc61 100644
 -	"magenta3",
 -	"cyan3",
 -	"gray90",
-+	"#1d2021",
-+	"#cd0000",
-+	"#6ac055",
-+	"#cdcd00",
-+	"#85f9c9",
-+	"#b000b0",
-+	"#22cccc",
-+	"#d3d7cf",
- 
- 	/* 8 bright colors */
+-
+-	/* 8 bright colors */
 -	"gray50",
 -	"red",
 -	"green",
@@ -50,18 +46,41 @@ index 823e79f..b3bdc61 100644
 -	"magenta",
 -	"cyan",
 -	"white",
-+	"#404040",
-+	"#ff0000",
-+	"#8dff71",
-+	"#ffff00",
-+	"#85f9c9",
-+	"#ff00ff",
-+	"#44ffff",
-+	"#ffffff",
++	/* Used for font coloring */
++	"#1d2021", /* black */
++	"#fb4934", /* red */
++	"#b8bb26", /* green */
++	"#fabd2f", /* yellow */
++	"#83a598", /* blue */
++	"#d3869b", /* magenta */
++	"#8ec07c", /* cyan */
++	"#fbf1c7", /* white */
++
++	/* 8 bright colors (actually the same as normals, except black) */
++	/* Used for character background coloring */
++	"#504945", /* black */
++	"#fb4934", /* red */
++	"#b8bb26", /* green */
++	"#fabd2f", /* yellow */
++	"#83a598", /* blue */
++	"#d3869b", /* magenta */
++	"#8ec07c", /* cyan */
++	"#fbf1c7", /* white */
  
  	[255] = 0,
  
-@@ -134,7 +134,7 @@ static unsigned int cursorshape = 2;
+@@ -118,8 +123,8 @@ static const char *colorname[] = {
+  */
+ unsigned int defaultfg = 7;
+ unsigned int defaultbg = 0;
+-static unsigned int defaultcs = 256;
+-static unsigned int defaultrcs = 257;
++static unsigned int defaultcs = 7;
++static unsigned int defaultrcs = 0;
+ 
+ /*
+  * Default shape of cursor
+@@ -134,8 +139,8 @@ static unsigned int cursorshape = 2;
   * Default columns and rows numbers
   */
  
@@ -71,7 +90,8 @@ index 823e79f..b3bdc61 100644
 +static unsigned int rows = 25;
  
  /*
-@@ -156,8 +156,8 @@ static unsigned int defaultattr = 11;
+  * Default colour and shape of the mouse cursor
+@@ -156,8 +161,8 @@ static unsigned int defaultattr = 11;
   */
  static MouseShortcut mshortcuts[] = {
  	/* button               mask            string */

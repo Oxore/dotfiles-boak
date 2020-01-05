@@ -33,7 +33,7 @@ let &colorcolumn=join(range(81,81),",")
 set shiftwidth=2
 set tabstop=2
 set expandtab
-set number relativenumber
+set number
 set termguicolors
 set shortmess+=I
 set spell spelllang=ru_yo,en_us

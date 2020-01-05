@@ -19,15 +19,6 @@ augroup VimrcHooks
     autocmd bufwritepost init.vim,plugins.vim,auto.vim,map.vim source ~/.config/nvim/init.vim
 augroup END
 
-" Unfocused window has usual line numbers
-augroup LineNumberHook
-    autocmd!
-    autocmd BufEnter,FocusGained,InsertLeave *
-          \ if &modifiable | set relativenumber | endif
-    autocmd BufLeave,FocusLost,InsertEnter   *
-          \ if &modifiable | set norelativenumber | endif
-augroup END
-
 " Arrange windows split:
 "   two small vsplit at the left
 "   one large at the right

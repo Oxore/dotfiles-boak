@@ -1,1 +1,1 @@
-autocmd BufRead,BufNewFile defconfig,.config setfiletype make
+autocmd BufRead,BufNewFile defconfig,.config,.config.old,Make.defs set filetype=make

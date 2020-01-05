@@ -1,5 +1,7 @@
 FROM archlinux/base
 
+# See Readme.md
+
 # Username, UID and GID for new user, should be the same as on host system.
 ARG NEW_USERNAME=user
 ARG NEW_UID=1000
@@ -14,6 +16,6 @@ RUN pacman --noconfirm -S sudo sshfs htop vim nano emacs openvpn
 RUN pacman --noconfirm -S nodejs clang jdk-openjdk
 RUN pacman --noconfirm -S \
   firefox qtcreator qbittorrent libreoffice-fresh libreoffice-fresh-ru \
-  openscad kicad inkscape
+  openscad kicad inkscape gimp
 
 USER $NEW_USERNAME

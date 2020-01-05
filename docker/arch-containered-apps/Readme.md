@@ -16,3 +16,13 @@ Currently existing apps:
 - `openscad`
 - `qbittorrent`
 - `qtcreator`
+
+## Building docker container
+
+Go to `$HOME/docker/arch-containered-apps` and run:
+
+    docker build \
+      --build-arg NEW_USERNAME=user \
+      --build-arg NEW_UID=$UID \
+      --build-arg NEW_GID=$GID \
+      -t arch-containered-apps .

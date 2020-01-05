@@ -1,0 +1,8 @@
+#!/bin/bash
+APP_NAME=$(basename $0)
+WORK_DIR=$HOME/Documents/$APP_NAME
+echo $APP_NAME
+arch-containered-app \
+  --mount-home-dir $WORK_DIR \
+  --gui \
+  --program-name $APP_NAME

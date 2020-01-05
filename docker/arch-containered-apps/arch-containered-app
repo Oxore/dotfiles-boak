@@ -1,0 +1,48 @@
+#!/bin/bash
+
+print-help() {
+  cat << EOF
+$0 Usage:
+    --program-name|-p <name>    Program name to run
+    --mount-home-dir|-d <dir>   Mount specified directory as home directory
+    --gui|-g                    Program needs graphic user interface
+    --help|-h                   Show this help
+EOF
+}
+
+while test $# -gt 0; do
+  case "$1" in
+  --program-name|-p)
+    shift
+    PROG_NAME=$1
+    shift
+    ;;
+  --gui|-g)
+    shift
+    DOCKER_ARGS+="-e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix "
+    GUI=1
+    ;;
+  --mount-home-dir|-d)
+    shift
+    DOCKER_ARGS+="-v $1:/home/$USER "
+    shift
+    ;;
+  --help|-h)
+    shift
+    print-help
+    exit 0
+    ;;
+  *)
+    echo "$1 is not a recognized flag!" 1>&2
+    print-help 1>&2
+    exit 1
+    ;;
+  esac
+done  
+
+if [[ $GUI -eq 1 ]]; then
+  xhost +
+fi
+
+echo $DOCKER_ARGS
+docker run -ti --rm $DOCKER_ARGS arch-containered-apps $PROG_NAME

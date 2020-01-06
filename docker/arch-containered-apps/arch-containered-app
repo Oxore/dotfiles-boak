@@ -52,5 +52,5 @@ if [[ $GUI -eq 1 ]]; then
   xhost +
 fi
 
-echo "docker run -t --rm $DOCKER_ARGS arch-containered-apps $PROG_NAME"
-docker run -t --rm $DOCKER_ARGS arch-containered-apps $PROG_NAME
+echo docker run -t --rm $DOCKER_ARGS arch-containered-apps $PROG_NAME
+docker run -t --rm $DOCKER_ARGS arch-containered-apps $PROG_NAME $@

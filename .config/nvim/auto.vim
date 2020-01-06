@@ -45,8 +45,11 @@ function! ToggleCProject()
     if g:c_project_enabled==0
         let g:c_project_enabled=1
         augroup CProject
+            autocmd!
             autocmd BufRead,BufNewFile *.c set filetype=c
             autocmd BufWritePost *.c,*.cpp call CNeomakeFn()
+            " Clean signs end error messages - workaround for headers
+            autocmd BufWritePost *.h,*.hpp NeomakeClean
         augroup END
         let g:gutentags_enabled=1
         let g:neomake_c_enabled_makers=['anygcc']
@@ -54,7 +57,10 @@ function! ToggleCProject()
     else
         let g:c_project_enabled=0
         augroup CProject
+            autocmd!
             autocmd BufRead,BufNewFile *.c set filetype=c
+            " Clean signs end error messages remaining
+            autocmd BufWritePost *c,*cpp,*.h,*.hpp NeomakeClean
         augroup END
         let g:gutentags_enabled=0
         let g:neomake_c_enabled_makers=[]

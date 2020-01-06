@@ -67,14 +67,3 @@ augroup RustProject
     autocmd!
     autocmd BufWritePost *.rs :Neomake
 augroup END
-
-augroup LibRocket
-    autocmd!
-    autocmd BufReadPre,FileReadPre *.rml set ft=html
-    autocmd BufReadPre,FileReadPre *.rcss set ft=css
-augroup END
-
-augroup FuseSoC
-    autocmd!
-    autocmd BufReadPre,FileReadPre *.core set ft=yaml
-augroup END

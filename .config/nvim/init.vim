@@ -23,6 +23,11 @@ Plug 'ludovicchabant/vim-gutentags'
 Plug 'bogado/file-line'
 Plug 'francoiscabrol/ranger.vim', { 'branch': 'alt-implementation' }
 Plug 'easymotion/vim-easymotion'
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+Plug 'octol/vim-cpp-enhanced-highlight'
 call plug#end()
 
 syntax on

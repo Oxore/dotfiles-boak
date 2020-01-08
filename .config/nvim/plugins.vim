@@ -58,8 +58,8 @@ let g:EasyMotion_use_smartsign_us = 1
 " LanguageClient
 let g:LanguageClient_serverCommands = {
     \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
-    \ 'cpp': ['cquery', '--log-file=/tmp/cq.log'],
-    \ 'c': ['cquery', '--log-file=/tmp/cq.log'],
+    \ 'cpp': ['ccls', '--log-file=/tmp/cc.log'],
+    \ 'c': ['ccls', '--log-file=/tmp/cc.log'],
     \ }
 " Diagnostincs of C headers done wrong so we use neomake for diagnostics
 let g:LanguageClient_diagnosticsEnable = 0

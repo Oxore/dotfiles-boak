@@ -1,8 +1,7 @@
 {
   "initializationOptions": {
-    "index": {
-      "comments": 2
-    },
-    "cacheDirectory": "/tmp/cquery"
+    "cache" : {
+      "directory": "/tmp/ccls"
+    }
   }
 }

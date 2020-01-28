@@ -22,15 +22,6 @@ source $ZSH/oh-my-zsh.sh
 
 cat $HOME/todo.txt 2>/dev/null | sed -r '/^\s*$/d'
 
-
-# Agnoster theme tweak
-# Remove user@host prompt
-prompt_context() {
-  if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
-    prompt_segment black default #"%(!.%{%F{yellow}%}.)$USER@%m"
-  fi
-}
-
 # Show up to level 2 dir name
 prompt_dir() {
   prompt_segment 8 default '%2~'

@@ -90,10 +90,10 @@ function! CNeomakeFn()
       endfor
 
       call add(args, "-fsyntax-only")
-      call add(args, "-I".dname)
 
       let g:neomake_c_anygcc_maker = {
             \ 'exe': executable,
+            \ 'cwd': dname,
             \ 'args': args,
             \ 'errorformat': '%f:%l:%c: %m', }
       break

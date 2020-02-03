@@ -75,32 +75,39 @@ function! CNeomakeFn()
     return
   endtry
 
-  for f in compile_commands
-    let fname = get(f, 'file')
-    let dname = get(f, 'directory')
+  for entry in compile_commands
+    let l:fname = get(entry, 'file', '')
+    let l:dname = get(entry, 'directory', '')
 
-    if fname =~ expand('%:t')
-      let args = []
-      let executable = get(f, "arguments")[0]
-      let args_to_filter = get(f, "arguments")[1:]
+    if simplify(dname . '/' . fname) =~ expand('%:p')
+      let l:args = []
+      let l:args_to_filter = []
+      " FIXME Splitting by spaces may cause problems on filenames with spaces
+      let l:args_to_filter = args_to_filter + split(get(entry, "command", ""), " ")
+      let l:args_to_filter = args_to_filter + get(entry, "arguments", [])
+      let l:executable = args_to_filter[0]
+      let l:args_to_filter = args_to_filter[1:]
       for arg in args_to_filter
-        if (arg !~ ".o$") && (arg !~ "^\-[c|o]$") && (arg !~ fname)
-          call add(args, arg)
+        if (arg !~ fname)
+          call add(args, trim(arg, "'"))
         endif
       endfor
 
       call add(args, "-fsyntax-only")
+      call add(args, "-fdiagnostics-color=never")
 
-      let g:neomake_c_anygcc_maker = {
+      let g:neomake_c_anycc_maker = {
             \ 'exe': executable,
             \ 'cwd': dname,
             \ 'args': args,
-            \ 'errorformat': '%f:%l:%c: %m', }
+            \ 'errorformat': '%f:%l:%c: %m',
+            \ }
+      let g:neomake_cpp_anycc_maker = g:neomake_c_anycc_maker
       break
     endif
   endfor
 
-  if exists("g:neomake_c_anygcc_maker")
+  if exists("g:neomake_c_anycc_maker")
     Neomake
   endif
 endfunction

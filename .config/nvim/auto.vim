@@ -52,7 +52,8 @@ function! ToggleCProject()
             autocmd BufWritePost *.h,*.hpp NeomakeClean
         augroup END
         let g:gutentags_enabled=1
-        let g:neomake_c_enabled_makers=['anygcc']
+        let g:neomake_c_enabled_makers=['anycc']
+        let g:neomake_cpp_enabled_makers=['anycc']
         echom "CProject automake on"
     else
         let g:c_project_enabled=0
@@ -64,6 +65,7 @@ function! ToggleCProject()
         augroup END
         let g:gutentags_enabled=0
         let g:neomake_c_enabled_makers=[]
+        let g:neomake_cpp_enabled_makers=[]
         echom "CProject automake off"
     endif
 endfunction

@@ -15,7 +15,7 @@ Plug 'danro/rename.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-fugitive'
 Plug 'neomake/neomake'
-Plug 'pboettch/vim-highlight-cursor-words', { 'for': ['c', 'rust'] }
+Plug 'pboettch/vim-highlight-cursor-words', { 'for': ['c', 'cpp', 'rust'] }
 Plug 'tikhomirov/vim-glsl'
 Plug 'copy/deoplete-rust'
 Plug 'vim-scripts/paredit.vim'

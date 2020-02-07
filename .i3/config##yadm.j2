@@ -207,9 +207,9 @@ bar {
 bindsym --release Mod4+c exec --no-startup-id zsh -c 'source ${HOME}/.paths.zsh && shot'
 
 # media control
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-mute 0 false; exec --no-startup-id pactl set-sink-volume 0 +5% && notify-send -u low "Volume " "$(~/.i3/scripts/volume 5 pulse | head -n1)"
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-mute 0 false; exec --no-startup-id pactl set-sink-volume 0 -5% && notify-send -u low "Volume " "$(~/.i3/scripts/volume 5 pulse | head -n1)"
-bindsym XF86AudioMute exec --no-startup-id amixer -D pulse -q set Master toggle
+bindsym XF86AudioMute exec --no-startup-id notify-send -u low "Volume $(env BLOCK_BUTTON=3 ~/.i3/scripts/volume 5 pulse | head -n1)"
+bindsym XF86AudioRaiseVolume exec --no-startup-id notify-send -u low "Volume $(env BLOCK_BUTTON=4 ~/.i3/scripts/volume 5 pulse | head -n1)"
+bindsym XF86AudioLowerVolume exec --no-startup-id notify-send -u low "Volume $(env BLOCK_BUTTON=5 ~/.i3/scripts/volume 5 pulse | head -n1)"
 bindsym XF86AudioNext exec --no-startup-id cmus-remote --next
 bindsym XF86AudioPrev exec --no-startup-id cmus-remote --prev
 bindsym XF86AudioPlay exec --no-startup-id cmus-remote --pause
@@ -218,8 +218,8 @@ bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 5
 bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5
 
 # media control with Mod4
-bindsym Mod4+F12 exec --no-startup-id pactl set-sink-mute 0 false; exec --no-startup-id pactl set-sink-volume 0 +5% && notify-send -u low "Volume " "$(~/.i3/scripts/volume 5 pulse | head -n1)"
-bindsym Mod4+F11 exec --no-startup-id pactl set-sink-mute 0 false; exec --no-startup-id pactl set-sink-volume 0 -5% && notify-send -u low "Volume " "$(~/.i3/scripts/volume 5 pulse | head -n1)"
+bindsym Mod4+F12 exec --no-startup-id notify-send -u low "Volume $(env BLOCK_BUTTON=4 ~/.i3/scripts/volume 5 pulse | head -n1)"
+bindsym Mod4+F11 exec --no-startup-id notify-send -u low "Volume $(env BLOCK_BUTTON=5 ~/.i3/scripts/volume 5 pulse | head -n1)"
 bindsym Mod4+p exec --no-startup-id cmus-remote --pause
 bindsym Mod4+bracketright exec --no-startup-id cmus-remote --next
 bindsym Mod4+bracketleft exec --no-startup-id cmus-remote --prev

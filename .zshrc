@@ -99,11 +99,14 @@ function catbox {
 
 alias ya="yadm add"
 alias yc="yadm commit --verbose"
-alias yd="yadm diff"
+alias yd="yadm diff --histogram"
 alias ydca="yadm diff --cached"
 alias ylg="yadm log --stat"
 alias yst="yadm status"
 alias yp="yadm push"
+
+alias gd="git diff --histogram"
+alias gdca="git diff --histogram --cached"
 
 alias hello='echo -n "#include <stdio.h>\n\nint main(int argc, char *argv[])\n{\n    printf(\"hello\\\n\");\n}" > main.c && vim main.c'
 alias kl="fuzzy-kill"

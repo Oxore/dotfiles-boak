@@ -108,7 +108,7 @@ alias yp="yadm push"
 alias gd="git diff --histogram"
 alias gdca="git diff --histogram --cached"
 
-alias hello='echo -n "#include <stdio.h>\n\nint main(int argc, char *argv[])\n{\n    printf(\"hello\\\n\");\n}" > main.c && vim main.c'
+alias hello='echo -n "#include <stdio.h>\n\nint main()\n{\n    printf(\"hello\\\n\");\n}" >main.c && vim main.c'
 alias kl="fuzzy-kill"
 alias skl="sudo-fuzzy-kill"
 alias ix="curl -F 'f:1=<-' ix.io"

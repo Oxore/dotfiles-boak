@@ -1,6 +1,9 @@
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
 
+zstyle ':completion:*' menu select
+zmodload zsh/complist
+
 # Get color support for 'less'
 export LESS="--RAW-CONTROL-CHARS"
 # Use colors for less, man, etc.
@@ -133,6 +136,11 @@ bindkey "^N" down-line-or-beginning-search
 bindkey -s '^[o' 'ranger-cd\n'
 bindkey -s '^x^o' 'ranger-cd\n'
 bindkey -s '^x^f' 'grep-fzf\n'
+# use the vi navigation keys in menu completion
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
 
 # FZF autocomplete
 source /usr/share/zsh/site-contrib/fzf.zsh

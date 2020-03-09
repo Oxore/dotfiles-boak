@@ -17,7 +17,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'neomake/neomake'
 Plug 'pboettch/vim-highlight-cursor-words', { 'for': ['c', 'cpp', 'rust'] }
 Plug 'tikhomirov/vim-glsl'
-Plug 'copy/deoplete-rust'
 Plug 'vim-scripts/paredit.vim'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'bogado/file-line'
@@ -26,8 +25,9 @@ Plug 'easymotion/vim-easymotion'
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
+    \ 'for': ['c', 'cpp', 'rust'],
     \ }
-Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'octol/vim-cpp-enhanced-highlight', { 'for': ['c', 'cpp'] }
 call plug#end()
 
 syntax on

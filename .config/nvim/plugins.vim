@@ -39,6 +39,7 @@ let g:airline_section_z='%3p%% :%3v'
 let g:neomake_tex_chktex_maker = {
         \ 'args': ['--warn=no'],
         \ }
+let g:neomake_rust_cargo_command = ['test', '--no-run']
 
 " Prevent paredit from pushing closing parenthesis to next line
 let g:paredit_electric_return=0

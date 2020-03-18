@@ -9,3 +9,17 @@ end
 define connect
     target extended-remote localhost:3333
 end
+
+define mrh
+    monitor reset halt
+end
+
+define memprof
+    d br
+    b mm_malloc.c:188
+    set pagination off
+    while (1)
+      print size
+      c
+    end
+end

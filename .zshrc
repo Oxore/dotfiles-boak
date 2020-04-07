@@ -102,6 +102,7 @@ function catbox {
 
 alias ya="yadm add"
 alias yc="yadm commit --verbose"
+alias yco="yadm checkout"
 alias yd="yadm diff --histogram"
 alias ydca="yadm diff --cached"
 alias ylg="yadm log --stat"

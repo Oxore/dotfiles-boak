@@ -5,6 +5,7 @@ usage() {
 Usage: $0 <command> <options>:
 Commands (mutually exclusive):
   d, download               Download firmware to the chip
+  g, gdb-server             Start GDB server on tcp/3333
   l, lock                   Enable ROP level=1
   u, unlock                 Disable ROP and perform bulk erase
 Options:
@@ -13,6 +14,7 @@ Options:
       f2x
   -p, --programmer <p>      Device used for programming. One of these:
       stlink-v2
+      stlink-v2-1
       jlink
   -f, --file <path>         Path to hex/bin/elf file
   -s, --offset <offset>     Offset, specified if bin files is used
@@ -57,12 +59,22 @@ download() {
     -c "program ${file} verify reset exit ${offset}"
 }
 
+gdb-server() {
+  local programmer=$1
+  local target=$2
+
+  openocd \
+    -f interface/${programmer}.cfg \
+    -f target/stm32${target}.cfg
+}
+
 # Main part of script starts here
 
 while [[ "$#" -gt 0 ]]; do case $1 in
   l|lock) ACTION="${ACTION}lock";;
   u|unlock) ACTION="${ACTION}unlock";;
   d|download) ACTION="${ACTION}download";;
+  g|gdb-server) ACTION="${ACTION}gdb-server";;
   -h|--help) usage; exit 0;;
   -f|--file) FILE=$2; shift;;
   -s|--offset) OFFSET=$2; shift;;
@@ -79,7 +91,7 @@ elif [[ $TARGET == "" ]]; then
 fi
 
 # Validate PROGRAMMER
-if [[ $PROGRAMMER != "stlink-v2" && $PROGRAMMER != "jlink" ]]; then
+if [[ $PROGRAMMER != "stlink-v2" && $PROGRAMMER != "stlink-v2-1" && $PROGRAMMER != "jlink" ]]; then
   echo "Unknown programming device \"$PROGRAMMER\"" >&2; >&2 usage; exit 1;
 elif [[ $PROGRAMMER == "" ]]; then
   echo "No programming device specified" >&2; >&2 usage; exit 1;
@@ -96,6 +108,8 @@ elif [[ $ACTION == "download" || $ACTION == "d" ]]; then
     echo "No firmware file specified to download" >&2; >&2 usage; exit 1;
   fi
   download $PROGRAMMER $TARGET $FILE $OFFSET
+elif [[ $ACTION == "gdb-server" || $ACTION == "g" ]]; then
+  gdb-server $PROGRAMMER $TARGET
 elif [[ $ACTION == "" ]]; then
   echo "No command provided" >&2; >&2 usage; exit 1;
 else

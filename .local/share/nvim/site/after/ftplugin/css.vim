@@ -1,1 +1,0 @@
-/home/oxore/.local/share/nvim/site/after/ftplugin/html.vim

@@ -1,4 +1,4 @@
 #!/bin/zsh
 scrot \
--s '/home/oxore/Pictures/shots/%Y-%m-%d_%H:%M:%S_$wx$h.png' \
--e 'cp $f ~/Pictures/shots/1-last.png; xclip -selection clipboard -target image/png -i $f'
+-s "$HOME/Pictures/shots/%Y-%m-%d_%H:%M:%S_\$wx\$h.png" \
+-e "cp \$f $HOME/Pictures/shots/1-last.png; xclip -selection clipboard -target image/png -i \$f"

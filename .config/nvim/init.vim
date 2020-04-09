@@ -28,6 +28,7 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'for': ['c', 'cpp', 'rust'],
     \ }
 Plug 'octol/vim-cpp-enhanced-highlight', { 'for': ['c', 'cpp'] }
+Plug 'aklt/plantuml-syntax'
 call plug#end()
 
 syntax on

@@ -100,7 +100,16 @@ function! CNeomakeFn()
             \ 'exe': executable,
             \ 'cwd': dname,
             \ 'args': args,
-            \ 'errorformat': '%f:%l:%c: %m',
+            \ 'errorformat':
+              \ '%-G%f:%s:,' .
+              \ '%f:%l:%c: %trror: %m,' .
+              \ '%f:%l:%c: %tarning: %m,' .
+              \ '%I%f:%l:%c: note: %m,' .
+              \ '%f:%l:%c: %m,'.
+              \ '%f:%l: %trror: %m,'.
+              \ '%f:%l: %tarning: %m,'.
+              \ '%I%f:%l: note: %m,'.
+              \ '%f:%l: %m'
             \ }
       let g:neomake_cpp_anycc_maker = g:neomake_c_anycc_maker
       break

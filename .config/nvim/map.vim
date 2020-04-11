@@ -59,6 +59,9 @@ nnoremap Jl :ls<CR>:b<Space>
 " Compile C file and view disasm of the result object
 nnoremap Jd :call CViewMixedSrcDisasm()<CR>
 
+" Search for merge conflict markers
+nnoremap Jm /^<<<<<<<\\|^=======\\|^>>>>>>><CR>
+
 " Exit from terminal input mode
 tnoremap <Esc> <C-\><C-n>
 

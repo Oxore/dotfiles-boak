@@ -36,9 +36,6 @@ colorscheme gruvbox
 let g:gruvbox_contrast_dark='hard'
 set bg=dark
 let &colorcolumn='81,101'
-set shiftwidth=2
-set tabstop=2
-set expandtab
 set number
 set termguicolors
 set shortmess+=I
@@ -52,7 +49,6 @@ set hidden
 set scrolloff=4
 set tags=./tags;$HOME/
 set cinoptions=:0
-set textwidth=80
 
 " filebrowser options
 let g:netrw_banner=0 " remove top banner

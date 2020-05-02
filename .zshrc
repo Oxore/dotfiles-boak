@@ -144,6 +144,6 @@ bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 
 # FZF autocomplete
-source /usr/share/zsh/site-contrib/fzf.zsh
+source /usr/share/fzf/key-bindings.zsh
 
 unset _JAVA_OPTIONS

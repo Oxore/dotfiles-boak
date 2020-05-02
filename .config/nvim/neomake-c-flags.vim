@@ -88,7 +88,7 @@ function! CNeomakeFn()
       let l:executable = args_to_filter[0]
       let l:args_to_filter = args_to_filter[1:]
       for arg in args_to_filter
-        if (arg !~ fname)
+        if (arg !~ fname && arg != "-o" )
           call add(args, trim(arg, "'"))
         endif
       endfor

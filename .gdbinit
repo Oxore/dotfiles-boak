@@ -23,3 +23,8 @@ define memprof
       c
     end
 end
+
+define log
+    set logging on
+    set trace-commands on
+end

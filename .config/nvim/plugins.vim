@@ -14,10 +14,11 @@ inoremap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
 " no preview window on autocomplete
 set completeopt-=preview
 " ru autocomplete
-let g:deoplete#keyword_patterns =  {
+call deoplete#custom#option('keyword_patterns', {
         \ '_': '[a-zA-Zа-яА-Я_]\k*',
         \ 'tex': '\\?[a-zA-Zа-яА-Я_]\w*',
-        \ }
+	\})
+
 " rust autocomplete
 let g:deoplete#sources#rust#racer_binary=systemlist('which racer')[0]
 let g:deoplete#sources#rust#rust_source_path='/home/oxore/.cargo/rust/src'

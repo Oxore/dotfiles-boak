@@ -3,7 +3,6 @@
 
 source $HOME/.config/nvim/neomake-c-flags.vim
 
-source $HOME/.config/nvim/plugins.vim
 source $HOME/.config/nvim/auto.vim
 source $HOME/.config/nvim/map.vim
 
@@ -30,6 +29,8 @@ Plug 'autozimu/LanguageClient-neovim', {
 Plug 'octol/vim-cpp-enhanced-highlight', { 'for': ['c', 'cpp'] }
 Plug 'aklt/plantuml-syntax'
 call plug#end()
+
+source $HOME/.config/nvim/plugins.vim
 
 syntax on
 colorscheme gruvbox

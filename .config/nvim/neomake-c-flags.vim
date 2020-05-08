@@ -87,10 +87,31 @@ function! CNeomakeFn()
       let l:args_to_filter = args_to_filter + get(entry, "arguments", [])
       let l:executable = args_to_filter[0]
       let l:args_to_filter = args_to_filter[1:]
+      let l:oarg = ""
       for arg in args_to_filter
-        if (arg !~ fname && arg != "-o" )
-          call add(args, trim(arg, "'"))
+        if (oarg == "-o")
+          " Clear oarg
+          let l:oarg = ""
+          " And skip object file, because previous argument was '-o'
+          continue
         endif
+
+        if (arg == "-o")
+          " Set oarg to '-o', so next argument will be skipped (the object file)
+          let l:oarg = "-o"
+          " And skip it
+          continue
+        elseif (arg =~ "^-o")
+          " Skip object file sticked with '-o' flag like '-ofile.o'
+          continue
+        endif
+
+        if (arg =~ fname)
+          " Skip source file
+          continue
+        endif
+
+        call add(args, trim(arg, "'"))
       endfor
 
       call add(args, "-fsyntax-only")

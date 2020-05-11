@@ -70,7 +70,7 @@ let g:LanguageClient_diagnosticsEnable = 0
 " Use an absolute configuration path for system-wide settings
 let g:LanguageClient_loadSettings = 1
 let g:LanguageClient_settingsPath = '$HOME/.config/nvim/langserver_settings.json'
-let g:LanguageClient_useVirtualText = 0
+let g:LanguageClient_devel = 1
 set completefunc=LanguageClient#complete
 nnoremap <silent> gh :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>

@@ -5,6 +5,9 @@ nnoremap <CR> :noh<CR><CR>
 " I often press shift+j accidentally
 map J <Nop>
 
+" I often press shift+K in visual string mode accidentally
+vmap K <Nop>
+
 " Russian controls stuff
 set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯЖХЪБЮ;ABCDEFGHIJKLMNOPQRSTUVWXYZ:{}<>,фисвуапршолдьтщзйкыегмцчняхъю;abcdefghijklmnopqrstuvwxyz[].
 map О J

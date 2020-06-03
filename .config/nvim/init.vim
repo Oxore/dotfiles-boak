@@ -32,6 +32,7 @@ call plug#end()
 
 source $HOME/.config/nvim/plugins.vim
 
+filetype plugin on
 syntax on
 colorscheme gruvbox
 let g:gruvbox_contrast_dark='hard'

@@ -2,8 +2,10 @@ let c_space_errors=1
 let c_no_curly_error=1
 setlocal expandtab
 setlocal nowrap
+setlocal textwidth=80
+autocmd Filetype c,cpp set comments^=:///
 if expand('%:p') =~ 'modem-3.0'
-  set tabstop=2 shiftwidth=2 tw=80
+  setlocal tabstop=2 shiftwidth=2
 else
-  set tabstop=4 shiftwidth=4 tw=80
+  setlocal tabstop=4 shiftwidth=4
 endif

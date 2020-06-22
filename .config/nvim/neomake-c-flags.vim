@@ -111,7 +111,9 @@ function! CNeomakeFn()
           continue
         endif
 
-        call add(args, trim(arg, "'"))
+        if trim(arg, "'") != ''
+          call add(args, trim(arg, "'"))
+        endif
       endfor
 
       call add(args, "-fsyntax-only")

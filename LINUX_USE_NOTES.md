@@ -12,6 +12,18 @@
     sudo cp /usr/share/applications/guake.desktop /etc/xdg/autostart/
 
 
+## Терминал st
+
+Если `st` падает со следующей ошибкой:
+
+    X Error of failed request:  BadValue (integer parameter out of range for operation)
+      Major opcode of failed request:  18 (X_ChangeProperty)
+      Value in failed request:  0x1c
+      Serial number of failed request:  431
+      Current serial number in output stream:  437
+
+то это значит, что установлена локаль `C.utf8`. Нужно установить `en_US.utf8`.
+
 ## Настройка времени
 
 Устанавливаем пакет ntp:
@@ -413,3 +425,15 @@ CGit должен быть доступен по адресу [http://localhost/
 
 Надо включить в ядре `CONFIG_BT_ATH3K=m` - обязательно модуль, а то волшебства
 не произойдёт.
+
+# Wireguard
+
+Помню что сначала создал дефолтный роут
+
+    sudo route add -net 172.104.226.227 netmask 255.255.255.255 gw 192.168.88.1
+
+таким образом обеспечив доступ к хосту эндпоинта. Потом запустил wireguard
+
+    nmcli connection up wg0
+
+В таком порядке заработало.

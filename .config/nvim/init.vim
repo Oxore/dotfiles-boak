@@ -29,6 +29,7 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ }
 Plug 'octol/vim-cpp-enhanced-highlight', { 'for': ['c', 'cpp'] }
 Plug 'aklt/plantuml-syntax'
+Plug 'ollykel/v-vim'
 call plug#end()
 
 source $HOME/.config/nvim/plugins.vim

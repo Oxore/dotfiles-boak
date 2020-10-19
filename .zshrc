@@ -132,6 +132,7 @@ alias ап="fg"
 alias ьфлу="make"
 alias bt='coredumpctl gdb -q $(coredumpctl -r -1 | sed -E -e "s/ +/\n/g" | sed -n "12p")'
 alias sudo="sudo " # Enables all user alises under sudo
+alias emacs="env TERM=xterm-24bit emacs"
 bindkey "^P" up-line-or-beginning-search
 bindkey "^N" down-line-or-beginning-search
 bindkey -s '^[o' 'ranger-cd\n'

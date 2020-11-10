@@ -88,6 +88,8 @@
 
 ## Создание загрузочной флешки с win 7/10
 
+Скопипащено по сути [отсюда](https://wycd.net/posts/2015-03-10-creating-a-bootable-windows-10-usb-drive-on-linux.html) но последний раз это сделать не получалось.
+
 Установить gparted:
 
     sudo pacman -S gparted
@@ -112,6 +114,11 @@
 
     sudo umount /mnt/usb
 
+## Создание загрузочной флешки с win 7/10 способ 2
+
+Нужен `woeusb`.
+
+    sudo woeusb --target-filesystem NTFS --device ~/Win10-Enterprise2015-LTSB-N-Privacy-x64-en-US.iso /dev/sda
 
 ## Автоперенос строк в nano
 

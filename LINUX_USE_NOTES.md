@@ -189,6 +189,13 @@
 
     ssh -fTCND "*:8841" proxie@172.104.226.227
 
+# PulseAudio
+
+[Здесь](https://github.com/ppy/osu/issues/3800)
+а точнее
+[здесь](http://juho.tykkala.fi/Pulseaudio-and-latency)
+немного про настройку задержек пульсы для игры в osu!.
+
 # WineHQ
 
 Создаётся и используется `wineprefix` вот так:

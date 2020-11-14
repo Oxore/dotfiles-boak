@@ -444,3 +444,123 @@ CGit должен быть доступен по адресу [http://localhost/
     nmcli connection up wg0
 
 В таком порядке заработало.
+
+# PXE Boot with dnsmasq
+
+Отлаживаться можно с помощью wireshark
+
+Ниже представлен конфиг dnsmasq, который работает при тестировании на qemu.
+Здесь DHCP сервер является основным, чтобы выдавать виртуальной машине IP
+адрес. DHCP сервер должен быть проксирующим или отсутствовать вовсе, если
+основной уже имеется.
+
+```
+# PXE Boot settings follow
+interface=bridge0
+## DHCP server must be a proxy when not main one
+##dhcp-range=192.168.88.1,proxy
+dhcp-range=192.168.167.5,192.168.167.50,12h
+dhcp-boot=/pxelinux.0
+pxe-service=x86PC,"Network Boot",pxelinux
+enable-tftp
+tftp-root=/tftpboot
+```
+Конфиг виртуальной машины qemu:
+
+```
+#!/bin/sh
+mac="00:00:FF:FF:FF:01"
+exec qemu-system-x86_64 \
+    -machine type=q35,accel=kvm \
+    -cpu host \
+    -smp 1 \
+    -enable-kvm \
+    -netdev bridge,id=net0,br=bridge0  \
+    -device e1000,netdev=net0,mac=$mac \
+    -option-rom /usr/share/qemu/pxe-rtl8139.rom \
+    -m 1G \
+    -name pxe \
+    -boot n \
+    -vga std \
+    "$@"
+```
+
+Перед запуском нужно поднять мост bridge0:
+
+    ip link add name bridge0 type bridge
+    ip link set bridge0 up
+
+Убрать мост можно так:
+
+    ip link del bridge0
+
+## PXELINUX
+
+Ссылки:
+- [Ненмого про настройку меню](https://docs.oracle.com/cd/E50245_01/E50247/html/vmiug-install-pxe-pxelinux.html)
+- [Хороший пример конфига меню](https://github.com/gojun077/pxe-config/blob/master/pxelinux.cfg/default)
+- [Подробнее про параметры в конфиге меню](https://wiki.centos.org/HowTos/PXE/PXE_Setup/Menus)
+
+Нужно поставить пакет sys-boot/syslinux - в нём будут все нужный файлы
+компонента PXELINUX, расположенные в `/usr/share/syslinux/`
+
+Создать директорию со всеми необходимыми для загрузки через PXE файлами. В
+данном случае `/tftpboot`.
+
+В директорию `/tftpboot` нужно переместить некоторые файлы:
+
+    cp -r /usr/share/syslinux/{com32,pxelinux.0,{ldlinux,libcom32,libutil,mboot,vesamenu}.c32} /tftpboot
+
+Создать директорию `pxelinux.cfg` для конфигов и `gentoo` для ядра и initramfs
+
+    mkdir -p /tftpboot/{pxelinux.cfg,gentoo}
+
+Создать файл `/tftpboot/pxelinux.cfg/pxe.conf` со следующим содержимым:
+
+```
+MENU TITLE  PXE Server
+NOESCAPE 1
+ALLOWOPTIONS 1
+PROMPT 0
+menu width 80
+menu rows 14
+MENU TABMSGROW 24
+MENU MARGIN 10
+menu color border               30;44      #ffffffff #00000000 std
+```
+
+Создать файл `/tftpboot/pxelinux.cfg/default` со следующим содержимым:
+
+```
+DEFAULT vesamenu.c32
+TIMEOUT 800
+ONTIMEOUT BootLocal
+PROMPT 0
+MENU INCLUDE pxelinux.cfg/pxe.conf
+NOESCAPE 1
+LABEL BootLocal
+        localboot 0
+        TEXT HELP
+        Boot to local hard disk
+        ENDTEXT
+
+LABEL Gentoo
+        MENU LABEL Boot Gentoo Minimal LiveCD
+        KERNEL gentoo/gentoo
+        INITRD gentoo/gentoo.igz
+        APPEND ip=dhcp root=/dev/ram0 init=/linuxrc dokeymap looptype=squashfs loop=/gentoo/image.squashfs cdroot
+```
+
+Положить файл ядра `/tftpboot/gentoo/gentoo` и файл initramfs `/tftpboot/gentoo/gentoo.igz`.
+
+Перезапустить `dnsmasq`:
+
+    rc-service dnsmasq restart
+
+Должно работать, но rootfs пока нет. Тут есть пара способов:
+
+- [Приклеить rootfs к initramfs](https://wiki.gentoo.org/wiki/Installation_alternatives)
+- [Скачивать через http](https://wiki.alpinelinux.org/wiki/PXE_boot)
+
+Приклеить rootfs получилось, но патч по ссылке тухловат, пришлось немного
+почитать init скрипт и сделать самому.

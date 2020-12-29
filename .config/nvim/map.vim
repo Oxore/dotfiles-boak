@@ -74,3 +74,6 @@ cnoremap <C-n> <Down>
 
 " ESC returns from terminal mode to normal mode
 tnoremap <Esc> <C-\><C-n>
+
+" Ctrl-c returns from input mode into normal mode
+inoremap <C-c> <Esc>

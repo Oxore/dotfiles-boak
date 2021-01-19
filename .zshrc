@@ -84,7 +84,7 @@ function sudo-fuzzy-kill {
 }
 
 function grep-fzf {
-    OUTPUT=$(grep -rna . | fzf -m | grep -Po "^[^:]+:[^:]+")
+    OUTPUT=$(grep -rnI . | fzf -m | grep -Po "^[^:]+:[^:]+")
     if [ ! -z $OUTPUT ]
     then
       nvim $OUTPUT

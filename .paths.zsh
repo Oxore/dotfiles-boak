@@ -1,6 +1,4 @@
-{% if YADM_HOSTNAME == 'DEV-004' -%}
 export PATH="$PATH:$HOME/opt/JLink_Linux"
-{% else -%}
 export ANDROID_HOME="$HOME/opt/android-sdk-r21"
 export PATH="$PATH:$HOME/opt/android-sdk-r21/tools"
 export PATH="$PATH:$HOME/opt/android-sdk-r21/platform-tools"
@@ -9,7 +7,6 @@ export PATH="$PATH:$HOME/opt/android-sdk-r21/android-ndk-r8e"
 export PATH="$PATH:$HOME/altera_lite/16.0/quartus/bin/"
 export PATH="$PATH:$HOME/opt/altera_lite/16.0/quartus/bin"
 export PATH="$PATH:$HOME/opt/altera_lite/16.0/modelsim_ase/bin"
-{% endif -%}
 for dir in $HOME/opt/*; do
   if [ -d $dir/bin ]; then
     export PATH="$dir/bin:$PATH"

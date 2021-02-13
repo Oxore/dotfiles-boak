@@ -41,7 +41,8 @@ build_prompt() {
   prompt_dir
   prompt_git
   prompt_bzr
-  prompt_hg
+  # I don't use hg and it is slows down every prompt
+  #prompt_hg
   prompt_end
 }
 

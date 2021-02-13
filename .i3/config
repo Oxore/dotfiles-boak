@@ -1,7 +1,13 @@
 exec_always --no-startup-id "setxkbmap -model pc105 -layout us,ru -option grp:caps_toggle"
 exec --no-startup-id st -e tmux
+
+# Old 'boak' laptop touchpad configuration
 exec_always --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1 #touchpad tap-to-click
 exec_always --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "Synaptics Tap Action" 0, 0, 0, 0, 1, 3, 2
+
+# 'splyushka' laptop touchpad configuration
+exec_always --no-startup-id xinput set-prop "ELAN0503:00 04F3:3093 Touchpad" "Synaptics Tap Action" 0, 0, 0, 0, 1, 3, 2
+
 exec --no-startup-id sh ~/.i3/HDMI1@top.sh
 exec_always --no-startup-id feh --bg-fill ~/Pictures/.w.png
 exec_always --no-startup-id xset r rate 300 60

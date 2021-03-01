@@ -12,6 +12,7 @@ Options:
   -t, --target <target>     Target chip. Following chips supported:
       f1x
       f2x
+      f4x
   -p, --programmer <p>      Device used for programming. One of these:
       stlink-v2
       stlink-v2-1
@@ -22,6 +23,15 @@ Options:
 EOF
 }
 
+target_is_valid() {
+  local target=$1
+  case $target in
+    f1x) return 0;;
+    f2x) return 0;;
+    f4x) return 0;;
+  esac
+  return 1;
+}
 
 lock() {
   local programmer=$1
@@ -84,7 +94,7 @@ while [[ "$#" -gt 0 ]]; do case $1 in
 esac; shift; done
 
 # Validate TARGET
-if [[ $TARGET != "f1x" && $TARGET != "f2x" ]]; then
+if ! target_is_valid $TARGET; then
   echo "Unknown target \"$TARGET\"" >&2; >&2 usage; exit 1;
 elif [[ $TARGET == "" ]]; then
   echo "No target specified" >&2; >&2 usage; exit 1;

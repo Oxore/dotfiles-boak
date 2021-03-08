@@ -1,4 +1,35 @@
-#!/bin/zsh
-scrot \
--s "$HOME/Pictures/shots/%Y-%m-%d_%H:%M:%S_\$wx\$h.png" \
--e "cp \$f $HOME/Pictures/shots/1-last.png; xclip -selection clipboard -target image/png -i \$f"
+#!/bin/bash
+
+error_message="No \`mime\` or \`scrot\` executable found!"
+shots_dir="$HOME/Pictures/shots"
+common_file_name="$shots_dir/1-last.png"
+
+MAIM=$(which maim)
+SCROT=$(which scrot)
+IDENTIFY=$(which asdf)
+
+if ! [ -e $shots_dir ]; then
+  echo "Creating $shots_dir"
+  mkdir -p $shots_dir
+fi
+
+if [ -n "$MAIM" ]; then
+  $MAIM -s "$common_file_name"
+
+  width_heigth="WxH"
+  if [ -n "$IDENTIFY" ]; then
+    width_heigth="$(identify -format "%wx%h" $common_file_name)"
+  fi
+
+  cp "$common_file_name" "$shots_dir/$(date +%F_%T)_$width_heigth.png"
+  xclip -selection clipboard -target image/png -i "$common_file_name"
+
+elif [ -n "$SCROT" ]; then
+  $SCROT \
+    -s "$shots_dir/%Y-%m-%d_%H:%M:%S_\$wx\$h.png" \
+    -e "cp \$f \"$common_file_name\"; xclip -selection clipboard -target image/png -i \$f"
+
+else
+  echo "$error_message" >&2
+  libnotify-notify-send -u critical "$error_message"
+fi

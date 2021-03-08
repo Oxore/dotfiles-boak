@@ -4,13 +4,13 @@ error_message="No \`mime\` or \`scrot\` executable found!"
 shots_dir="$HOME/Pictures/shots"
 common_file_name="$shots_dir/1-last.png"
 
-MAIM=$(which maim)
-SCROT=$(which scrot)
-IDENTIFY=$(which asdf)
+MAIM=$(which maim 2>/dev/null)
+SCROT=$(which scrot 2>/dev/null)
+IDENTIFY=$(which identify 2>/dev/null)
 
-if ! [ -e $shots_dir ]; then
+if ! [ -e "$shots_dir" ]; then
   echo "Creating $shots_dir"
-  mkdir -p $shots_dir
+  mkdir -p "$shots_dir"
 fi
 
 if [ -n "$MAIM" ]; then
@@ -18,7 +18,7 @@ if [ -n "$MAIM" ]; then
 
   width_heigth="WxH"
   if [ -n "$IDENTIFY" ]; then
-    width_heigth="$(identify -format "%wx%h" $common_file_name)"
+    width_heigth="$($IDENTIFY -format "%wx%h" "$common_file_name")"
   fi
 
   cp "$common_file_name" "$shots_dir/$(date +%F_%T)_$width_heigth.png"

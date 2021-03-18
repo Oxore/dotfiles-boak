@@ -18,7 +18,6 @@ Plug 'pboettch/vim-highlight-cursor-words', { 'for': ['c', 'cpp', 'rust'] }
 Plug 'tikhomirov/vim-glsl'
 Plug 'copy/deoplete-rust'
 Plug 'vim-scripts/paredit.vim'
-Plug 'ludovicchabant/vim-gutentags'
 Plug 'bogado/file-line'
 Plug 'francoiscabrol/ranger.vim', { 'branch': 'alt-implementation' }
 Plug 'easymotion/vim-easymotion'

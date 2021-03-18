@@ -12,7 +12,9 @@ exec --no-startup-id st -e tmux
 # 'splyushka' laptop touchpad configuration
 # exec_always --no-startup-id xinput set-prop "ELAN0503:00 04F3:3093 Touchpad" "Synaptics Tap Action" 0, 0, 0, 0, 1, 3, 2
 
-exec_always --no-startup-id feh --bg-fill ~/Pictures/.w.png
+# exec_always --no-startup-id feh --bg-fill ~/Pictures/.w.png
+output "*" bg ~/Pictures/.w.png fill
+
 exec --no-startup-id export EDITOR=nvim
 
 input type:keyboard {
@@ -150,7 +152,7 @@ bindsym Mod4+Shift+9 move container to workspace 9
 bindsym Mod4+Shift+0 move container to workspace 10
 
 # reload the configuration file
-bindsym Mod4+Shift+c swaymsg reload
+bindsym Mod4+Shift+c reload
 
 # TODO migrate
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -245,8 +247,8 @@ focus_follows_mouse no
 
 #no_borders
 hide_edge_borders both
-default_border pixel 10
-default_floating_border pixel 10
+default_border pixel 2
+default_floating_border pixel 2
 
 #some floating windows
 for_window [class="st"] floating enable

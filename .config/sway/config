@@ -1,0 +1,262 @@
+# TODO migrate
+# exec_always --no-startup-id "setxkbmap -model pc105 -layout us,ru -option grp:caps_toggle"
+
+exec --no-startup-id st -e tmux
+
+# TODO migrate
+# Old 'boak' laptop touchpad configuration
+# exec_always --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1 #touchpad tap-to-click
+# exec_always --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "Synaptics Tap Action" 0, 0, 0, 0, 1, 3, 2
+
+# TODO migrate
+# 'splyushka' laptop touchpad configuration
+# exec_always --no-startup-id xinput set-prop "ELAN0503:00 04F3:3093 Touchpad" "Synaptics Tap Action" 0, 0, 0, 0, 1, 3, 2
+
+exec_always --no-startup-id feh --bg-fill ~/Pictures/.w.png
+exec --no-startup-id export EDITOR=nvim
+
+input type:keyboard {
+	repeat_rate 60
+	repeat_delay 300
+	xkb_layout us,ru
+	xkb_options grp:caps_toggle
+}
+
+# TODO migrate
+# exec --no-startup-id redshift -l 59.56:30.18
+
+# i3 config file (v4)
+#
+# Please see http://i3wm.org/docs/userguide.html for a complete reference!
+#
+# This config file uses keycodes (bindsym) and was written for the QWERTY
+# layout.
+#
+# To get a config file with the same key positions, but for your current
+# layout, use the i3-config-wizard
+#
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+font pango:xos4 Terminus 10
+
+set $up k
+set $down j
+set $left h
+set $right l
+
+# Alt
+floating_modifier Mod4
+
+# start a terminal
+bindsym Mod4+Return exec --no-startup-id st
+
+# kill focused window
+bindsym Mod4+Shift+q kill
+
+# various rofi based tools
+bindsym Mod4+d exec --no-startup-id sh -c \
+  'source ${HOME}/.paths.zsh && rofi -show run'
+bindsym Mod4+q exec --no-startup-id sh -c \
+  'source ${HOME}/.paths.zsh && rofi -show drun'
+bindsym Mod4+m exec --no-startup-id sh -c '~/.i3/scripts/mount'
+bindsym Mod4+u exec --no-startup-id sh -c '~/.i3/scripts/umount'
+
+# change focus
+bindsym Mod4+$left focus left
+bindsym Mod4+$down focus down
+bindsym Mod4+$up focus up
+bindsym Mod4+$right focus right
+
+# alternatively, you can use the cursor keys:
+bindsym Mod4+Left focus left
+bindsym Mod4+Down focus down
+bindsym Mod4+Up focus up
+bindsym Mod4+Right focus right
+
+# move focused window
+bindsym Mod4+Shift+$left move left
+bindsym Mod4+Shift+$down move down
+bindsym Mod4+Shift+$up move up
+bindsym Mod4+Shift+$right move right
+
+# alternatively, you can use the cursor keys:
+bindsym Mod4+Shift+Left move left
+bindsym Mod4+Shift+Down move down
+bindsym Mod4+Shift+Up move up
+bindsym Mod4+Shift+Right move right
+
+# split in horizontal orientation
+bindsym Mod4+g split h
+
+# split in vertical orientation
+bindsym Mod4+v split v
+
+# enter fullscreen mode for the focused container
+bindsym Mod4+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym Mod4+s layout stacking
+bindsym Mod4+w layout tabbed
+bindsym Mod4+e layout toggle split
+
+# toggle tiling / floating
+bindsym Mod4+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym Mod4+space focus mode_toggle
+
+# focus the parent container
+bindsym Mod4+a focus parent
+
+# focus the child container
+bindsym Mod4+c focus child
+
+# move the currently focused window to the scratchpad
+bindsym Mod4+Shift+Menu move scratchpad
+bindsym Mod4+Shift+Print move scratchpad
+
+# Show the next scratchpad window or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, this command cycles through them.
+bindsym Menu [instance="gnome-terminal" instance="st"] scratchpad show
+bindsym Print [instance="gnome-terminal" instance="st"] scratchpad show
+bindsym Shift+Menu scratchpad show
+bindsym Shift+Print scratchpad show
+
+# switch to workspace
+bindsym Mod4+Tab workspace next
+bindsym Mod4+Shift+Tab workspace prev
+bindsym Mod4+1 workspace 1
+bindsym Mod4+2 workspace 2
+bindsym Mod4+3 workspace 3
+bindsym Mod4+4 workspace 4
+bindsym Mod4+5 workspace 5
+bindsym Mod4+6 workspace 6
+bindsym Mod4+7 workspace 7
+bindsym Mod4+8 workspace 8
+bindsym Mod4+9 workspace 9
+bindsym Mod4+0 workspace 10
+
+# move focused container to workspace
+bindsym Mod4+Shift+1 move container to workspace 1
+bindsym Mod4+Shift+2 move container to workspace 2
+bindsym Mod4+Shift+3 move container to workspace 3
+bindsym Mod4+Shift+4 move container to workspace 4
+bindsym Mod4+Shift+5 move container to workspace 5
+bindsym Mod4+Shift+6 move container to workspace 6
+bindsym Mod4+Shift+7 move container to workspace 7
+bindsym Mod4+Shift+8 move container to workspace 8
+bindsym Mod4+Shift+9 move container to workspace 9
+bindsym Mod4+Shift+0 move container to workspace 10
+
+# reload the configuration file
+bindsym Mod4+Shift+c swaymsg reload
+
+# TODO migrate
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+# bindsym Mod4+Shift+r swaymsg restart
+
+# exit i3 (logs you out of your X session)
+bindsym Mod4+Shift+e exec --no-startup-id "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+#bindsym Mod4+Shift+e exec --no-startup-id gnome-session-quit --logout
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        bindsym $left       resize shrink width 10 px or 10 ppt
+        bindsym $down       resize grow height 10 px or 10 ppt
+        bindsym $up         resize shrink height 10 px or 10 ppt
+        bindsym $right      resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left        resize shrink width 10 px or 10 ppt
+        bindsym Down        resize grow height 10 px or 10 ppt
+        bindsym Up          resize shrink height 10 px or 10 ppt
+        bindsym Right       resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym Mod4+r mode "resize"
+
+#defiining colorscheme
+  set $foregr #E8D9C4
+  set $txtact #000000
+  set $backgr #1d2021
+  set $txtina #888888
+  set $forein #444444
+
+# Widow Colours
+#                         border  background text    indicator
+  client.focused          $backgr $txtina    $foregr $foregr
+  client.focused_inactive $backgr $backgr    $txtina $foregr
+  client.unfocused        $backgr $backgr    $txtina $foregr
+  client.urgent           $foregr $backgr    $txtina $foregr
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+    position top
+    modifier Mod4
+    workspace_buttons yes
+    status_command i3blocks -c ~/.i3/i3blocks.conf
+#    tray_output HDMI1
+    tray_output LVDS1
+
+    colors {
+        background         $backgr
+        statusline         $foregr
+        separator          $foregr
+
+#                          border   foreground  text
+        focused_workspace  $backgr  $backgr     $foregr
+        active_workspace   $backgr  $backgr     $txtina
+        inactive_workspace $backgr  $backgr     $txtina
+        binding_mode       $backgr  $backgr     $txtina
+        urgent_workspace   $txtina  $backgr     $foregr
+    }
+}
+
+bindsym --release Mod4+c exec --no-startup-id zsh -c 'source ${HOME}/.paths.zsh && shot'
+
+# media control
+bindsym XF86AudioMute exec --no-startup-id notify-send -u low "Volume $(env BLOCK_BUTTON=3 ~/.i3/scripts/volume 5 pulse | head -n1)"
+bindsym XF86AudioRaiseVolume exec --no-startup-id notify-send -u low "Volume $(env BLOCK_BUTTON=4 ~/.i3/scripts/volume 5 pulse | head -n1)"
+bindsym XF86AudioLowerVolume exec --no-startup-id notify-send -u low "Volume $(env BLOCK_BUTTON=5 ~/.i3/scripts/volume 5 pulse | head -n1)"
+bindsym XF86AudioNext exec --no-startup-id cmus-remote --next
+bindsym XF86AudioPrev exec --no-startup-id cmus-remote --prev
+bindsym XF86AudioPlay exec --no-startup-id cmus-remote --pause
+bindsym XF86AudioStop exec --no-startup-id cmus-remote --stop
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 5
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5
+
+# media control with Mod4
+bindsym Mod4+F12 exec --no-startup-id notify-send -u low "Volume $(env BLOCK_BUTTON=4 ~/.i3/scripts/volume 5 pulse | head -n1)"
+bindsym Mod4+F11 exec --no-startup-id notify-send -u low "Volume $(env BLOCK_BUTTON=5 ~/.i3/scripts/volume 5 pulse | head -n1)"
+bindsym Mod4+p exec --no-startup-id cmus-remote --pause
+bindsym Mod4+bracketright exec --no-startup-id cmus-remote --next
+bindsym Mod4+bracketleft exec --no-startup-id cmus-remote --prev
+
+# mouse follow focusing off
+focus_follows_mouse no
+
+#no_borders
+hide_edge_borders both
+default_border pixel 10
+default_floating_border pixel 10
+
+#some floating windows
+for_window [class="st"] floating enable
+for_window [class="Qsys"] floating enable
+for_window [class="Pidgin"] floating enable
+assign [class="Nautilus"] 2
+assign [class="Pale moon"] 1
+assign [class="Telegram"] 5
+for_window [class="SFML"] floating enable
+for_window [class="(?i)opengl"] floating enable
+for_window [title="galculator"] floating enable
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="task_dialog"] floating enable

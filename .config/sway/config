@@ -1,31 +1,3 @@
-# TODO migrate
-# exec_always --no-startup-id "setxkbmap -model pc105 -layout us,ru -option grp:caps_toggle"
-
-exec --no-startup-id st -e tmux
-
-# TODO migrate
-# Old 'boak' laptop touchpad configuration
-# exec_always --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1 #touchpad tap-to-click
-# exec_always --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "Synaptics Tap Action" 0, 0, 0, 0, 1, 3, 2
-
-# TODO migrate
-# 'splyushka' laptop touchpad configuration
-# exec_always --no-startup-id xinput set-prop "ELAN0503:00 04F3:3093 Touchpad" "Synaptics Tap Action" 0, 0, 0, 0, 1, 3, 2
-
-# exec_always --no-startup-id feh --bg-fill ~/Pictures/.w.png
-output "*" bg ~/Pictures/.w.png fill
-
-exec --no-startup-id export EDITOR=nvim
-
-input type:keyboard {
-	repeat_rate 60
-	repeat_delay 300
-	xkb_layout us,ru
-	xkb_options grp:caps_toggle
-}
-
-# TODO migrate
-# exec --no-startup-id redshift -l 59.56:30.18
 
 # i3 config file (v4)
 #
@@ -37,6 +9,15 @@ input type:keyboard {
 # To get a config file with the same key positions, but for your current
 # layout, use the i3-config-wizard
 #
+
+exec --no-startup-id st -e tmux
+
+output "*" bg ~/Pictures/.w.png fill
+
+exec --no-startup-id export EDITOR=nvim
+
+# TODO migrate
+# exec --no-startup-id redshift -l 59.56:30.18
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -184,19 +165,19 @@ mode "resize" {
 
 bindsym Mod4+r mode "resize"
 
-#defiining colorscheme
-  set $foregr #E8D9C4
-  set $txtact #000000
-  set $backgr #1d2021
-  set $txtina #888888
-  set $forein #444444
+# colorscheme
+set $foregr #E8D9C4
+set $txtact #000000
+set $backgr #1d2021
+set $txtina #888888
+set $forein #444444
 
 # Widow Colours
 #                         border  background text    indicator
-  client.focused          $backgr $txtina    $foregr $foregr
-  client.focused_inactive $backgr $backgr    $txtina $foregr
-  client.unfocused        $backgr $backgr    $txtina $foregr
-  client.urgent           $foregr $backgr    $txtina $foregr
+client.focused          $backgr $txtina    $foregr $foregr
+client.focused_inactive $backgr $backgr    $txtina $foregr
+client.unfocused        $backgr $backgr    $txtina $foregr
+client.urgent           $foregr $backgr    $txtina $foregr
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -262,3 +243,20 @@ for_window [class="(?i)opengl"] floating enable
 for_window [title="galculator"] floating enable
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
+
+
+### Input ###
+
+input type:keyboard {
+	repeat_rate 60
+	repeat_delay 300
+	xkb_layout us,ru
+	xkb_options grp:caps_toggle
+}
+input "2:7:SynPS/2_Synaptics_TouchPad" {
+	events disabled # TODO keybind to on/off
+	tap enabled
+}
+input "2522:36966:A4TECH_USB_Device" {
+	pointer_accel -1
+}

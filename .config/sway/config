@@ -10,6 +10,8 @@
 # layout, use the i3-config-wizard
 #
 
+exec mako
+
 exec --no-startup-id st -e tmux
 
 output "*" bg ~/Pictures/.w.png fill
@@ -204,6 +206,10 @@ bar {
 }
 
 bindsym --release Mod4+c exec --no-startup-id zsh -c 'source ${HOME}/.paths.zsh && shot'
+
+# Mako
+bindsym Control+Space exec --no-startup-id makoctl dismiss
+bindsym Control+Shift+Space exec --no-startup-id makoctl dismiss -a
 
 # media control
 bindsym XF86AudioMute exec --no-startup-id notify-send -u low "Volume $(env BLOCK_BUTTON=3 ~/.i3/scripts/volume 5 pulse | head -n1)"

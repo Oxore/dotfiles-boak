@@ -14,7 +14,7 @@ exec mako
 
 exec --no-startup-id st -e tmux
 
-output "*" bg ~/Pictures/.w.png fill
+output "*" bg "#1D2021" solid_color
 
 exec --no-startup-id export EDITOR=nvim
 

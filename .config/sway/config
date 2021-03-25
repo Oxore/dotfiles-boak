@@ -219,8 +219,8 @@ bindsym XF86AudioNext exec --no-startup-id cmus-remote --next
 bindsym XF86AudioPrev exec --no-startup-id cmus-remote --prev
 bindsym XF86AudioPlay exec --no-startup-id cmus-remote --pause
 bindsym XF86AudioStop exec --no-startup-id cmus-remote --stop
-bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 5
-bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
 
 # media control with Mod4
 bindsym Mod4+F12 exec --no-startup-id notify-send -u low "Volume $(env BLOCK_BUTTON=4 ~/.i3/scripts/volume 5 pulse | head -n1)"

@@ -75,3 +75,6 @@ augroup RustProject
     autocmd!
     autocmd BufWritePost *.rs :Neomake
 augroup END
+
+" Store clipboard content after exit
+autocmd VimLeave * call system("xsel -ib", getreg('+'))

@@ -4,8 +4,4 @@ setlocal expandtab
 setlocal nowrap
 setlocal textwidth=80
 autocmd Filetype c,cpp set comments^=:///
-if expand('%:p') =~ 'modem-3.0'
-  setlocal tabstop=2 shiftwidth=2
-else
-  setlocal tabstop=4 shiftwidth=4
-endif
+setlocal tabstop=4 shiftwidth=4

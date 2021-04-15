@@ -32,6 +32,7 @@ Plug 'ollykel/v-vim'
 Plug 'digitaltoad/vim-pug'
 Plug 'cespare/vim-toml'
 Plug 'pest-parser/pest.vim'
+Plug 'jasonccox/vim-wayland-clipboard'
 call plug#end()
 
 source $HOME/.config/nvim/plugins.vim

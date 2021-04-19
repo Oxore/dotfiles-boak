@@ -1,35 +1,61 @@
 #!/bin/bash
 
-error_message="No \`mime\` or \`scrot\` executable found!"
 shots_dir="$HOME/Pictures/shots"
 common_file_name="$shots_dir/1-last.png"
 
+GRIM=$(which grim 2>/dev/null)
+SLURP=$(which slurp 2>/dev/null)
 MAIM=$(which maim 2>/dev/null)
 SCROT=$(which scrot 2>/dev/null)
 IDENTIFY=$(which identify 2>/dev/null)
+
+function x11_shot {
+  error_message="No \`mime\` or \`scrot\` executable found!"
+
+  if [ -n "$MAIM" ]; then
+    $MAIM -s "$common_file_name"
+
+    width_heigth="WxH"
+    if [ -n "$IDENTIFY" ]; then
+      width_heigth="$($IDENTIFY -format "%wx%h" "$common_file_name")"
+    fi
+
+    cp "$common_file_name" "$shots_dir/$(date +%F_%T)_$width_heigth.png"
+    xclip -selection clipboard -target image/png -i "$common_file_name"
+
+  elif [ -n "$SCROT" ]; then
+    $SCROT \
+      -s "$shots_dir/%Y-%m-%d_%H:%M:%S_\$wx\$h.png" \
+      -e "cp \$f \"$common_file_name\"; xclip -selection clipboard -target image/png -i \$f"
+
+  else
+    echo "$error_message" >&2
+    libnotify-notify-send -u critical "$error_message"
+  fi
+}
+
+function wayland_shot {
+  error_message="Can't find \`grim\` and \`slurp\` executable pair!"
+
+  if [ -n "$GRIM" ] && [ -n "$SLURP" ]; then
+    slurp_selection=$($SLURP)
+    width_heigth=$(echo $slurp_selection | cut -d' ' -f2)
+    file_name=$shots_dir/$(date +%F_%T)_$width_heigth.png
+    $GRIM -g "$slurp_selection" $file_name
+    cp $file_name $common_file_name
+  else
+    echo "$error_message" >&2
+    libnotify-notify-send -u critical "$error_message"
+  fi
+}
 
 if ! [ -e "$shots_dir" ]; then
   echo "Creating $shots_dir"
   mkdir -p "$shots_dir"
 fi
 
-if [ -n "$MAIM" ]; then
-  $MAIM -s "$common_file_name"
-
-  width_heigth="WxH"
-  if [ -n "$IDENTIFY" ]; then
-    width_heigth="$($IDENTIFY -format "%wx%h" "$common_file_name")"
-  fi
-
-  cp "$common_file_name" "$shots_dir/$(date +%F_%T)_$width_heigth.png"
-  xclip -selection clipboard -target image/png -i "$common_file_name"
-
-elif [ -n "$SCROT" ]; then
-  $SCROT \
-    -s "$shots_dir/%Y-%m-%d_%H:%M:%S_\$wx\$h.png" \
-    -e "cp \$f \"$common_file_name\"; xclip -selection clipboard -target image/png -i \$f"
-
+if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+  wayland_shot
 else
-  echo "$error_message" >&2
-  libnotify-notify-send -u critical "$error_message"
+  x11_shot
 fi

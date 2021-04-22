@@ -8,7 +8,6 @@ else
   layout=`xkblayout-state print \"%s\"`;
 fi
 
-layout=${layout:1:2}
 caps=`cat /sys/class/leds/input*::capslock/brightness | head -n1`;
 
 if [ "$caps" -eq "1" ]; then
@@ -16,6 +15,8 @@ if [ "$caps" -eq "1" ]; then
 else
   layout=${layout,,}
 fi
+
+layout=" ${layout:1:2}"
 
 # full text
 echo $layout

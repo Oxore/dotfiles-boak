@@ -3,7 +3,7 @@
 layout="??"
 
 if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
-  layout=`swaymsg -t get_inputs | jq '.[0].xkb_active_layout_name'`;
+  layout=`swaymsg -t get_inputs | jq '.[].xkb_active_layout_name|strings'`;
 else
   layout=`xkblayout-state print \"%s\"`;
 fi

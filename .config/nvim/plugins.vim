@@ -47,10 +47,6 @@ let g:neomake_rust_cargo_command = ['test', '--no-run']
 " Prevent paredit from pushing closing parenthesis to next line
 let g:paredit_electric_return=0
 
-" Gutentag statusline indicator
-set statusline+=%{gutentags#statusline()}
-let g:gutentags_enabled=0
-
 " Easymotion
 " Jump to anywhere with `<CTRL+Space>{char}{target}`
 nmap f <Plug>(easymotion-overwin-f)

@@ -51,7 +51,6 @@ function! ToggleCProject()
             " Clean signs end error messages - workaround for headers
             autocmd BufWritePost *.h,*.hpp NeomakeClean
         augroup END
-        let g:gutentags_enabled=1
         let g:neomake_c_enabled_makers=['anycc']
         let g:neomake_cpp_enabled_makers=['anycc']
         echom "CProject automake on"
@@ -63,7 +62,6 @@ function! ToggleCProject()
             " Clean signs end error messages remaining
             autocmd BufWritePost *c,*cpp,*.h,*.hpp NeomakeClean
         augroup END
-        let g:gutentags_enabled=0
         let g:neomake_c_enabled_makers=[]
         let g:neomake_cpp_enabled_makers=[]
         echom "CProject automake off"

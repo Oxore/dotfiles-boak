@@ -5,6 +5,7 @@ source $HOME/.config/nvim/neomake-c-flags.vim
 
 source $HOME/.config/nvim/auto.vim
 source $HOME/.config/nvim/map.vim
+source $HOME/.config/nvim/custom.vim
 
 call plug#begin('~/.local/share/nvim/site/plugged')
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }

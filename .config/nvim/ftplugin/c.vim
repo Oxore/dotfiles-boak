@@ -5,3 +5,4 @@ setlocal nowrap
 setlocal textwidth=80
 autocmd Filetype c,cpp set comments^=:///
 setlocal tabstop=4 shiftwidth=4
+set cinoptions+=g0

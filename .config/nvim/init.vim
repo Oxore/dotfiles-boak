@@ -38,6 +38,7 @@ call plug#end()
 
 source $HOME/.config/nvim/plugins.vim
 
+set path+=**
 filetype plugin on
 syntax on
 colorscheme gruvbox

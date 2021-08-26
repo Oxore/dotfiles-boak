@@ -272,3 +272,6 @@ input "2:10:TPPS/2_Elan_TrackPoint" {
 input "2:7:SynPS/2_Synaptics_TouchPad" {
 	pointer_accel 0
 }
+input "1267:12435:ELAN0503:00_04F3:3093_Touchpad" {
+    tap enabled
+}

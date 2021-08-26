@@ -239,6 +239,7 @@ default_floating_border pixel 2
 
 #some floating windows
 for_window [class="st"] floating enable
+for_window [app_id="Alacritty"] floating enable
 for_window [class="Qsys"] floating enable
 for_window [class="Pidgin"] floating enable
 assign [class="Nautilus"] 2

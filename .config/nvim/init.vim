@@ -12,7 +12,6 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'rafi/awesome-vim-colorschemes'
 Plug 'matze/vim-move'
 Plug 'danro/rename.vim'
-Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-fugitive'
 Plug 'neomake/neomake'
 Plug 'pboettch/vim-highlight-cursor-words', { 'for': ['c', 'cpp', 'rust'] }
@@ -48,6 +47,7 @@ let &colorcolumn='81,101'
 set number
 set termguicolors
 set shortmess+=I
+set statusline=\ %-3.(%n%)>\ %t\ %h%w%m%r%q%=%{&ft}\ %{&enc}[%{&ff}]\ %-14.(%l,%c%V%)\ %P
 set spell spelllang=ru_yo,en_us
 set spellfile=$HOME/.config/nvim/spell.ru-en.utf-8.add
 set undofile

@@ -78,8 +78,5 @@ tnoremap <Esc> <C-\><C-n>
 " Ctrl-c returns from input mode into normal mode
 inoremap <C-c> <Esc>
 
-" Toggle nodistraction mode
-nnoremap Jh :call ToggleNodistractionMode()<CR>
-
 " Print current line number and number of lines in current file
 nnoremap JL :echo line('.') . "/" . line('$')<CR>

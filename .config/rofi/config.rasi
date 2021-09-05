@@ -3,8 +3,8 @@
    ========================================================================== */
 
 configuration {
-	font: "xos4 Terminus 10";
-  lines: 3;
+  font: "Terminus 10";
+  modi: "window,run,drun";
 }
 
 * {
@@ -79,6 +79,7 @@ listview {
     padding:      2px 0 0;
     border-color: @separatorcolor;
     spacing:      0px;
+    lines: 3;
 }
 
 element {

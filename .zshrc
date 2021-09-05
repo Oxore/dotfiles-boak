@@ -143,6 +143,7 @@ bindkey "^N" down-line-or-beginning-search
 bindkey -s '^[o' 'ranger-cd\n'
 bindkey -s '^x^o' 'ranger-cd\n'
 bindkey -s '^x^f' 'grep-fzf\n'
+bindkey -s '^z' 'fg\n'
 # use the vi navigation keys in menu completion
 bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'k' vi-up-line-or-history

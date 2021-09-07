@@ -54,7 +54,8 @@ window {
     width: 100%;
     background-color: @background;
     border-color:     @background;
-    border:           50% 30%;
+    fullscreen:       true;
+    padding:          43% 30%;
 }
 
 mainbox {

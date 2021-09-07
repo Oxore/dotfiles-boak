@@ -47,7 +47,7 @@ let &colorcolumn='81,101'
 set number
 set termguicolors
 set shortmess+=I
-set statusline=\ %-3.(%n%)>\ %t\ %h%w%m%r%q%=%{&ft}\ %{&enc}[%{&ff}]\ %-14.(%l,%c%V%)\ %P
+set statusline=\ %-3.(%n%)>\ %t\ %h%w%m%r%q%=%{&ft}\ %{&enc}[%{&ff}]\ %-10.(%l,%v%)\ %P
 set spell spelllang=ru_yo,en_us
 set spellfile=$HOME/.config/nvim/spell.ru-en.utf-8.add
 set undofile

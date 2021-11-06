@@ -30,7 +30,7 @@ function x11_shot {
 
   else
     echo "$error_message" >&2
-    libnotify-notify-send -u critical "$error_message"
+    notify-send -u critical "$error_message"
   fi
 }
 

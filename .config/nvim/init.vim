@@ -8,7 +8,7 @@ source $HOME/.config/nvim/custom.vim
 source $HOME/.config/nvim/map.vim
 
 call plug#begin('~/.local/share/nvim/site/plugged')
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'rafi/awesome-vim-colorschemes'
 Plug 'matze/vim-move'
 Plug 'danro/rename.vim'
@@ -16,16 +16,10 @@ Plug 'tpope/vim-fugitive'
 Plug 'neomake/neomake'
 Plug 'pboettch/vim-highlight-cursor-words', { 'for': ['c', 'cpp', 'rust'] }
 Plug 'tikhomirov/vim-glsl'
-Plug 'copy/deoplete-rust'
 Plug 'vim-scripts/paredit.vim'
 Plug 'bogado/file-line'
 Plug 'francoiscabrol/ranger.vim', { 'branch': 'alt-implementation' }
 Plug 'easymotion/vim-easymotion'
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ 'for': ['c', 'cpp', 'rust'],
-    \ }
 Plug 'octol/vim-cpp-enhanced-highlight', { 'for': ['c', 'cpp'] }
 Plug 'aklt/plantuml-syntax'
 Plug 'ollykel/v-vim'

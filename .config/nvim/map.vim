@@ -80,3 +80,6 @@ inoremap <C-c> <Esc>
 
 " Print current line number and number of lines in current file
 nnoremap JL :echo line('.') . "/" . line('$')<CR>
+
+" Remap invoking history window for command mode
+nmap q; q:

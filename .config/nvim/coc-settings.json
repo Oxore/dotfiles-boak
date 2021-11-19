@@ -1,0 +1,27 @@
+{
+    "diagnostic.enable": false,
+    "diagnostic.enableSign": false,
+    "diagnostic.highlighLimit": 0,
+    "languageserver": {
+        "ccls": {
+            "command": "ccls",
+            "filetypes": [
+                "c",
+                "cpp",
+                "objc",
+                "objcpp"
+            ],
+            "rootPatterns": [
+                "compile_commands.json",
+                "cmake[-_]build.*",
+                ".git/",
+                ".hg/"
+            ],
+            "initializationOptions": {
+                "cache": {
+                    "directory": "/tmp/ccls"
+                }
+            }
+        }
+    }
+}

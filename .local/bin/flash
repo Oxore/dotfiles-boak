@@ -8,6 +8,7 @@ Commands (mutually exclusive):
   g, gdb-server             Start GDB server on tcp/3333
   l, lock                   Enable ROP level=1
   u, unlock                 Disable ROP and perform bulk erase
+  e, erase <bank_id>        Mass erase a bank specified by <bank_id>
 Options:
   -t, --target <target>     Target chip. Following chips supported:
       f1x
@@ -52,21 +53,28 @@ programmer_is_valid() {
 lock() {
   local programmer=$1
   local target=$2
-
+  if [ ${target} == "h7x_dual_bank" ]; then
+    local target_cmd="h7x"
+  else
+    local target_cmd="${target}"
+  fi
   openocd \
   -f interface/${programmer}.cfg \
   -f target/stm32${target}.cfg \
-  -c "init; reset halt; stm32${target} lock 0; reset halt; exit"
+  -c "init; reset halt; stm32${target_cmd} lock 0; reset halt; exit"
 }
 
 unlock() {
   local programmer=$1
   local target=$2
-
+  local target_cmd="${target}"
+  if [ ${target} == "h7x_dual_bank" ]; then
+    local target_cmd="h7x"
+  fi
   openocd \
   -f interface/${programmer}.cfg \
   -f target/stm32${target}.cfg \
-  -c "init; reset halt; stm32${target} unlock 0; reset halt; exit"
+  -c "init; reset halt; stm32${target_cmd} unlock 0; reset halt; exit"
 }
 
 download() {
@@ -74,15 +82,26 @@ download() {
   local file=$3
   local programmer=$1
   local target=$2
-
   if [ ! -z "$(echo $file | sed -n '/\.bin$/ p')" ]; then
     offset=$4
   fi
-
   openocd \
     -f interface/${programmer}.cfg \
     -f target/stm32${target}.cfg \
     -c "program ${file} verify reset exit ${offset}"
+}
+
+mass_erase() {
+  local programmer=$1
+  local target=$2
+  local bank_num=$3
+  if [ ${target} == "h7x_dual_bank" ]; then
+    local target_cmd="h7x"
+  fi
+  openocd \
+    -f interface/${programmer}.cfg \
+    -f target/stm32${target}.cfg \
+    -c "init; reset halt; stm32${target_cmd} mass_erase $bank_num; reset halt; exit"
 }
 
 gdb-server() {
@@ -97,6 +116,7 @@ gdb-server() {
 # Main part of script starts here
 
 while [[ "$#" -gt 0 ]]; do case $1 in
+  e|erase) ACTION="${ACTION}erase"; BANK_ID=$2; shift;;
   l|lock) ACTION="${ACTION}lock";;
   u|unlock) ACTION="${ACTION}unlock";;
   d|download) ACTION="${ACTION}download";;
@@ -136,6 +156,8 @@ elif [[ $ACTION == "download" || $ACTION == "d" ]]; then
   download $PROGRAMMER $TARGET $FILE $OFFSET
 elif [[ $ACTION == "gdb-server" || $ACTION == "g" ]]; then
   gdb-server $PROGRAMMER $TARGET
+elif [[ $ACTION == "erase" || $ACTION == "e" ]]; then
+  mass_erase $PROGRAMMER $TARGET $BANK_ID
 elif [[ $ACTION == "" ]]; then
   echo "No command provided" >&2; >&2 usage; exit 1;
 else

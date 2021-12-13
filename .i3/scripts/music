@@ -6,8 +6,8 @@
 #echo ""
 
 # CMus
-artist=$(cmus-remote -Q | grep ' artist ' | cut -d ' ' -f3-)
-song=$(cmus-remote -Q | grep title | cut -d ' ' -f3-)
+artist=$(cmus-remote -Q | grep -w '^tag artist' | cut -d ' ' -f3-)
+song=$(cmus-remote -Q | grep -w '^tag title' | cut -d ' ' -f3-)
 if [[ ! -z "$artist" && ! -z "$song" ]]; then
   echo "$artist - $song"
   echo "$artist - $song"

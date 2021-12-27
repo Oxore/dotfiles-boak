@@ -23,7 +23,7 @@ exec --no-startup-id export EDITOR=nvim
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:xos4 Terminus 10
+font Terminus 12
 
 set $up k
 set $down j
@@ -206,6 +206,7 @@ bar {
 }
 
 bindsym --release Mod4+c exec --no-startup-id zsh -c 'source ${HOME}/.paths.zsh && shot'
+bindsym --release Mod4+grave exec --no-startup-id zsh -c 'source ${HOME}/.paths.zsh && grim /tmp/file.png'
 
 # Mako
 bindsym Control+Space exec --no-startup-id makoctl dismiss

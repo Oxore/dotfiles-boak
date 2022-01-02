@@ -28,6 +28,7 @@ Plug 'cespare/vim-toml'
 Plug 'pest-parser/pest.vim'
 Plug 'jasonccox/vim-wayland-clipboard'
 Plug 'peterhoeg/vim-qml'
+Plug 'ziglang/zig.vim'
 call plug#end()
 
 source $HOME/.config/nvim/plugins.vim

@@ -57,6 +57,11 @@ function cht() {
   curl cheat.sh/$1 | less
 }
 
+function filestore() {
+  curl -F "=@$1" http://filestore.scheoble.xyz \
+    | jq "\"[![$2](\" + .thumbnail_file + \")](\" + .original_file + \")\""
+}
+
 # Prevent nested ranger sessions
 ranger() {
     if [ -z "$RANGER_LEVEL" ]; then
@@ -88,7 +93,7 @@ function grep-fzf {
     OUTPUT=$(grep -rnI . | fzf -m | grep -Po "^[^:]+:[^:]+")
     if [ ! -z $OUTPUT ]
     then
-      nvim $OUTPUT
+      $EDITOR $OUTPUT
     fi
 }
 

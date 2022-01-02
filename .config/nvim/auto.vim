@@ -10,6 +10,12 @@ augroup RustProject
     autocmd BufWritePost *.rs :Neomake
 augroup END
 
+" Invoke external make to get compilation errors in Go code
+augroup GoProject
+    autocmd!
+    autocmd BufWritePost *.go :Neomake
+augroup END
+
 " Store clipboard content after exit
 autocmd VimLeave * call system("xsel -ib", getreg('+'))
 

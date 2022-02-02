@@ -59,7 +59,7 @@ function cht() {
 
 function filestore() {
   curl -F "=@$1" http://filestore.scheoble.xyz \
-    | jq "\"[![$2](\" + .thumbnail_file + \")](\" + .original_file + \")\""
+    | jq -r "\"[![$2](\" + .thumbnail_file + \")](\" + .original_file + \")\""
 }
 
 # Prevent nested ranger sessions

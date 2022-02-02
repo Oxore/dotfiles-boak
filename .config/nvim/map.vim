@@ -11,8 +11,6 @@ vmap K <Nop>
 " Russian controls stuff
 set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯЖХЪБЮ;ABCDEFGHIJKLMNOPQRSTUVWXYZ:{}<>,фисвуапршолдьтщзйкыегмцчняхъю;abcdefghijklmnopqrstuvwxyz[].
 map О J
-map h <Nop>
-map l <Nop>
 
 " wrap in quotes
 vnoremap J" s""<ESC>PF"
@@ -80,6 +78,3 @@ inoremap <C-c> <Esc>
 
 " Print current line number and number of lines in current file
 nnoremap JL :echo line('.') . "/" . line('$')<CR>
-
-" Remap invoking history window for command mode
-nmap q; q:

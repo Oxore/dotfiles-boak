@@ -6,8 +6,8 @@ Usage: $0 <command> <options>:
 Commands (mutually exclusive):
   d, download               Download firmware to the chip
   g, gdb-server             Start GDB server on tcp/3333
-  l, lock                   Enable ROP level=1
-  u, unlock                 Disable ROP and perform bulk erase
+  l, lock <bank_id>         Enable ROP level=1
+  u, unlock <bank_id>       Disable ROP and perform bulk erase
   e, erase <bank_id>        Mass erase a bank specified by <bank_id>
 Options:
   -t, --target <target>     Target chip. Following chips supported:
@@ -53,6 +53,7 @@ programmer_is_valid() {
 lock() {
   local programmer=$1
   local target=$2
+  local bank_num=$3
   if [ ${target} == "h7x_dual_bank" ]; then
     local target_cmd="h7x"
   else
@@ -61,12 +62,13 @@ lock() {
   openocd \
   -f interface/${programmer}.cfg \
   -f target/stm32${target}.cfg \
-  -c "init; reset halt; stm32${target_cmd} lock 0; reset halt; exit"
+  -c "init; reset halt; stm32${target_cmd} lock ${bank_num}; reset halt; exit"
 }
 
 unlock() {
   local programmer=$1
   local target=$2
+  local bank_num=$3
   local target_cmd="${target}"
   if [ ${target} == "h7x_dual_bank" ]; then
     local target_cmd="h7x"
@@ -74,7 +76,7 @@ unlock() {
   openocd \
   -f interface/${programmer}.cfg \
   -f target/stm32${target}.cfg \
-  -c "init; reset halt; stm32${target_cmd} unlock 0; reset halt; exit"
+  -c "init; reset halt; flash banks; stm32${target_cmd} unlock ${bank_num}; reset halt; exit"
 }
 
 download() {
@@ -95,13 +97,14 @@ mass_erase() {
   local programmer=$1
   local target=$2
   local bank_num=$3
+  local target_cmd=$target
   if [ ${target} == "h7x_dual_bank" ]; then
     local target_cmd="h7x"
   fi
   openocd \
     -f interface/${programmer}.cfg \
     -f target/stm32${target}.cfg \
-    -c "init; reset halt; stm32${target_cmd} mass_erase $bank_num; reset halt; exit"
+    -c "init; reset halt; stm32${target_cmd} mass_erase ${bank_num}; reset halt; exit"
 }
 
 gdb-server() {
@@ -117,8 +120,8 @@ gdb-server() {
 
 while [[ "$#" -gt 0 ]]; do case $1 in
   e|erase) ACTION="${ACTION}erase"; BANK_ID=$2; shift;;
-  l|lock) ACTION="${ACTION}lock";;
-  u|unlock) ACTION="${ACTION}unlock";;
+  l|lock) ACTION="${ACTION}lock"; BANK_ID=$2; shift;;
+  u|unlock) ACTION="${ACTION}unlock"; BANK_ID=$2; shift;;
   d|download) ACTION="${ACTION}download";;
   g|gdb-server) ACTION="${ACTION}gdb-server";;
   -h|--help) usage; exit 0;;
@@ -145,9 +148,9 @@ fi
 
 # Validate and run command
 if [[ $ACTION == "lock" || $ACTION == "l" ]]; then
-  lock $PROGRAMMER $TARGET
+  lock $PROGRAMMER $TARGET $BANK_ID
 elif [[ $ACTION == "unlock" || $ACTION == "u" ]]; then
-  unlock $PROGRAMMER $TARGET
+  unlock $PROGRAMMER $TARGET $BANK_ID
 elif [[ $ACTION == "download" || $ACTION == "d" ]]; then
   # Validate FILE
   if [[ $FILE == "" ]]; then

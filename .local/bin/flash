@@ -60,9 +60,9 @@ lock() {
     local target_cmd="${target}"
   fi
   openocd \
-  -f interface/${programmer}.cfg \
-  -f target/stm32${target}.cfg \
-  -c "init; reset halt; stm32${target_cmd} lock ${bank_num}; reset halt; exit"
+    -f interface/${programmer}.cfg \
+    -f target/stm32${target}.cfg \
+    -c "init; reset halt; stm32${target_cmd} lock ${bank_num}; reset halt; exit"
 }
 
 unlock() {
@@ -74,9 +74,9 @@ unlock() {
     local target_cmd="h7x"
   fi
   openocd \
-  -f interface/${programmer}.cfg \
-  -f target/stm32${target}.cfg \
-  -c "init; reset halt; flash banks; stm32${target_cmd} unlock ${bank_num}; reset halt; exit"
+    -f interface/${programmer}.cfg \
+    -f target/stm32${target}.cfg \
+    -c "init; reset halt; flash banks; stm32${target_cmd} unlock ${bank_num}; reset halt; exit"
 }
 
 download() {

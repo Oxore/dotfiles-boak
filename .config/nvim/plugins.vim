@@ -19,7 +19,7 @@ let g:paredit_electric_return=0
 
 " Easymotion
 " Jump to anywhere with `<CTRL+Space>{char}{target}`
-nmap f <Plug>(easymotion-overwin-f)
+nmap f<Tab> <Plug>(easymotion-overwin-f)
  " type `l` and match `l`&`L`
 let g:EasyMotion_smartcase = 1
 " Smartsign (type `3` and match `3`&`#`)

@@ -2,29 +2,33 @@
 set print pretty on
 
 define asmstep
-    si
-    x/10i $pc
+  si
+  x/10i $pc
 end
 
 define connect
+  if $argc >= 1
+    target extended-remote localhost:$arg0
+  else
     target extended-remote localhost:3333
+  end
 end
 
 define mrh
-    monitor reset halt
+  monitor reset halt
 end
 
 define memprof
-    d br
-    b mm_malloc.c:188
-    set pagination off
-    while (1)
-      print size
-      c
-    end
+  d br
+  b mm_malloc.c:188
+  set pagination off
+  while (1)
+    print size
+    c
+  end
 end
 
 define log
-    set logging on
-    set trace-commands on
+  set logging on
+  set trace-commands on
 end

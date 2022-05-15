@@ -16,7 +16,7 @@ plugins=(git)
 
 # User configuration
 LANG=en_US.UTF-8
-ZSH_THEME="agnoster"
+ZSH_THEME="oxore"
 
 export VISUAL=nvim
 export EDITOR="$VISUAL"

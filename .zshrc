@@ -101,9 +101,16 @@ function gdd {
     git diff ${1}^ ${1}
 }
 
-function catbox {
+function catboxpersist {
   curl -X POST -F 'reqtype=fileupload' -F "fileToUpload=@$1" https://catbox.moe/user/api.php
   echo
+}
+
+function catbox {
+  local time=72h
+  curl -X POST -F 'reqtype=fileupload' -F "time=$time" -F "fileToUpload=@$1" https://litterbox.catbox.moe/resources/internals/api.php
+  echo
+  echo "time=$time" >&2
 }
 # Good alias but no longer works. Reporting error with message:
 # /home/oxore/.zshrc:fc:91: no such event: 0

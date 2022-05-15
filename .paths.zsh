@@ -8,10 +8,9 @@ export PATH="$PATH:$HOME/altera_lite/16.0/quartus/bin/"
 export PATH="$PATH:$HOME/opt/altera_lite/16.0/quartus/bin"
 export PATH="$PATH:$HOME/opt/altera_lite/16.0/modelsim_ase/bin"
 for dir in $HOME/opt/*; do
-  if [ -d $dir/bin ]; then
-    export PATH="$dir/bin:$PATH"
-    export MANPATH="$dir/share/man:$MANPATH"
-  fi
+  [ -d $dir/bin ] && export PATH="$dir/bin:$PATH"
+  [ -d $dir/usr/bin ] && export PATH="$dir/usr/bin:$PATH"
+  [ -d $dir/share/man ] && export MANPATH="$dir/share/man:$MANPATH"
 done
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.gem/ruby/2.5.0/bin"

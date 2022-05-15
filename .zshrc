@@ -28,24 +28,6 @@ source $ZSH/oh-my-zsh.sh
 
 cat $HOME/todo.txt 2>/dev/null | sed -r '/^\s*$/d'
 
-# Show up to level 2 dir name
-prompt_dir() {
-  prompt_segment 8 default '%2~'
-}
-
-# No "prompt_context"
-build_prompt() {
-  RETVAL=$?
-  prompt_status
-  prompt_virtualenv
-  prompt_dir
-  prompt_git
-  prompt_bzr
-  # I don't use hg and it is slows down every prompt
-  #prompt_hg
-  prompt_end
-}
-
 # remove /etc/hosts content from autocompetion
 zstyle -e ':completion:*:hosts' hosts 'reply=(
   ${=${${(f)"$(cat {/etc/ssh_,~/.ssh/known_}hosts(|2)(N) 2>/dev/null)"}%%[#| ]*}//,/ }

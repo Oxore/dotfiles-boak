@@ -6,6 +6,11 @@ define asmstep
   x/10i $pc
 end
 
+define asmnext
+  ni
+  x/10i $pc
+end
+
 define connect
   if $argc >= 1
     target extended-remote localhost:$arg0

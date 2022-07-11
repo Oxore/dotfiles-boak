@@ -46,7 +46,7 @@ vnoremap <c-r> y:%s/\V<C-R>"/<C-R>"/g<Left><Left>
 nnoremap Jt :%s/\s\+$//g<CR>
 
 " change all tabs with 4 spaces
-nnoremap Js :%s/\t/    /g<CR>
+nnoremap Js :retab!<CR>
 
 " find and replace word under cursor in current buffer
 nnoremap ci<CR> viwy:%s/\V\<<C-R>"\>/<C-R>"/g<Left><Left>

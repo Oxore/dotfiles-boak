@@ -43,7 +43,7 @@ function! ToggleCProject()
             autocmd BufRead,BufNewFile *.c set filetype=c
             autocmd BufWritePost *.c,*.cpp call CNeomakeFn()
             " Clean signs end error messages - workaround for headers
-            autocmd BufWritePost *.h,*.hpp NeomakeClean
+            autocmd BufWritePost *.c,*.cpp,*.h,*.hpp NeomakeClean
         augroup END
         let g:neomake_c_enabled_makers=['anycc']
         let g:neomake_cpp_enabled_makers=['anycc']
@@ -54,7 +54,7 @@ function! ToggleCProject()
             autocmd!
             autocmd BufRead,BufNewFile *.c set filetype=c
             " Clean signs end error messages remaining
-            autocmd BufWritePost *c,*cpp,*.h,*.hpp NeomakeClean
+            autocmd BufWritePost *.c,*.cpp,*.h,*.hpp NeomakeClean
         augroup END
         let g:neomake_c_enabled_makers=[]
         let g:neomake_cpp_enabled_makers=[]

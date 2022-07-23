@@ -51,6 +51,9 @@ nnoremap Js :retab!<CR>
 " find and replace word under cursor in current buffer
 nnoremap ci<CR> viwy:%s/\V\<<C-R>"\>/<C-R>"/g<Left><Left>
 
+" find and convert to snake_case word under cursor in current buffer
+nnoremap cil viwy:%s/\V\<<C-R>"\>/\= tolower(substitute(submatch(0), '\(\U\)\(\u\)', '\1_\2', 'g'))/g<CR>
+
 " Arrange windows
 nnoremap Jw :call Arrange()<CR>
 

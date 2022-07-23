@@ -7,6 +7,7 @@ endif
 
 " vim-move options
 let g:move_key_modifier = 'C'
+let g:move_key_modifier_visualmode = 'C'
 
 " Neomake tex warnings
 let g:neomake_tex_chktex_maker = {

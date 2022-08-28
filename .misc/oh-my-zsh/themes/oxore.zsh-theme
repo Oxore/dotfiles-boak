@@ -12,6 +12,7 @@ directory() {
 }
 
 prompt_status() {
+  # A little of clarification: https://stackoverflow.com/a/10194174
   echo "%(1j.%(?.[%F{cyan}z%f].[%F{cyan}z%f:%F{red}%?%f]).%(?..[%F{red}%?%f]))"
 }
 

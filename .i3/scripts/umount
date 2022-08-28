@@ -10,19 +10,18 @@
 
 unmountusb() {
   [ -z "$drives" ] && exit
-  chosen=$(echo "$drives" | rofi -dmenu -p "Unmount which drive?" | awk '{print $1}')
+  # `echo -e` to unescape '\xXX' characters
+  chosen=$(echo -e "$(echo "$drives" | rofi -dmenu -p "Unmount which drive?" | awk '{print $1}')")
   [ -z "$chosen" ] && exit
   result=$(udevil umount "$chosen" 2>&1)
   exitcode=$?
-  if pgrep -x dunst; then
-    [ $exitcode -eq 0 ] && notify-send "$chosen unmounted." || notify-send -u critical "$result"
-  fi
+  [ $exitcode -eq 0 ] && notify-send "\"${chosen}\" unmounted" || notify-send -u critical "$result"
 }
 
 unmountandroid() {
   chosen=$(awk '/simple-mtpfs/ {print $2}' /etc/mtab | rofi -dmenu -p "Unmount which device?")
   [ -z "$chosen" ] && exit
-  fusermount -u "$chosen" && pgrep -x dunst && notify-send "$chosen unmounted."
+  fusermount -u "$chosen" && pgrep -x dunst && notify-send "$chosen unmounted"
 }
 
 asktype() {

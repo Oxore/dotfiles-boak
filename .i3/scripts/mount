@@ -21,7 +21,7 @@ getmount() {
 mountusb() {
   chosen="$(echo "$usbdrives" | rofi -dmenu -p "Mount which drive?" | awk '{print $1}')"
   [ -z "$chosen" ] && exit
-  udevil mount "$chosen" && notify-send "$chosen mounted." && exit 0
+  udevil mount "$chosen" && notify-send "\"$chosen\" mounted" && exit 0
 }
 
 mountandroid() {
@@ -29,7 +29,7 @@ mountandroid() {
   [ -z "$chosen" ] && exit
   getmount "$HOME -maxdepth 3 -type d"
   simple-mtpfs --device "$chosen" "$mp"
-  notify-send "Android device mounted to $mp."
+  notify-send "Android device mounted to \"$mp\""
 }
 
 asktype() {

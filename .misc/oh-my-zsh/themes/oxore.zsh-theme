@@ -12,13 +12,7 @@ directory() {
 }
 
 prompt_status() {
-  local retval=$?
-  local -a symbols
-
-  [[ $(jobs -l | wc -l) -gt 0 ]] && symbols="${symbols:+${symbols}:}%F{cyan}z%f"
-  [[ $retval -ne 0 ]] && symbols="${symbols:+${symbols}:}%F{red}${retval}%f"
-
-  [[ -n "$symbols" ]] && echo "[$symbols]"
+  echo "%(1j.%(?.[%F{cyan}z%f].[%F{cyan}z%f:%F{red}%?%f]).%(?..[%F{red}%?%f]))"
 }
 
 # Git: branch/detached head, dirty status

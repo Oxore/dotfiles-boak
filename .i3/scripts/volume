@@ -9,7 +9,7 @@ format() {
   if [ "yes" = "$muted" ]; then
     echo " "
   else
-    echo "${volume}%"
+    echo " ${volume}%"
   fi
 }
 

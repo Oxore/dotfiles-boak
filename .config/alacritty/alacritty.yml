@@ -64,6 +64,9 @@ colors:
   #cursor:
   #  text: CellBackground
   #  cursor: CellForeground
+  cursor:
+    text: '#1d2021'
+    cursor: '#fbf1c7'
 
   # Vi mode cursor colors
   #

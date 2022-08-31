@@ -94,6 +94,14 @@ function catbox {
   echo
   echo "time=$time" >&2
 }
+
+function pass-fzf {
+  prefix="$HOME/.password-store"
+  name=$(find ${prefix} -name '*.gpg' | sed -E 's#'"${prefix}"'/(.*).gpg#\1#' | fzf) || return $?
+  echo "$name"
+  pass show $@ "$name"
+}
+
 # Good alias but no longer works. Reporting error with message:
 # /home/oxore/.zshrc:fc:91: no such event: 0
 # alias fuck="sudo $(fc -ln -1)"
@@ -137,6 +145,8 @@ bindkey "^N" down-line-or-beginning-search
 bindkey -s '^[o' 'ranger-cd\n'
 bindkey -s '^x^o' 'ranger-cd\n'
 bindkey -s '^x^f' 'grep-fzf\n'
+bindkey -s '^x^p' 'pass-fzf -c\n'
+bindkey -s '^xp' 'pass-fzf\n'
 bindkey -s '^z' 'fg\n'
 # use the vi navigation keys in menu completion
 bindkey -M menuselect 'h' vi-backward-char

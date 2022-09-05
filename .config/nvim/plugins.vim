@@ -37,5 +37,11 @@ endfunction
 nmap <silent> K :call <SID>show_documentation()<CR>
 nmap <silent> gd <plug>(coc-definition)
 nmap <silent> gr <plug>(coc-references)
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <silent><expr> <Tab>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <silent><expr> <S-Tab>
+      \ coc#pum#visible() ? coc#pum#prev(1) :
+      \ CheckBackspace() ? "\<S-Tab>" :
+      \ coc#refresh()

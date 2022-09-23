@@ -34,6 +34,6 @@ define memprof
 end
 
 define log
-  set logging on
+  set logging enabled on
   set trace-commands on
 end

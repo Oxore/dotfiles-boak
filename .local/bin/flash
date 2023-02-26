@@ -11,6 +11,7 @@ Commands (mutually exclusive):
   e, erase <bank_id>        Mass erase a bank specified by <bank_id>
 Options:
   -t, --target <target>     Target chip. Following chips supported:
+      f0x
       f1x
       f2x
       f4x
@@ -30,6 +31,7 @@ EOF
 target_is_valid() {
   local target=$1
   case $target in
+    f0x) return 0;;
     f1x) return 0;;
     f2x) return 0;;
     f4x) return 0;;

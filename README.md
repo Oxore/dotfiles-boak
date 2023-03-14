@@ -13,7 +13,7 @@ Over several years using "Agnoster" theme from [oh-my-zsh](https://github.com/ro
 
 Overall my terminal looks like this:
 
-![terminal](https://i.imgur.com/Ln0qwOU.png "Teminal look screenshot")
+![terminal](.misc/screenshots/2023-03-14_14:50:35_950x370.png "Teminal look screenshot")
 
 **Dependencies:**
 [`oh-my-zsh`](https://github.com/robbyrussell/oh-my-zsh)

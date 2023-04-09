@@ -40,7 +40,7 @@ function cht() {
 }
 
 function filestore() {
-  curl -F "=@$1" http://filestore.scheoble.xyz \
+  curl -F "=@$1" https://scheoble.xyz/filestore \
     | jq -r "\"[![$2](\" + .thumbnail_file + \")](\" + .original_file + \")\""
 }
 

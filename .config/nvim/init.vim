@@ -9,7 +9,7 @@ source $HOME/.config/nvim/map.vim
 
 call plug#begin('~/.local/share/nvim/site/plugged')
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'rafi/awesome-vim-colorschemes'
+Plug 'morhetz/gruvbox'
 Plug 'matze/vim-move'
 Plug 'danro/rename.vim'
 Plug 'tpope/vim-fugitive'

@@ -54,6 +54,8 @@ set hidden
 set scrolloff=4
 set tags=./tags;$HOME/
 set cinoptions=:0
+match TrailingWhitespace /\s\+$/
+hi def link TrailingWhitespace	Error
 
 " filebrowser options
 let g:netrw_banner=0 " remove top banner

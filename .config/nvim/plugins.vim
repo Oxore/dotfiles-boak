@@ -37,5 +37,18 @@ endfunction
 nmap <silent> K :call <SID>show_documentation()<CR>
 nmap <silent> gd <plug>(coc-definition)
 nmap <silent> gr <plug>(coc-references)
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+function! CocPumNext(amt)
+  return coc#pum#info()['inserted'] ?
+        \ coc#pum#next(a:amt) :
+        \ coc#pum#next(a:amt) . coc#pum#prev(a:amt)
+endfunction
+
+function! CocPumPrev(amt)
+  return coc#pum#info()['inserted'] ?
+        \ coc#pum#prev(a:amt) :
+        \ coc#pum#prev(a:amt) . coc#pum#next(a:amt)
+endfunction
+
+inoremap <expr> <Tab> coc#pum#visible() ? CocPumNext(1) : "\<Tab>"
+inoremap <expr> <S-Tab> coc#pum#visible() ? CocPumPrev(1) : "\<S-Tab>"

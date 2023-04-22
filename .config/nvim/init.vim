@@ -17,7 +17,7 @@ Plug 'neomake/neomake'
 Plug 'pboettch/vim-highlight-cursor-words', { 'for': ['c', 'cpp', 'rust'] }
 Plug 'tikhomirov/vim-glsl'
 Plug 'vim-scripts/paredit.vim'
-Plug 'bogado/file-line'
+Plug 'wsdjeg/vim-fetch'
 Plug 'francoiscabrol/ranger.vim', { 'branch': 'alt-implementation' }
 Plug 'easymotion/vim-easymotion'
 Plug 'octol/vim-cpp-enhanced-highlight', { 'for': ['c', 'cpp'] }

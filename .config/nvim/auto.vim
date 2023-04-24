@@ -16,6 +16,12 @@ augroup GoProject
     autocmd BufWritePost *.go :Neomake
 augroup END
 
+" Automatically  build plantuml files on save
+augroup PlantumlProject
+    autocmd!
+    autocmd BufWritePost *.plantuml :AsyncRun plantuml %
+augroup END
+
 " Store clipboard content after exit
 autocmd VimLeave * call system("xsel -ib", getreg('+'))
 

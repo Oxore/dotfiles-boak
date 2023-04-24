@@ -33,6 +33,7 @@ call plug#end()
 
 source $HOME/.config/nvim/plugins.vim
 
+set nomodeline " disable interpreting 'vi:', 'vim:' and 'ex:' lines in comments
 set path+=**
 filetype plugin on
 syntax on

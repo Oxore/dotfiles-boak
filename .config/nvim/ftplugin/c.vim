@@ -9,3 +9,4 @@ set cinoptions+=N-s
 autocmd Filetype c,cpp set comments^=:///
 autocmd Filetype c,cpp syn keyword NoteMarker BUG DEBUG UNDONE NOTE HACK BODGE KLUDGE containedin=cComment,cCommentL
 autocmd Filetype c,cpp hi def link NoteMarker	Todo
+let g:load_doxygen_syntax=1

@@ -1,6 +1,10 @@
 #set disassembly-flavor intel
 set print pretty on
 
+define asm
+  x/10i $pc
+end
+
 define asmstep
   si
   x/10i $pc

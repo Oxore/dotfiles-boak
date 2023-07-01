@@ -29,6 +29,7 @@ Plug 'pest-parser/pest.vim'
 Plug 'jasonccox/vim-wayland-clipboard'
 Plug 'peterhoeg/vim-qml'
 Plug 'ziglang/zig.vim'
+Plug 'skywind3000/asyncrun.vim'
 call plug#end()
 
 source $HOME/.config/nvim/plugins.vim
@@ -56,7 +57,7 @@ set scrolloff=4
 set tags=./tags;$HOME/
 set cinoptions=:0
 match TrailingWhitespace /\s\+$/
-hi def link TrailingWhitespace	Error
+hi def link TrailingWhitespace Error
 
 " filebrowser options
 let g:netrw_banner=0 " remove top banner

@@ -114,6 +114,7 @@ alias ydca="yadm diff --cached"
 alias ylg="yadm log --stat"
 alias yst="yadm status"
 alias yp="yadm push"
+alias yrst="yadm restore --staged"
 
 alias gd="git diff --histogram"
 alias gdca="git diff --histogram --cached"

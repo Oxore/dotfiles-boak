@@ -27,6 +27,10 @@ define mrh
   monitor reset halt
 end
 
+define mr
+  monitor reset
+end
+
 define memprof
   d br
   b mm_malloc.c:188

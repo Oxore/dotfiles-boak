@@ -2,6 +2,9 @@
     "diagnostic.enable": false,
     "diagnostic.enableSign": false,
     "diagnostic.highlighLimit": 0,
+    "coc.preferences.codeLens.enable": false,
+    "pyright.inlayHints.functionReturnTypes": false,
+    "pyright.inlayHints.variableTypes": false,
     "languageserver": {
         "ccls": {
             "command": "ccls",

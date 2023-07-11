@@ -36,7 +36,7 @@ nnoremap Jc :call ToggleCProject()<CR>
 vnoremap ,v s\verb\|\|<C-[>Pll
 
 " search selected text
-vnoremap // y/<C-R>"<CR>
+vnoremap // y/\V<C-R>"<CR>
 vnoremap /. y/\V\<<C-R>"\><CR>
 
 " find and replace selected text in current buffer

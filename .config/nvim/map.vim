@@ -14,6 +14,7 @@ map О J
 
 " wrap in quotes
 vnoremap J" s""<ESC>PF"
+vnoremap J' s''<ESC>PF"
 nnoremap J" ciw""<ESC>PF"
 
 " save by Ctrl-S

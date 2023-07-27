@@ -26,6 +26,12 @@ let g:EasyMotion_smartcase = 1
 " Smartsign (type `3` and match `3`&`#`)
 let g:EasyMotion_use_smartsign_us = 1
 
+" nnn.vim
+let g:nnn#command = 'nnn -do'
+let g:nnn#set_default_mappings = 0
+let g:nnn#action = { 'l': 'e' }
+let g:nnn#replace_netrw = 1
+
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')

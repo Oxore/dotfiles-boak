@@ -18,7 +18,6 @@ Plug 'pboettch/vim-highlight-cursor-words', { 'for': ['c', 'cpp', 'rust'] }
 Plug 'tikhomirov/vim-glsl'
 Plug 'vim-scripts/paredit.vim'
 Plug 'wsdjeg/vim-fetch'
-Plug 'francoiscabrol/ranger.vim', { 'branch': 'alt-implementation' }
 Plug 'easymotion/vim-easymotion'
 Plug 'octol/vim-cpp-enhanced-highlight', { 'for': ['c', 'cpp'] }
 Plug 'aklt/plantuml-syntax'
@@ -30,6 +29,8 @@ Plug 'jasonccox/vim-wayland-clipboard'
 Plug 'peterhoeg/vim-qml'
 Plug 'ziglang/zig.vim'
 Plug 'skywind3000/asyncrun.vim'
+Plug 'junegunn/fzf.vim'
+Plug 'mcchrish/nnn.vim'
 call plug#end()
 
 source $HOME/.config/nvim/plugins.vim
@@ -62,4 +63,3 @@ hi def link TrailingWhitespace Error
 " filebrowser options
 let g:netrw_banner=0 " remove top banner
 let g:netrw_liststyle=3 " tree liststyle
-let g:ranger_replace_netrw = 1

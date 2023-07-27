@@ -24,7 +24,7 @@ nnoremap <c-s> :w<CR>
 vnoremap <c-c> "+y
 
 " start ranger by Alt-o
-nnoremap <a-o> :Ranger<CR>
+nnoremap <a-o> :NnnPicker %:p:h<CR>
 
 " edit init.vim
 nnoremap Je :e ~/.config/nvim/init.vim<CR>

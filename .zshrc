@@ -22,6 +22,23 @@ export VISUAL=nvim
 export EDITOR="$VISUAL"
 export MENUCONFIG_COLOR="blackbg"
 export MAKEFLAGS="--no-print-directory"
+export NNN_PLUG="p:preview-tui"
+# block device (yellow)
+#                    |
+export NNN_FCOLORS="030304020707060805050501"
+#                      | | | | | | | | | | |
+# char device (yellow) + | | | | | | | | | |
+# directory (blue) ------+ | | | | | | | | |
+# executable (green) ------+ | | | | | | | |
+# regular (white) -----------+ | | | | | | |
+# hard link (white) -----------+ | | | | | |
+# symbolic link (cyan) ----------+ | | | | |
+# missing or file details (gray) --+ | | | |
+# orphaned symbolic link (magenta) --+ | | |
+# FIFO (magenta) ----------------------+ | |
+# Socket (magenta) ----------------------+ |
+# Unknown OR 0B regular/exe (red) ---------+
+export NNN_PAGER="cat"
 
 source $HOME/.paths.zsh
 source $ZSH/oh-my-zsh.sh
@@ -61,6 +78,37 @@ function ranger-cd {
         cd -- "$(cat "$tempfile")"
     fi
     rm -f -- "$tempfile"
+}
+
+nnn-cd ()
+{
+    # Block nesting of nnn in subshells
+    [ "${NNNLVL:-0}" -eq 0 ] || {
+        echo "nnn is already running"
+        return
+    }
+
+    # The behaviour is set to cd on quit (nnn checks if NNN_TMPFILE is set)
+    # If NNN_TMPFILE is set to a custom path, it must be exported for nnn to
+    # see. To cd on quit only on ^G, remove the "export" and make sure not to
+    # use a custom path, i.e. set NNN_TMPFILE *exactly* as follows:
+    #      NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
+    export NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
+
+    # Unmask ^Q (, ^V etc.) (if required, see `stty -a`) to Quit nnn
+    # stty start undef
+    # stty stop undef
+    # stty lwrap undef
+    # stty lnext undef
+
+    # The command builtin allows one to alias nnn to n, if desired, without
+    # making an infinitely recursive alias
+    command nnn -ade "$@"
+
+    [ ! -f "$NNN_TMPFILE" ] || {
+        . "$NNN_TMPFILE"
+        rm -f "$NNN_TMPFILE" > /dev/null
+    }
 }
 
 function fuzzy-kill {
@@ -141,10 +189,11 @@ alias ьфлу="make"
 alias bt='coredumpctl gdb -q $(coredumpctl -r -1 | sed -E -e "s/ +/\n/g" | sed -n "12p")'
 alias sudo="sudo " # Enables all user alises under sudo
 alias emacs="env TERM=xterm-24bit emacs"
+alias nnn="nnn -ade"
 bindkey "^P" up-line-or-beginning-search
 bindkey "^N" down-line-or-beginning-search
-bindkey -s '^[o' 'ranger-cd\n'
-bindkey -s '^x^o' 'ranger-cd\n'
+bindkey -s '^[o' 'nnn-cd\n'
+bindkey -s '^x^o' 'nnn-cd\n'
 bindkey -s '^x^f' 'grep-fzf\n'
 bindkey -s '^x^p' 'pass-fzf -c\n'
 bindkey -s '^xp' 'pass-fzf\n'

@@ -156,6 +156,8 @@ function pass-fzf {
 
 alias ya="yadm add"
 alias yc="yadm commit --verbose"
+alias yc!="yadm commit --amend --verbose"
+alias ycn!="yadm commit --amend --verbose --no-edit"
 alias yco="yadm checkout"
 alias yd="yadm diff --histogram"
 alias ydca="yadm diff --cached"

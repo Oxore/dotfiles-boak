@@ -23,8 +23,8 @@ nnoremap <c-s> :w<CR>
 " copy by Ctrl-C
 vnoremap <c-c> "+y
 
-" start ranger by Alt-o
-nnoremap <a-o> :NnnPicker %:p:h<CR>
+" start nnn by Alt-o
+nnoremap <a-o> :NnnPicker %:p<CR>
 
 " edit init.vim
 nnoremap Je :e ~/.config/nvim/init.vim<CR>

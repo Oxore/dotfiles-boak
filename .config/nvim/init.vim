@@ -31,6 +31,7 @@ Plug 'ziglang/zig.vim'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'junegunn/fzf.vim'
 Plug 'mcchrish/nnn.vim'
+Plug 'jceb/vim-orgmode'
 call plug#end()
 
 source $HOME/.config/nvim/plugins.vim

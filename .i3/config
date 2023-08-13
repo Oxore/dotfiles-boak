@@ -240,6 +240,7 @@ assign [class="Pale moon"] 1
 assign [class="Telegram"] 5
 for_window [class="SFML"] floating enable
 for_window [class="(?i)opengl"] floating enable
+for_window [title="(?i)opengl"] floating enable
 for_window [title="galculator"] floating enable
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable

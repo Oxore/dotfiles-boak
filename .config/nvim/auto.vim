@@ -22,6 +22,12 @@ augroup PlantumlProject
     autocmd BufWritePost *.plantuml :AsyncRun plantuml %
 augroup END
 
+" Automatically  build tex files on save
+augroup Tex
+    autocmd!
+    autocmd BufWritePost *.tex :AsyncRun make
+augroup END
+
 " Store clipboard content after exit
 autocmd VimLeave * call system("xsel -ib", getreg('+'))
 

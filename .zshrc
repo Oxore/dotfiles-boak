@@ -103,7 +103,7 @@ nnn-cd ()
 
     # The command builtin allows one to alias nnn to n, if desired, without
     # making an infinitely recursive alias
-    command nnn -ade "$@"
+    command nnn -adeA "$@"
 
     [ ! -f "$NNN_TMPFILE" ] || {
         . "$NNN_TMPFILE"
@@ -191,7 +191,7 @@ alias ьфлу="make"
 alias bt='coredumpctl gdb -q $(coredumpctl -r -1 | sed -E -e "s/ +/\n/g" | sed -n "12p")'
 alias sudo="sudo " # Enables all user alises under sudo
 alias emacs="env TERM=xterm-24bit emacs"
-alias nnn="nnn -ade"
+alias nnn="nnn -adeA"
 bindkey "^P" up-line-or-beginning-search
 bindkey "^N" down-line-or-beginning-search
 bindkey -s '^[o' 'nnn-cd\n'

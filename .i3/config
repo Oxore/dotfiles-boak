@@ -228,8 +228,8 @@ focus_follows_mouse no
 
 #no_borders
 hide_edge_borders both
-new_window 1pixel
-new_float 1pixel
+default_border pixel 2
+default_floating_border pixel 2
 
 #some floating windows
 for_window [class="st"] floating enable

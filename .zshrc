@@ -150,6 +150,10 @@ function pass-fzf {
   pass show $@ "$name"
 }
 
+function datef {
+  date $@ | sed s/:/-/g
+}
+
 # Good alias but no longer works. Reporting error with message:
 # /home/oxore/.zshrc:fc:91: no such event: 0
 # alias fuck="sudo $(fc -ln -1)"

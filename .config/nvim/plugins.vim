@@ -27,7 +27,7 @@ let g:EasyMotion_smartcase = 1
 let g:EasyMotion_use_smartsign_us = 1
 
 " nnn.vim
-let g:nnn#command = 'nnn -do'
+let g:nnn#command = 'nnn -doA'
 let g:nnn#set_default_mappings = 0
 let g:nnn#action = { 'l': 'e' }
 let g:nnn#replace_netrw = 1

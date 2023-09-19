@@ -3,28 +3,11 @@
     "diagnostic.enableSign": false,
     "diagnostic.highlighLimit": 0,
     "coc.preferences.codeLens.enable": false,
+    "inlayHint.enable": false,
     "pyright.inlayHints.functionReturnTypes": false,
     "pyright.inlayHints.variableTypes": false,
-    "languageserver": {
-        "ccls": {
-            "command": "ccls",
-            "filetypes": [
-                "c",
-                "cpp",
-                "objc",
-                "objcpp"
-            ],
-            "rootPatterns": [
-                "compile_commands.json",
-                "cmake[-_]build.*",
-                ".git/",
-                ".hg/"
-            ],
-            "initializationOptions": {
-                "cache": {
-                    "directory": "/tmp/ccls"
-                }
-            }
-        }
-    }
+    "clangd.arguments": ["--background-index=false"],
+    "clangd.disableProgressNotifications": true,
+    "clangd.disableSnippetCompletion": true,
+    "clangd.disableDiagnostics": true
 }

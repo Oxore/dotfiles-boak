@@ -196,6 +196,11 @@ alias bt='coredumpctl gdb -q $(coredumpctl -r -1 | sed -E -e "s/ +/\n/g" | sed -
 alias sudo="sudo " # Enables all user alises under sudo
 alias emacs="env TERM=xterm-24bit emacs"
 alias nnn="nnn -adeA"
+alias ru="trans en:ru"
+alias ут="trans ru:en"
+alias en="trans ru:en"
+alias ен="trans ru:en"
+alias тр="trans ru:en"
 bindkey "^P" up-line-or-beginning-search
 bindkey "^N" down-line-or-beginning-search
 bindkey -s '^[o' 'nnn-cd\n'

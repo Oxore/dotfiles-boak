@@ -1,4 +1,2 @@
-set linebreak
-setlocal shiftwidth=2
-setlocal tabstop=2
-setlocal expandtab
+setlocal linebreak
+setlocal sw=2 ts=2 expandtab

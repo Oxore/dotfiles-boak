@@ -1,5 +1,4 @@
-setlocal expandtab
 setlocal nowrap
-set tabstop=2 shiftwidth=2 tw=80
+setlocal ts=4 sw=4 tw=80 expandtab
 " Do not autowrap text using textwidth
 setlocal fo-=t

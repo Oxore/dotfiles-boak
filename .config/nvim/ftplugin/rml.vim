@@ -1,4 +1,2 @@
-set syntax=html
-set shiftwidth=2
-set tabstop=2
-set expandtab
+setlocal syntax=html
+setlocal sw=2 ts=2 expandtab

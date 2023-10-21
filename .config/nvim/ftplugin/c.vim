@@ -4,8 +4,8 @@ setlocal expandtab
 setlocal nowrap
 setlocal textwidth=80
 setlocal tabstop=4 shiftwidth=4
-set cinoptions+=g0
-set cinoptions+=N-s
+setlocal cinoptions+=g0
+setlocal cinoptions+=N-s
 autocmd Filetype c,cpp set comments^=:///
 autocmd Filetype c,cpp syn keyword NoteMarker BUG DEBUG UNDONE NOTE HACK BODGE KLUDGE containedin=cComment,cCommentL
 autocmd Filetype c,cpp hi def link NoteMarker	Todo

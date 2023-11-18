@@ -259,7 +259,7 @@ for_window [window_role="task_dialog"] floating enable
 
 input type:keyboard {
 	repeat_rate 60
-	repeat_delay 300
+	repeat_delay 200
 	xkb_layout us,ru
 	xkb_options grp:caps_toggle
 }

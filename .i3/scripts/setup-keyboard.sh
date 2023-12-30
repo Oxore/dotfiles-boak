@@ -4,5 +4,5 @@ export $(tr '\0' '\n' </proc/$(ps a -o pid,cmd \
   | head -n1 \
   | awk '{print $1}')/environ \
   | grep DISPLAY)
-xset r rate 300 60
+xset r rate 200 60
 setxkbmap -model pc105 -layout us,ru -option grp:caps_toggle

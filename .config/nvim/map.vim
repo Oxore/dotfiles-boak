@@ -2,20 +2,13 @@
 nnoremap <ESC> :noh<CR>
 nnoremap <CR> :noh<CR><CR>
 
-" I often press shift+j accidentally
-map J <Nop>
-
-" I often press shift+K in visual string mode accidentally
-vmap K <Nop>
-
 " Russian controls stuff
 set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯЖХЪБЮ;ABCDEFGHIJKLMNOPQRSTUVWXYZ:{}<>,фисвуапршолдьтщзйкыегмцчняхъю;abcdefghijklmnopqrstuvwxyz[].
-map О J
 
 " wrap in quotes
-vnoremap J" s""<ESC>PF"
-vnoremap J' s''<ESC>PF"
-nnoremap J" ciw""<ESC>PF"
+vnoremap <leader>" s""<ESC>PF"
+vnoremap <leader>' s''<ESC>PF"
+nnoremap <leader>" ciw""<ESC>PF"
 
 " save by Ctrl-S
 nnoremap <c-s> :w<CR>
@@ -27,11 +20,11 @@ vnoremap <c-c> "+y
 nnoremap <a-o> :NnnPicker %:p<CR>
 
 " edit init.vim
-nnoremap Je :e ~/.config/nvim/init.vim<CR>
+nnoremap <leader>e :e ~/.config/nvim/init.vim<CR>
 autocmd! bufwritepost ~/.config/nvim/init.vim execute "normal! :source ~/.config/nvim/init.vim"
 
 " toggle auto Neomake!
-nnoremap Jc :call ToggleCProject()<CR>
+nnoremap <leader>c :call ToggleCProject()<CR>
 
 " latex macros
 vnoremap ,v s\verb\|\|<C-[>Pll
@@ -44,10 +37,10 @@ vnoremap /. y/\V\<<C-R>"\><CR>
 vnoremap <c-r> y:%s/\V<C-R>"/<C-R>"/g<Left><Left>
 
 " remove trailing whitespaces
-nnoremap Jt :%s/\s\+$//g<CR>
+nnoremap <leader>t :%s/\s\+$//g<CR>
 
 " change all tabs with 4 spaces
-nnoremap Js :retab!<CR>
+nnoremap <leader>s :retab!<CR>
 
 " find and replace word under cursor in current buffer
 nnoremap ci<CR> viwy:%s/\V\<<C-R>"\>/<C-R>"/g<Left><Left>
@@ -56,16 +49,16 @@ nnoremap ci<CR> viwy:%s/\V\<<C-R>"\>/<C-R>"/g<Left><Left>
 nnoremap cil viwy:%s/\V\<<C-R>"\>/\= tolower(substitute(submatch(0), '\(\U\)\(\u\)', '\1_\2', 'g'))/g<CR>
 
 " Arrange windows
-nnoremap Jw :call Arrange()<CR>
+nnoremap <leader>w :call Arrange()<CR>
 
 " :ls :b<Space>
-nnoremap Jl :ls<CR>:b<Space>
+nnoremap <leader>l :ls<CR>:b<Space>
 
 " Compile C file and view disasm of the result object
-nnoremap Jd :call CViewMixedSrcDisasm()<CR>
+nnoremap <leader>d :call CViewMixedSrcDisasm()<CR>
 
 " Search for merge conflict markers
-nnoremap Jm /^<<<<<<<\\|^=======\\|^>>>>>>><CR>
+nnoremap <leader>m /^<<<<<<<\\|^=======\\|^>>>>>>><CR>
 
 " Exit from terminal input mode
 tnoremap <Esc> <C-\><C-n>
@@ -81,4 +74,4 @@ tnoremap <Esc> <C-\><C-n>
 inoremap <C-c> <Esc>
 
 " Print current line number and number of lines in current file
-nnoremap JL :echo line('.') . "/" . line('$')<CR>
+nnoremap <leader>L :echo line('.') . "/" . line('$')<CR>

@@ -209,6 +209,7 @@ bar {
 
 bindsym --release Mod4+c exec --no-startup-id zsh -c 'source ${HOME}/.paths.zsh && shot'
 bindsym --release Mod4+grave exec --no-startup-id zsh -c 'source ${HOME}/.paths.zsh && grim /tmp/file.png'
+bindsym --release Mod4+l exec --no-startup-id swaylock -c 1D2021 --show-keyboard-layout --show-failed-attempts --indicator-caps-lock
 
 # Mako
 bindsym Control+Space exec --no-startup-id makoctl dismiss

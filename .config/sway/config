@@ -12,7 +12,7 @@
 
 exec mako
 
-exec --no-startup-id st -e tmux
+exec --no-startup-id alacritty -e tmux
 
 output "*" bg "#1D2021" solid_color
 
@@ -34,7 +34,7 @@ set $right l
 floating_modifier Mod4
 
 # start a terminal
-bindsym Mod4+Return exec --no-startup-id st
+bindsym Mod4+Return exec --no-startup-id alacritty
 
 # kill focused window
 bindsym Mod4+Shift+q kill

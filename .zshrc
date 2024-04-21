@@ -151,7 +151,7 @@ function pass-fzf {
 }
 
 function datef {
-  date $@ | sed s/:/-/g
+  date $@ | sed 's/[^a-zA-Z0-9+]/-/g'
 }
 
 # Good alias but no longer works. Reporting error with message:

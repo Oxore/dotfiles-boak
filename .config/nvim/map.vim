@@ -8,7 +8,9 @@ set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯЖХЪБЮ;ABCDE
 " wrap in quotes
 vnoremap <leader>" s""<ESC>PF"
 vnoremap <leader>' s''<ESC>PF"
+vnoremap <leader>` s``<ESC>PF`
 nnoremap <leader>" ciw""<ESC>PF"
+nnoremap <leader>` ciw``<ESC>PF`
 
 " save by Ctrl-S
 nnoremap <c-s> :w<CR>

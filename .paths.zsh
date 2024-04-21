@@ -8,7 +8,7 @@ export PATH="$PATH:$HOME/altera_lite/16.0/quartus/bin/"
 export PATH="$PATH:$HOME/opt/altera_lite/16.0/quartus/bin"
 export PATH="$PATH:$HOME/opt/altera_lite/16.0/modelsim_ase/bin"
 if [ -d "$HOME/opt" ]; then
-  for dir in $(ls "$HOME/opt"); do
+  for dir in $(find "$HOME/opt" -maxdepth 1 -type d); do
     [ -d "$dir/bin" ] && export PATH="$dir/bin:$PATH"
     [ -d "$dir/usr/bin" ] && export PATH="$dir/usr/bin:$PATH"
     [ -d "$dir/share/man" ] && export MANPATH="$dir/share/man:$MANPATH"

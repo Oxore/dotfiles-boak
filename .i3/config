@@ -45,9 +45,9 @@ bindsym Mod4+Shift+q kill
 
 # various rofi based tools
 bindsym Mod4+d exec --no-startup-id sh -c \
-  'source ${HOME}/.paths.zsh && rofi -show run'
+  '. ${HOME}/.paths.zsh && rofi -show run'
 bindsym Mod4+q exec --no-startup-id sh -c \
-  'source ${HOME}/.paths.zsh && rofi -show drun'
+  '. ${HOME}/.paths.zsh && rofi -show drun'
 bindsym Mod4+m exec --no-startup-id sh -c '~/.i3/scripts/mount'
 bindsym Mod4+u exec --no-startup-id sh -c '~/.i3/scripts/umount'
 

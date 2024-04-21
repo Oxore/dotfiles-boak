@@ -45,7 +45,7 @@ source $ZSH/oh-my-zsh.sh
 
 cat $HOME/todo.txt 2>/dev/null | sed -r '/^\s*$/d'
 
-# remove /etc/hosts content from autocompetion
+# remove /etc/hosts content from autocompletion
 zstyle -e ':completion:*:hosts' hosts 'reply=(
   ${=${${(f)"$(cat {/etc/ssh_,~/.ssh/known_}hosts(|2)(N) 2>/dev/null)"}%%[#| ]*}//,/ }
   ${=${${${${(@M)${(f)"$(cat ~/.ssh/config 2>/dev/null)"}:#Host *}#Host }:#*\**}:#*\?*}}
@@ -215,7 +215,11 @@ bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 
-# FZF autocomplete
-source /usr/share/fzf/key-bindings.zsh
+# FZF autocomplete for Arch and Gentoo
+[ -e /usr/share/fzf/key-bindings.zsh ] && \
+  source /usr/share/fzf/key-bindings.zsh
+# FZF autocomplete for Ubuntu
+[ -e /usr/share/doc/fzf/examples/key-bindings.zsh ] && \
+  source /usr/share/doc/fzf/examples/key-bindings.zsh
 
 unset _JAVA_OPTIONS

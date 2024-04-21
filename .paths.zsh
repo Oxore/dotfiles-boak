@@ -7,15 +7,17 @@ export PATH="$PATH:$HOME/opt/android-sdk-r21/android-ndk-r8e"
 export PATH="$PATH:$HOME/altera_lite/16.0/quartus/bin/"
 export PATH="$PATH:$HOME/opt/altera_lite/16.0/quartus/bin"
 export PATH="$PATH:$HOME/opt/altera_lite/16.0/modelsim_ase/bin"
-for dir in $HOME/opt/*; do
-  [ -d $dir/bin ] && export PATH="$dir/bin:$PATH"
-  [ -d $dir/usr/bin ] && export PATH="$dir/usr/bin:$PATH"
-  [ -d $dir/share/man ] && export MANPATH="$dir/share/man:$MANPATH"
-done
+if [ -d "$HOME/opt" ]; then
+  for dir in $(ls "$HOME/opt"); do
+    [ -d "$dir/bin" ] && export PATH="$dir/bin:$PATH"
+    [ -d "$dir/usr/bin" ] && export PATH="$dir/usr/bin:$PATH"
+    [ -d "$dir/share/man" ] && export MANPATH="$dir/share/man:$MANPATH"
+  done
+fi
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.gem/ruby/2.5.0/bin"
 export PATH="$PATH:$HOME/.luarocks/bin"
-source "$HOME/.cargo/env"
+[ -e "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
 export PATH="$HOME/.perl5/bin${PATH:+:${PATH}}"
 export PERL5LIB="$HOME/.perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"
 export PERL_LOCAL_LIB_ROOT="$HOME/.perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"

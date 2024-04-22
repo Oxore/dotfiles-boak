@@ -223,3 +223,5 @@ bindkey -M menuselect 'j' vi-down-line-or-history
   source /usr/share/doc/fzf/examples/key-bindings.zsh
 
 unset _JAVA_OPTIONS
+
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"

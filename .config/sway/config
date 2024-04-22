@@ -10,6 +10,8 @@
 # layout, use the i3-config-wizard
 #
 
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+
 exec mako
 
 exec --no-startup-id alacritty -e tmux

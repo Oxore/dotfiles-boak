@@ -29,6 +29,7 @@ Plug 'jasonccox/vim-wayland-clipboard'
 Plug 'peterhoeg/vim-qml'
 Plug 'ziglang/zig.vim'
 Plug 'skywind3000/asyncrun.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'mcchrish/nnn.vim'
 Plug 'jceb/vim-orgmode'

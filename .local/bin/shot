@@ -25,7 +25,7 @@ function x11_shot {
 
   elif [ -n "$SCROT" ]; then
     $SCROT \
-      -s "$shots_dir/%Y-%m-%d_%H:%M:%S_\$wx\$h.png" \
+      -s "$shots_dir/%Y-%m-%d_%H-%M-%S_\$wx\$h.png" \
       -e "cp \$f \"$common_file_name\"; xclip -selection clipboard -target image/png -i \$f"
 
   else
@@ -40,7 +40,7 @@ function wayland_shot {
   if [ -n "$GRIM" ] && [ -n "$SLURP" ]; then
     slurp_selection=$($SLURP)
     width_heigth=$(echo $slurp_selection | cut -d' ' -f2)
-    file_name=$shots_dir/$(date +%F_%T)_$width_heigth.png
+    file_name=$shots_dir/$(date +%F_%T | sed 's/[^a-zA-Z0-9+]/-/g')_$width_heigth.png
     $GRIM -g "$slurp_selection" $file_name
     cp $file_name $common_file_name
   else

@@ -78,8 +78,13 @@ function! CNeomakeFn()
   for entry in compile_commands
     let l:fname = get(entry, 'file', '')
     let l:dname = get(entry, 'directory', '')
+    if (l:fname[0] == '/')
+      let l:fpath = trim(system('realpath ' . fname))
+    else
+      let l:fpath = trim(system('realpath ' . dname . '/' . fname))
+    endif
 
-    if simplify(dname . '/' . fname) =~ expand('%:p')
+    if simplify(fpath) =~ expand('%:p')
       let l:args = []
       let l:args_to_filter = []
       " FIXME Splitting by spaces may cause problems on filenames with spaces

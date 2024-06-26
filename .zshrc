@@ -39,6 +39,8 @@ export NNN_FCOLORS="030304020707060805050501"
 # Socket (magenta) ----------------------+ |
 # Unknown OR 0B regular/exe (red) ---------+
 export NNN_PAGER="cat"
+# I don't need the locker feature, it is very annoying
+export NNN_LOCKER="true"
 
 source $HOME/.paths.zsh
 source $ZSH/oh-my-zsh.sh

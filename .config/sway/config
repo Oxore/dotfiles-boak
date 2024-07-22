@@ -10,6 +10,10 @@
 # layout, use the i3-config-wizard
 #
 
+exec swayidle -w \
+	timeout 500 'swaylock -f -c 1D2021 --show-keyboard-layout --show-failed-attempts --indicator-caps-lock' \
+	before-sleep 'swaylock -f -c 1D2021 --show-keyboard-layout --show-failed-attempts --indicator-caps-lock'
+
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 
 exec mako
@@ -211,7 +215,7 @@ bar {
 
 bindsym --release Mod4+c exec --no-startup-id zsh -c 'source ${HOME}/.paths.zsh && shot'
 bindsym --release Mod4+grave exec --no-startup-id zsh -c 'source ${HOME}/.paths.zsh && grim /tmp/file.png'
-bindsym --release Mod4+l exec --no-startup-id swaylock -c 1D2021 --show-keyboard-layout --show-failed-attempts --indicator-caps-lock
+bindsym --release Mod4+semicolon exec --no-startup-id swaylock -c 1D2021 --show-keyboard-layout --show-failed-attempts --indicator-caps-lock
 
 # Mako
 bindsym Control+Space exec --no-startup-id makoctl dismiss

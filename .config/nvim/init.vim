@@ -9,7 +9,7 @@ source $HOME/.config/nvim/map.vim
 
 call plug#begin('~/.local/share/nvim/site/plugged')
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'morhetz/gruvbox'
+Plug 'gruvbox-community/gruvbox'
 Plug 'matze/vim-move'
 Plug 'danro/rename.vim'
 Plug 'tpope/vim-fugitive'
@@ -42,8 +42,8 @@ set nomodeline " disable interpreting 'vi:', 'vim:' and 'ex:' lines in comments
 set path+=**
 filetype plugin on
 syntax on
-colorscheme gruvbox
 let g:gruvbox_contrast_dark='hard'
+colorscheme gruvbox
 set bg=dark
 let &colorcolumn='81,101'
 set number

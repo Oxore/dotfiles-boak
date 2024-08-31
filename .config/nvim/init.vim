@@ -42,7 +42,6 @@ set nomodeline " disable interpreting 'vi:', 'vim:' and 'ex:' lines in comments
 set path+=**
 filetype plugin on
 syntax on
-let g:gruvbox_contrast_dark='hard'
 colorscheme gruvbox
 set bg=dark
 let &colorcolumn='81,101'

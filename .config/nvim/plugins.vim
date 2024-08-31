@@ -5,6 +5,10 @@ if empty (glob('~/.local/share/nvim/site/autoload/plug.vim'))
     autocmd VimEnter *PlugInstall --sync|source $MYVIMRC
 endif
 
+" gruvbox
+let g:gruvbox_legacy_language_groups=1
+let g:gruvbox_contrast_dark='hard'
+
 " vim-move options
 let g:move_key_modifier = 'C'
 let g:move_key_modifier_visualmode = 'C'

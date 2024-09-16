@@ -10,7 +10,7 @@ exec_always --no-startup-id xinput set-prop "ELAN0503:00 04F3:3093 Touchpad" "Sy
 
 exec --no-startup-id sh ~/.i3/HDMI1@top.sh
 exec_always --no-startup-id feh --bg-fill ~/Pictures/.w.png
-exec --no-startup-id xset r rate 200 60
+exec --no-startup-id xset r rate 230 60
 exec --no-startup-id export EDITOR=nvim
 exec --no-startup-id redshift -l 59.56:30.18
 

@@ -34,6 +34,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'mcchrish/nnn.vim'
 Plug 'jceb/vim-orgmode'
 Plug 'BurntSushi/ripgrep'
+Plug 'mbbill/undotree'
 call plug#end()
 
 source $HOME/.config/nvim/plugins.vim

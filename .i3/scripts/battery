@@ -15,6 +15,7 @@
 use strict;
 use warnings;
 use utf8;
+binmode(STDOUT, ":encoding(UTF-8)");
 
 my $acpi;
 my $bat_number = $ENV{BLOCK_INSTANCE} || 0;

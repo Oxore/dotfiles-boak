@@ -1,12 +1,36 @@
-[ -e "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
+if [ -e "$HOME/.cargo/env" ]; then
+  source "$HOME/.cargo/env"
+fi
 
-d="$HOME/.go"; [[ -d "$d" ]] && export GOPATH="$d"
-d="$HOME/opt/android-sdk-r21"; [[ -d "$d" ]] && export ANDROID_HOME="$d"
-d="$HOME/.perl5/lib/perl5"; [[ -d "$d" ]] && export PERL5LIB="$d"
-d="$HOME/.perl5"; [[ -d "$d" ]] && ! [[ "$PERL_LOCAL_LIB_ROOT" =~ "$d" ]] && export PERL_LOCAL_LIB_ROOT="$d:$PERL5LIB"
-d="--install_base \"$HOME/.perl5\""; [[ -d "$d" ]] && export PERL_MB_OPT="$d"
-d="INSTALL_BASE=$HOME/.perl5"; [[ -d "$d" ]] && export PERL_MM_OPT="$d"
-d="$HOME/.local/share/rbenv"; [[ -d "$d" ]] && export RBENV_ROOT="$d"
+d="$HOME/.go"
+if [[ -d "$d" ]] then
+  export GOPATH="$d"
+fi
+d="$HOME/opt/android-sdk-r21"
+if [[ -d "$d" ]]; then
+  export ANDROID_HOME="$d"
+fi
+d="$HOME/.perl5/lib/perl5"
+if [[ -d "$d" ]]; then
+  export PERL5LIB="$d"
+fi
+d="$HOME/.perl5"
+if [[ -d "$d" ]] && ! [[ "$PERL_LOCAL_LIB_ROOT" =~ "$d" ]]; then
+  export PERL_LOCAL_LIB_ROOT="$d:$PERL5LIB"
+fi
+d="--install_base \"$HOME/.perl5\""
+if [[ -d "$d" ]]; then
+  export PERL_MB_OPT="$d"
+fi
+d="INSTALL_BASE=$HOME/.perl5"
+if [[ -d "$d" ]]; then
+  export PERL_MM_OPT="$d"
+fi
+d="$HOME/.local/share/rbenv"
+if [[ -d "$d" ]]; then
+  export RBENV_ROOT="$d"
+fi
+unset d
 
 export_paths=(
   "$HOME/opt/JLink_Linux"
@@ -24,16 +48,23 @@ export_paths=(
   "$RBENV_ROOT/bin/"
   "$GOPATH/bin/"
 )
-
 for value in "${export_paths[@]}"; do
-  [[ -d "$value" ]] && [[ ! "$PATH" =~ "$value" ]] && export PATH="$value:$PATH"
+  if [[ -d "$value" ]] && [[ ! "$PATH" =~ "$value" ]]; then
+    export PATH="$value:$PATH"
+  fi
 done
+unset export_paths
 
 if [ -d "$HOME/opt" ]; then
   for dir in $(find "$HOME/opt" -maxdepth 1 -type d); do
-    [[ -d "$dir/bin" ]] && ! [[ "$PATH" =~ "$dir/bin" ]] && export PATH="$dir/bin:$PATH"
-    [[ -d "$dir/usr/bin" ]] && ! [[ "$PATH" =~ "$dir/usr/bin" ]] && export PATH="$dir/usr/bin:$PATH"
-    [[ -d "$dir/share/man" ]] && ! [[ "$MANPATH" =~ "$dir/share/man" ]] && export MANPATH="$dir/share/man:$PATH"
+    if [[ -d "$dir/bin" ]] && ! [[ "$PATH" =~ "$dir/bin" ]]; then
+      export PATH="$dir/bin:$PATH"
+    fi
+    if [[ -d "$dir/usr/bin" ]] && ! [[ "$PATH" =~ "$dir/usr/bin" ]]; then
+      export PATH="$dir/usr/bin:$PATH"
+    fi
+    if [[ -d "$dir/share/man" ]] && ! [[ "$MANPATH" =~ "$dir/share/man" ]]; then
+      export MANPATH="$dir/share/man:$PATH"
+    fi
   done
 fi
-

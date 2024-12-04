@@ -6,13 +6,14 @@
 #echo ""
 
 # CMus
-artist=$(cmus-remote -Q | grep -w '^tag artist' | cut -d ' ' -f3-)
-song=$(cmus-remote -Q | grep -w '^tag title' | cut -d ' ' -f3-)
+song_info=$(cmus-remote -Q 2>/dev/null)
+artist=$(echo "$song_info" | grep -w '^tag artist' | cut -d ' ' -f3-)
+song=$(echo "$song_info" | grep -w '^tag title' | cut -d ' ' -f3-)
 if [[ ! -z "$artist" && ! -z "$song" ]]; then
   echo "$artist - $song"
   echo "$artist - $song"
 else
-  file=$(basename "$(cmus-remote -Q | grep file | cut -d ' ' -f2-)")
+  file=$(basename "$(echo $song_info | grep file | cut -d ' ' -f2-)")
   echo $file
   echo $file
 fi

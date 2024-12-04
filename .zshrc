@@ -63,6 +63,10 @@ function filestore() {
     | jq -r "\"[![$2](\" + .thumbnail_file + \")](\" + .original_file + \")\""
 }
 
+function duhex() {
+  du -sb "$@" | awk '{printf "0x%08x %10d ", $1, $1; for (i=2; i<=NF; i++) print $i}'
+}
+
 # Prevent nested ranger sessions
 ranger() {
     if [ -z "$RANGER_LEVEL" ]; then

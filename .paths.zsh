@@ -64,7 +64,7 @@ if [ -d "$HOME/opt" ]; then
       export PATH="$dir/usr/bin:$PATH"
     fi
     if [[ -d "$dir/share/man" ]] && ! [[ "$MANPATH" =~ "$dir/share/man" ]]; then
-      export MANPATH="$dir/share/man:$PATH"
+      export MANPATH="$dir/share/man:$MANPATH"
     fi
   done
 fi

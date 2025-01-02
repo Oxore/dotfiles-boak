@@ -13,7 +13,7 @@ if [[ ! -z "$artist" && ! -z "$song" ]]; then
   echo "$artist - $song"
   echo "$artist - $song"
 else
-  file=$(basename "$(echo $song_info | grep file | cut -d ' ' -f2-)")
+  file=$(basename "$(echo "$song_info" | grep -w '^file' | cut -d ' ' -f2-)")
   echo $file
   echo $file
 fi

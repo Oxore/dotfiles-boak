@@ -179,7 +179,6 @@ alias yrst="yadm restore --staged"
 alias gd="git diff --histogram"
 alias gdca="git diff --histogram --cached"
 alias glg2="git log --graph --decorate --oneline"
-alias glgga="git log --graph --decorate --oneline --all"
 
 alias hello='echo -n "#include <stdio.h>\n\nint main(int argc, char * const argv[])\n{\n    (void)argc;\n    (void)argv;\n}" >main.c && vim main.c'
 alias kl="fuzzy-kill"

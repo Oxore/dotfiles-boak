@@ -1,0 +1,10 @@
+[Unit]
+Description=Clean up ssh logs directory
+Wants=sshlg-logrotate.timer
+
+[Service]
+Type=oneshot
+ExecStart=bash %h/.local/bin/sshlg-logrotate %h/ssh-logs
+
+[Install]
+WantedBy=multi-user.target

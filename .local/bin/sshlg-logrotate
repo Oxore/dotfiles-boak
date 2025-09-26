@@ -1,0 +1,19 @@
+#!/bin/bash
+
+usage() {
+  echo "$1 <ssh-logs-dir-path>"
+}
+
+logdir=$1
+
+if [[ -z "$logdir" ]]; then
+  echo "ERROR: no SSH logs directory specified" >&2
+  usage $0 >&2
+  exit 2
+fi
+
+for f in $logdir/*; do
+  if [[ $(wc -l <"$f") -le 2 ]]; then
+    rm -rf -- "$f" && echo Removed "$f"
+  fi
+done

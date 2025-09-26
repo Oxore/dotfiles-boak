@@ -1,0 +1,10 @@
+[Unit]
+Description=Clean up ssh logs directory
+Requires=sshlg-logrotate.service
+
+[Timer]
+Unit=sshlg-logrotate.service
+OnCalendar=Hourly
+
+[Install]
+WantedBy=timers.target

@@ -23,6 +23,10 @@ define connect
   end
 end
 
+define msr
+  monitor system_reset
+end
+
 define mrh
   monitor reset halt
 end
@@ -44,4 +48,12 @@ end
 define log
   set logging enabled on
   set trace-commands on
+end
+
+define hook-add-symbol-file
+set confirm off
+end
+
+define hookpost-add-symbol-file
+set confirm on
 end

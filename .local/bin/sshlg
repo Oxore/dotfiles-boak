@@ -1,16 +1,8 @@
 #!/bin/bash
 
-date-iseconds () {
-  date -Iseconds | sed 's/[^a-zA-Z0-9+]/-/g'
-}
-
-args () {
-  echo "$@" | sed 's/[^@a-zA-Z0-9+]/-/g'
-}
-
 args-with-dot () {
   echo "$@" | sed 's/[^@\.a-zA-Z0-9+]/-/g'
 }
 
 mkdir -p ~/ssh-logs/
-exec -a "ssh-$(args-with-dot $@)" bash -c "ssh $@ 2>&1 | tee ~/ssh-logs/$(args $@)-$(date-iseconds).log"
+exec -a "ssh-$(args-with-dot $@)" bash -c "sshlg-inner $@"

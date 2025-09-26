@@ -1,0 +1,17 @@
+#!/bin/bash
+
+set -eo pipefail
+
+date-iseconds () {
+  date -Iseconds | sed 's/[^a-zA-Z0-9+]/-/g'
+}
+
+args () {
+  echo "$@" | sed 's/[^@a-zA-Z0-9+]/-/g'
+}
+
+mkdir -p ~/ssh-logs/
+file=~/ssh-logs/$(args $@)-$(date-iseconds).log
+if ! ssh $@ 2>&1 | tee "$file"; then
+  rm -rf -- "$file"
+fi

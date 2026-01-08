@@ -1,0 +1,39 @@
+From 2772dbfe3c8bd9e2208bf31c4daf0e567cbf15ce Mon Sep 17 00:00:00 2001
+From: Oxore <oxore@protonmail.com>
+Date: Thu, 8 Jan 2026 19:56:45 +0300
+Subject: [PATCH] rtw89: Fix log spam
+
+---
+ drivers/net/wireless/realtek/rtw89/mac.c | 2 --
+ drivers/net/wireless/realtek/rtw89/phy.c | 2 --
+ 2 files changed, 4 deletions(-)
+
+diff --git a/drivers/net/wireless/realtek/rtw89/mac.c b/drivers/net/wireless/realtek/rtw89/mac.c
+index 9b09d4b7dea5..fa5ce6ca0c1c 100644
+--- a/drivers/net/wireless/realtek/rtw89/mac.c
++++ b/drivers/net/wireless/realtek/rtw89/mac.c
+@@ -5517,8 +5517,6 @@ void rtw89_mac_c2h_handle(struct rtw89_dev *rtwdev, struct sk_buff *skb,
+ 		return;
+ 	}
+ 	if (!handler) {
+-		rtw89_info(rtwdev, "c2h class %d func %d not support\n", class,
+-			   func);
+ 		return;
+ 	}
+ 	handler(rtwdev, skb, len);
+diff --git a/drivers/net/wireless/realtek/rtw89/phy.c b/drivers/net/wireless/realtek/rtw89/phy.c
+index 5c31639b4cad..8b0efacba2f6 100644
+--- a/drivers/net/wireless/realtek/rtw89/phy.c
++++ b/drivers/net/wireless/realtek/rtw89/phy.c
+@@ -3123,8 +3123,6 @@ void rtw89_phy_c2h_handle(struct rtw89_dev *rtwdev, struct sk_buff *skb,
+ 		return;
+ 	}
+ 	if (!handler) {
+-		rtw89_info(rtwdev, "c2h class %d func %d not support\n", class,
+-			   func);
+ 		return;
+ 	}
+ 	handler(rtwdev, skb, len);
+-- 
+2.49.1
+

@@ -1,0 +1,30 @@
+From 821cd1b1e1666e844dbb0131e9ac5bb16596f92e Mon Sep 17 00:00:00 2001
+From: Oxore <oxore@protonmail.com>
+Date: Sun, 18 Jan 2026 14:59:35 +0300
+Subject: [PATCH] Fix file descriptor leak on file rename
+
+---
+ src/MtpMetadataCache.cpp | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/src/MtpMetadataCache.cpp b/src/MtpMetadataCache.cpp
+index 56a9d5b..528cf13 100644
+--- a/src/MtpMetadataCache.cpp
++++ b/src/MtpMetadataCache.cpp
+@@ -66,6 +66,13 @@ void MtpMetadataCache::clearItem(uint32_t id)
+ 		m_cache.erase(i->second);
+ 		m_cacheLookup.erase(i);
+ 	}
++	local_file_cache_type::iterator lfi = m_localFileCache.find(id);
++	if (lfi != m_localFileCache.end())
++	{
++		lfi->second->close();
++		delete lfi->second;
++		m_localFileCache.erase(lfi);
++	}
+ }
+ 
+ void MtpMetadataCache::clearOld()
+-- 
+2.49.1
+

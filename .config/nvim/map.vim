@@ -77,3 +77,9 @@ inoremap <C-c> <Esc>
 
 " Print current line number and number of lines in current file
 nnoremap <leader>L :echo line('.') . "/" . line('$')<CR>
+
+" ripgrep search for current in-buffer search pattern
+nnoremap <leader>r :Rg <C-r>/<CR>
+
+" ripgrep search for current yank register value
+nnoremap <leader>R :Rg <C-r>"<CR>

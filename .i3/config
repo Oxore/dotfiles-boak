@@ -234,7 +234,7 @@ default_border pixel 2
 default_floating_border pixel 2
 
 #some floating windows
-for_window [class="st"] floating enable
+for_window [class="st"] floating enable, move to scratchpad, scratchpad show
 for_window [class="Qsys"] floating enable
 for_window [class="Pidgin"] floating enable
 assign [class="Nautilus"] 2

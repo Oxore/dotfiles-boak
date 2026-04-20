@@ -233,6 +233,8 @@ hide_edge_borders both
 default_border pixel 2
 default_floating_border pixel 2
 
+floating_minimum_size 1 x 1
+
 #some floating windows
 for_window [class="st"] floating enable, move to scratchpad, scratchpad show
 for_window [class="Qsys"] floating enable

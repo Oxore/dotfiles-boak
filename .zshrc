@@ -181,6 +181,7 @@ alias gdca="git diff --histogram --cached"
 alias glg2="git log --graph --decorate --oneline"
 
 alias hello='echo -n "#include <stdio.h>\n\nint main(int argc, char * const argv[])\n{\n    (void)argc;\n    (void)argv;\n}" >main.c && vim main.c'
+alias hellogo='echo -n "package main\n\nimport (\n\t\"fmt\"\n)\n\nfunc main() {\n\tfmt.Printf(\"hello\\\\n\")\n}" >main.go && vim main.go'
 alias kl="fuzzy-kill"
 alias skl="sudo-fuzzy-kill"
 alias ix="curl -F 'f:1=<-' ix.io"

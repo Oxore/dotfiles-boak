@@ -1,0 +1,9 @@
+[Unit]
+Description=Daily user ZSH history file backup
+
+[Timer]
+OnCalendar=*-*-* 18:00:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target

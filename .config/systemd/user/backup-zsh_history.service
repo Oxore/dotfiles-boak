@@ -1,0 +1,10 @@
+[Unit]
+Description=Backup user ZSH history file
+Wants=backup-zsh_history.timer
+
+[Service]
+Type=oneshot
+ExecStart=sh %h/.local/bin/backup-zsh_history.sh %h/misc/zsh-history-backups
+
+[Install]
+WantedBy=multi-user.target

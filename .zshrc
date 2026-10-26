@@ -43,6 +43,7 @@ export NNN_PAGER="cat"
 export NNN_LOCKER="true"
 
 source $HOME/.paths.zsh
+source $HOME/.zshrc-arch
 source $ZSH/oh-my-zsh.sh
 
 cat $HOME/todo.txt 2>/dev/null | sed -r '/^\s*$/d'
